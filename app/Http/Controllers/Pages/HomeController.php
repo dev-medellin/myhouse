@@ -1,0 +1,47 @@
+<?php
+
+namespace App\Http\Controllers\Pages;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+    //
+    public $data = [];
+
+    public function index(){
+
+            $data['js']     =  $this->js_file();
+            $data['css']    =  $this->css_file();
+
+        return view('pages.home.index')->with('data', $data);
+    }
+
+    public function js_file(){
+        $data = [
+            'testting',
+            '123123'
+        ];
+
+        return $data;
+    }
+
+    public function css_file(){
+        $data = [
+            'bootstrap.min.css',
+            'owl.carousel.css',
+            'owl.theme.default.css',
+            'jquery-ui-css/jquery-ui-1.12.0.min.css',
+            'jquery.nouislider.min.css',
+            'animate.min.css',
+            'font-awesome.min.css',
+            'flaticon.css',
+            'style.css',
+            'header-menu-responsive.css',
+            'responsive.css'
+        ];
+
+        return $data;
+    }
+}
