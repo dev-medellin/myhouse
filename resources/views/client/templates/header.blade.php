@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>Dream House || Home</title>	
+	<title>My HOME || Home</title>	
 
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="assets/images/favicon/dream-favicon.png" />
@@ -36,7 +36,7 @@
 	<!-- ALL SECTION INCLOSED TO THE WRAPPER -->
 	<div class="wrapper">
 		<!-- BEGIN LOADING -->
-		{{-- <div id="loader" class="loader">
+		 <!-- <div id="loader" class="loader">
 			<div class="implode">
 				<div class="implode-in">
 					<div id="cover" class="acting"> 
@@ -49,8 +49,8 @@
 						<span></span>
 					</div>
 				</div>
-			</div> <!-- /.implode -->
-		</div>  --}}
+			</div> 
+		</div>  -->
         <!-- /#loader -->
 		<!-- END LOADING -->
 			
@@ -95,7 +95,7 @@
 					<div class="menu-collapse-after-effect"></div>
 					<div class="logo">
 						<a href="index.html">
-							<img src="assets/images/logo/logo.png" alt="Logo">
+							<img src="{{ asset('assets/images/logo/logo2.png') }}" alt="Logo">
 						</a>
 					</div><!-- /.logo -->
 				</div><!-- /.main-menu-deputy -->

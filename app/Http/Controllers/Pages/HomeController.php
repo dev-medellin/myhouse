@@ -15,13 +15,23 @@ class HomeController extends Controller
             $data['js']     =  $this->js_file();
             $data['css']    =  $this->css_file();
 
-        return view('pages.home.index')->with('data', $data);
+        return view('client.pages.home.index')->with('data', $data);
     }
 
     public function js_file(){
         $data = [
-            'testting',
-            '123123'
+            'jquery-2.2.3.min.js',
+            'jquery-ui/jquery-ui-1.12.0.min.js',
+            'bootstrap.min.js',
+            'owl.carousel.min.js',
+            'owl-1.3.2/owl.carousel.min.js',
+            'wow.min.js',
+            'typed.min.js',
+            'jquery.nouislider.min.js',
+            'jquery.mobile.custom.min.js',
+            'map-script.js',
+            'menu.js',
+            'custom.js',
         ];
 
         return $data;
@@ -36,7 +46,7 @@ class HomeController extends Controller
             'jquery.nouislider.min.css',
             'animate.min.css',
             'font-awesome.min.css',
-            'flaticon.css',
+            'flaticons\font\flaticon.css',
             'style.css',
             'header-menu-responsive.css',
             'responsive.css'
