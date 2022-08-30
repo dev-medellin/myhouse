@@ -1,4 +1,4 @@
-    <footer class="footer" id="footer">
+    	<footer class="footer" id="footer">
 			<div class="footer-widget-area">
 				<div class="container">	
 					<div class="footer-widgets">
@@ -121,12 +121,14 @@
 					<i class="fa fa-angle-up"></i>
 				</a>
 			</div> <!-- /.go-top -->
-		</footer> <!-- /.footer -->
-</div>
+		</footer> <!-- /.footer -->	
+	@include('modals.index');
+	</div>
 @isset($data['js'])
         @foreach ($data['js'] as $item)
         <script type="text/javascript" src="assets/js/{{$item}}"></script>   
         @endforeach
     @endisset
+	<script type="text/javascript" src="assets/js/functional.js"></script>   
 </body>
 </html>

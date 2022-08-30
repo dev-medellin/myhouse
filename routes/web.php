@@ -3,6 +3,7 @@
 use App\Http\Controllers\Common\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\Client\HomeController;
+use App\Http\Controllers\Modals;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,9 @@ Route::get('/', [HomeController::class,'index']);
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class,'index']);
+});
+
+Route::prefix('modal')->group(function () {
+    Route::get('/loginModal', [Modals::class,'loginModal']);
+    Route::get('/registerModal', [Modals::class,'registerModal']);
 });
