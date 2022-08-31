@@ -1,5 +1,12 @@
 <?php
 
+$mail_driver     = 'smtp';
+$mail_host       = 'smtp.googlemail.com';
+$mail_port       = 465;
+$mail_username   = 'myhouse.officialinfo@gmail.com';
+$mail_password   = 'eogmxmjcwpubfsfr';
+$mail_encryption = 'ssl';
+
 return [
 
     /*
@@ -35,14 +42,14 @@ return [
 
     'mailers' => [
         'smtp' => [
-            'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
-            'auth_mode' => null,
+            'transport'     => 'smtp',
+            'host'          => $mail_host, //env('MAIL_HOST', 'smtp.mailgun.org'),
+            'port'          => $mail_port, //env('MAIL_PORT', 587),
+            'encryption'    => $mail_encryption, //env('MAIL_ENCRYPTION', 'tls'),
+            'username'      => $mail_username, //env('MAIL_USERNAME'),
+            'password'      => $mail_password, //env('MAIL_PASSWORD'),
+            'timeout'       => null,
+            'auth_mode'     => null,
         ],
 
         'ses' => [
