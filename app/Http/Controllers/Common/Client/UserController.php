@@ -31,10 +31,10 @@ class UserController extends Controller
         if ($user === null) {
             $query = UsersModel::create([
                 'email'     => $request->emailInput,
-                'pass_word' => Hash::make($request->passwordInput),
+                'password' => Hash::make($request->passwordInput),
             ]);
 
-            $inserted = Verify::create([
+            $inserted = Verify::updateOrcreate([
                 'user_id'     => $query->id,
                 'email'       => $query->email,
                 'code'        => $code
