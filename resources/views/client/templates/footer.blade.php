@@ -122,7 +122,6 @@
 				</a>
 			</div> <!-- /.go-top -->
 		</footer> <!-- /.footer -->	
-	@include('modals.index');
 	</div>
 @isset($data['js'])
         @foreach ($data['js'] as $item)

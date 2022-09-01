@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'email'], function(){
-    Route::post('/verification',                [UserController::class,'register']);
+Route::group(['prefix' => 'user'], function(){
+    Route::post('/register',                [UserController::class,'register']);
 });

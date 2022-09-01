@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Common\Admin\DashboardController;
+use App\Http\Controllers\CaptchaValidationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\Client\HomeController;
 use App\Http\Controllers\Modals;
@@ -31,3 +32,7 @@ Route::prefix('modal')->group(function () {
     Route::get('/loginModal', [Modals::class,'loginModal']);
     Route::get('/registerModal', [Modals::class,'registerModal']);
 });
+
+Route::get('contact-form-captcha', [CaptchaValidationController::class, 'index']);
+Route::post('captcha-validation', [CaptchaValidationController::class, 'capthcaFormValidate']);
+Route::get('reload-captcha', [CaptchaValidationController::class, 'reloadCaptcha']);
