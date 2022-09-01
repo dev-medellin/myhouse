@@ -25,34 +25,39 @@ class UserController extends Controller
         ]);
 
         $template = 'verify_code';
-        $receiver = $request->emailInput;
+        $receiver = "dev.arthurmedellin@gmail.com";
         $code     = rand(1231,7879);
-        $user = UsersModel::where('email', '=', $request->emailInput)->first();
-        if ($user === null) {
-            $query = UsersModel::create([
-                'email'     => $request->emailInput,
-                'pass_word' => Hash::make($request->passwordInput),
+
+            $test = new Mail($template, $receiver, [
+                'subject'   => "testEMail",
+                'title'     => "Verification Code",
+                'code'     => $code,
             ]);
 
-            $inserted = Verify::create([
-                'user_id'     => $query->id,
-                'email'       => $query->email,
-                'code'        => $code
-            ]);
+        // $user = UsersModel::where('email', '=', $request->emailInput)->first();
+        // if ($user === null) {
+        //     $query = UsersModel::create([
+        //         'email'     => $request->emailInput,
+        //         'pass_word' => Hash::make($request->passwordInput),
+        //     ]);
 
-            if ($inserted){
-                $test = new Mail($template, $receiver, [
-                    'subject'   => "testEMail",
-                    'title'     => "Verification Code",
-                    'site_url'  => env('ADMIN_URL'),
-                    'code'     => $code,
-                    'sender'    => 'myhouse.officialinfo@gmail.com'
-                ]);
-            }
-            return responseSuccess('Verification Code has been sent you our email!',$test);
-        }else{
-            return responseFail('Email already exist!');
-        }
+        //     $inserted = Verify::updateOrCreate([
+        //         'user_id'     => $query->id,
+        //         'email'       => $query->email,
+        //         'code'        => $code
+        //     ]);
+
+        //         $test = new Mail($template, $receiver, [
+        //             'subject'   => "Verification Code",
+        //             'title'     => "Verification Code",
+        //             'site_url'  => env('ADMIN_URL'),
+        //             'code'     => $code,
+        //             'sender'    => 'myhouse.officialinfo@gmail.com'
+        //         ]);
+        //     return responseSuccess('Verification Code has been sent you our email!',['test' =>  env('APP_URL')]);
+        // }else{
+        //     return responseFail('Email already exist!');
+        // }
         //     var_dump($code);
     }
 }

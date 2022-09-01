@@ -4,7 +4,7 @@ $mail_driver     = 'smtp';
 $mail_host       = 'smtp.googlemail.com';
 $mail_port       = 465;
 $mail_username   = 'myhouse.officialinfo@gmail.com';
-$mail_password   = 'eogmxmjcwpubfsfr';
+$mail_password   = 'xbncfutjadzulspl';
 $mail_encryption = 'ssl';
 
 return [
