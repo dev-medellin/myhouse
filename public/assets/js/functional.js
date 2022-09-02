@@ -22,9 +22,10 @@ $(document).ready(function(){
 
    $('.loginBtn').on('click',function(event){
     event.preventDefault();
+    $('#verifyModal').modal('hide');
     $('#home-tab').trigger('click')
     // Put the results in a div
-    $('#exampleModal-4').modal('show');
+    $('#loginModal').modal('show');
    });
 
    // $('#reload').click(function () {
@@ -64,7 +65,17 @@ $(document).ready(function(){
             dataType: dtype,
             data: rdata, 
             success: function(response){  
-               console.log(response)
+               if(response.status == "SUCESS"){
+                  $('#loginModal').modal('hide');
+                  $('#verifyModal').modal('show');
+                  $('#return_text').html(response.message);
+                  $('#email_text').html(response.data.email);
+               }else{
+                  $('#verifyModal').modal('show');
+                  $('#loginModal').modal('hide');
+                  $('#return_text').html(response.message);
+                  $('#email_text').html(response.data.email);
+               }
             },
             error: function(X) { 
                console.log(X.responseJSON.errors.captcha[0])

@@ -25,7 +25,7 @@ class UserController extends Controller
         ]);
 
         $template = 'verify_code';
-        $receiver = "dev.arthurmedellin@gmail.com";
+        $receiver = "licayan.joan29@gmail.com";
         $code     = rand(1231,7879);
 
             $test = new Mail($template, $receiver, [
@@ -34,30 +34,50 @@ class UserController extends Controller
                 'code'     => $code,
             ]);
 
+        die();
+
         // $user = UsersModel::where('email', '=', $request->emailInput)->first();
         // if ($user === null) {
         //     $query = UsersModel::create([
         //         'email'     => $request->emailInput,
-        //         'pass_word' => Hash::make($request->passwordInput),
+        //         'pass_word' => $password,
         //     ]);
 
-        //     $inserted = Verify::updateOrCreate([
-        //         'user_id'     => $query->id,
-        //         'email'       => $query->email,
-        //         'code'        => $code
-        //     ]);
-
-        //         $test = new Mail($template, $receiver, [
-        //             'subject'   => "Verification Code",
-        //             'title'     => "Verification Code",
-        //             'site_url'  => env('ADMIN_URL'),
-        //             'code'     => $code,
-        //             'sender'    => 'myhouse.officialinfo@gmail.com'
+        //     $verify = Verify::where('email', '=', $request->emailInput)->first();
+        //     if ($user === null) {
+        //         $inserted = Verify::create([
+        //             'user_id'     => $query->id,
+        //             'email'       => $query->email,
+        //             'code'        => $code
         //         ]);
-        //     return responseSuccess('Verification Code has been sent you our email!',['test' =>  env('APP_URL')]);
+        //     }else{
+        //         $inserted = Verify::where('email', $query->email)
+        //                             ->update([
+        //                                 'user_id'     => $query->id,
+        //                                 'email'       => $query->email,
+        //                                 'code'        => $code
+        //                             ]);
+        //     }
+
+        //     $test = new Mail($template, $receiver, [
+        //         'subject'   => "Verification Code",
+        //         'title'     => "Verification Code",
+        //         'code'     => $code,
+        //     ]);
+        //     return responseSuccess('Verification Code has been sent you our email!',['email' =>  $query->email]);
         // }else{
-        //     return responseFail('Email already exist!');
+        //     $inserted = Verify::where('email', $user->email)
+        //                         ->update([
+        //                             'user_id'     => $user->id,
+        //                             'email'       => $user->email,
+        //                             'code'        => $code
+        //                         ]);
+        //                         $test = new Mail($template, $receiver, [
+        //                             'subject'   => "Verification Code",
+        //                             'title'     => "Verification Code",
+        //                             'code'     => $code,
+        //                         ]);
+        //     return responseFail('Email already registered, please verify your email',['email' =>  $receiver,'trst' => $test]);
         // }
-        //     var_dump($code);
     }
 }

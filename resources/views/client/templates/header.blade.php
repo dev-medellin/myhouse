@@ -34,6 +34,8 @@
 
 </head>
 <body>
+	@include('modals.loginModal')
+	@include('modals.verify')
 	<!-- ALL SECTION INCLOSED TO THE WRAPPER -->
 	<div class="wrapper">
 		@include('client.templates.nav')

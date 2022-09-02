@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Http;
 
 if (!function_exists('noReplyEmail')) {
     function noReplyEmail ($email, $sender) {
-        // if(User::where('email',$email)->where('status','active')->first()) {
+        if(User::where('email',$email)->where('status','active')->first()) {
             return "no-reply@myhouse.com";
         // } else { 
         //     if($sender){
@@ -13,7 +13,7 @@ if (!function_exists('noReplyEmail')) {
         //     } else {
         //         return "myhouse@gmail.com";
         //     }
-        // }
+        }
     }
 }
 

@@ -49,7 +49,8 @@ class HomeController extends Controller
             'flaticons\font\flaticon.css',
             'style.css',
             'header-menu-responsive.css',
-            'responsive.css'
+            'responsive.css',
+            'code_field.css'
         ];
 
         return $data;

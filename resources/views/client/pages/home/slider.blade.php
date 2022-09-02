@@ -162,4 +162,3 @@
 			</a> 
 		</section> <!-- /.main-slider -->
 		<!-- /MAIN SLIDER AND PROPERTY SEARCH AREA START --> 
-		@include('modals.index')
