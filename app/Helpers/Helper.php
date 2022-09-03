@@ -1,18 +1,18 @@
 <?php
-use App\Models\{ Banner, Blog, Coupon, ProofNote, QuoteSlider, User, Setting, UserRank, ShippingMethod };
+use App\Models\{ Banner, Blog, Coupon, ProofNote, QuoteSlider, UsersModel, Setting, UserRank, ShippingMethod };
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 
 if (!function_exists('noReplyEmail')) {
     function noReplyEmail ($email, $sender) {
-        if(User::where('email',$email)->where('status','active')->first()) {
+        if(UsersModel::where('email',$email)->where('status','active')->first()) {
             return "no-reply@myhouse.com";
-        // } else { 
-        //     if($sender){
-        //         return $sender;
-        //     } else {
-        //         return "myhouse@gmail.com";
-        //     }
+        } else { 
+            if($sender){
+                return $sender;
+            } else {
+                return "myhouse@gmail.com";
+            }
         }
     }
 }

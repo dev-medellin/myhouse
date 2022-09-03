@@ -42,11 +42,18 @@ class MailSetup extends Mailable
             case 'verify_code':
                 $page = "emails.customer.verifyCode";
             break;
+
+            default:
+                $page = "emails.templates.".$this->mail_template;
+            break;
         }
 
-        // $sender     = (isset($this->details['sender']) ? $this->details['sender'] : '');
-        // $reply_to   = ($this->receiver == 'myhouse.officialinfo@gmail.com' ? $this->details['sender'] : noReplyEmail($this->receiver, $sender));
+        $sender     = (isset($this->details['sender']) ? $this->details['sender'] : '');
+        $reply_to   = ($this->receiver == 'myhouse.officialinfo@gmail.com' ? $this->details['sender'] : noReplyEmail($this->receiver, $sender));
         return $this
-            ->view($page);
+            ->view($page)
+             ->from($reply_to,'MYHouse')
+                ->replyTo($reply_to)
+                    ->subject($this->details['subject']);
     }
 }

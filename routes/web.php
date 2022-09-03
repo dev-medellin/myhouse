@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Common\Admin\DashboardController;
+use App\Http\Controllers\Common\Admin\ProjectController;
 use App\Http\Controllers\CaptchaValidationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\Client\HomeController;
+use App\Http\Controllers\Common\Client\UserController;
 use App\Http\Controllers\Modals;
 
 /*
@@ -21,11 +23,20 @@ use App\Http\Controllers\Modals;
 //     return redirect('/home');
 // });
 
+Route::group(['prefix' => 'user'], function(){
+    Route::post('/register',                [UserController::class,'register']);
+    Route::post('/verify',                  [UserController::class,'verify']);
+    Route::post('/login',                   [UserController::class,'signin']);
+    Route::get('/logout',                  [UserController::class,'logout']);
+});
 
-Route::get('/', [HomeController::class,'index']);
+
+
+Route::get('/', [HomeController::class,'index'])->name('/');
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class,'index']);
+    Route::get('/projects',   [ProjectController::class,'index']);
 });
 
 Route::prefix('modal')->group(function () {

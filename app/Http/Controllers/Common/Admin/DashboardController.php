@@ -10,11 +10,11 @@ class DashboardController extends Controller
     //    public $data = [];
 
     public function index(){
-
+        $page = 'project';
             // $data['js']     =  $this->js_file();
             // $data['css']    =  $this->css_file();
 
-        return view('admin.pages.dashboard.index');
+        return view('admin.pages.dashboard.index')->with('page' ,$page);
     }
 
     public function js_file(){

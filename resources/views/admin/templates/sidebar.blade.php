@@ -165,16 +165,16 @@
 </div>      
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-    <li class="nav-item active">
-        <a class="nav-link" href="https://www.bootstrapdash.com/demo/justdo-laravel-pro/template/vertical-default-light">
+    <li class="nav-item">
+        <a class="nav-link" href="dashboard">
         <i class="ti-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
         </a>
     </li>
     <li class="nav-item ">
-        <a class="nav-link" href="widgets.html">
-        <i class="ti-settings menu-icon"></i>
-        <span class="menu-title">Widgets</span>
+        <a class="nav-link" href="projects">
+        <i class="ti-clipboard menu-icon"></i>
+        <span class="menu-title">Projects</span>
         </a>
     </li>
     <li class="nav-item ">

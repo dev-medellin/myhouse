@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2022 at 10:45 AM
+-- Generation Time: Sep 03, 2022 at 08:07 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.28
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,8 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `pass_word` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL DEFAULT 0,
   `email_status` enum('verified','not_verified') NOT NULL DEFAULT 'not_verified',
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `email_verified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -40,8 +43,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `pass_word`, `email_status`, `created_at`, `updated_at`) VALUES
-(15, 'dev.arthurmedellin@gmail.com', '$2y$10$iEgFiDucAQq6QxPUW9Gnq.CqNGEWnzPVj2wWHAOkpLYb9s/nhsgmu', 'not_verified', '2022-09-01 00:44:18', '2022-09-01 08:44:18');
+INSERT INTO `users` (`id`, `email`, `password`, `role`, `email_status`, `status`, `email_verified_at`, `created_at`, `updated_at`) VALUES
+(25, 'dev.arthurmedellin@gmail.com', '$2y$10$Z8qtzB98u/694wgJq57Qy.t/MrsCV4cVqBzfYMLTTO2iZhAPVTdJO', 0, 'verified', 'active', '2022-09-03 04:54:36', '2022-09-02 20:54:24', '2022-09-03 04:54:36');
 
 -- --------------------------------------------------------
 
@@ -63,7 +66,7 @@ CREATE TABLE `verify_code` (
 --
 
 INSERT INTO `verify_code` (`id`, `user_id`, `email`, `code`, `created_at`, `updated_at`) VALUES
-(1, 15, 'dev.arthurmedellin@gmail.com', 5170, '2022-09-01 00:44:18', '2022-09-01 08:44:18');
+(11, 25, 'dev.arthurmedellin@gmail.com', 1381, '2022-09-02 20:54:24', '2022-09-03 04:54:24');
 
 --
 -- Indexes for dumped tables
@@ -89,13 +92,13 @@ ALTER TABLE `verify_code`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `verify_code`
 --
 ALTER TABLE `verify_code`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -24,7 +24,6 @@
         }
 
         public function set() {
-            try {
                 $sent = Mail::to($this->receiver)->send(new MailSetup($this->details, $this->template, $this->receiver));
                 return [
                     'receiver'  => $this->receiver,
@@ -32,8 +31,6 @@
                     'template'  => $this->template,
                     'sent'      => $sent,
                 ];
-            } catch(Exception $e) {
-                return responseError('SenderHelper', $e->getMessage());
-            }
+    
         }
     }

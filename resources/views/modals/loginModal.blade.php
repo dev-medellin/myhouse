@@ -1,5 +1,4 @@
-
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true" style="z-index:10000; !important">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true" style="z-index:10000;">
   <div class="modal-dialog" role="document" style="height: 100%">
     <div class="modal-content" style="top : 30%">
       <div class="modal-header">
@@ -25,14 +24,15 @@
                 <div class="content">
                 <img class="img-responsive center-block d-block mx-auto" src="{{ asset('assets/images/logo/logo2.png') }}" alt="sample image" style="margin-top: 20px">
                     <br>
-                    <form>
+                    <form id="loginForm">
+                    @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                            <input type="email" class="form-control" id="emailInputLog" name="emailInputLog" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control" id="passwordInputLog" name="passwordInputLog" placeholder="Password">
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
@@ -61,17 +61,6 @@
                             <label for="exampleInputPassword1">Confirm Password</label>
                             <input type="password" class="form-control" id="confirmpasswordInput" name="confirmpasswordInput" placeholder="Password">
                         </div>
-                        {{-- <div class="form-group mt-4 mb-4">
-                          <div class="captcha">
-                              <span>{!! captcha_img() !!}</span>
-                              <button type="button" class="btn btn-danger" class="reload" id="reload">
-                                  ↻
-                              </button>
-                        </div> --}}
-                      </div>
-                      <div class="form-group mb-4">
-                        <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
-                      </div>
                         <button type="submit" class="btn btn-primary">Register</button>
                     </form>
                 </div>

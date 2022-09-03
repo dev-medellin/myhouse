@@ -40,7 +40,11 @@
                         <div class="contact-text">
                             <ul>
                                 <li><a href="#"><i class="fa fa-map-marker"></i>23 Aro Lane, NY, USA</a></li>
+                                @if(Auth::check())
+                                <li>Welcome Dev.</li>
+                                @else
                                 <li><a href="javascript:void(0)" class="loginBtn"><i class="fa fa-user"></i>Sign Up</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div> <!-- /.contact-to -->
@@ -168,7 +172,9 @@
                 </li>
                 <li><a href="single.html">Single</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                @if(Auth::check())
+                <li><a href="javascript:void(0)" class="logoutBtn" >Logout</a></li>
+                @endif
             </ul><!-- /.main-nav -->
 
             <!--  Header Top visibility controls (=<991px) -->
