@@ -1,4 +1,5 @@
 @extends('admin.templates.content')
 @section('body')
-@include('admin.pages.dashboard.main')
+@include('admin.pages.projects.main')
+@include('admin.modal.insertProj')
 @endsection

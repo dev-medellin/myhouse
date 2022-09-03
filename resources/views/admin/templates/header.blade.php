@@ -11,19 +11,14 @@
   
   <!-- CSRF Token -->
   <meta name="_token" content="pFHSzwA6cNSBPUdXtqdRwdxN2juCixNmaXa0MiPJ">
-  
+    
   <link rel="shortcut icon" href="favicon.ico">
 
-  <!-- plugin css -->
-  <link media="all" type="text/css" rel="stylesheet" href="assets/strict/plugins/%40mdi/font/css/materialdesignicons.min.css">
-  <link media="all" type="text/css" rel="stylesheet" href="assets/strict/plugins/ti-icons/css/themify-icons.css">
-  <link media="all" type="text/css" rel="stylesheet" href="assets/strict/plugins/perfect-scrollbar/perfect-scrollbar.css">
-  <!-- end plugin css -->
-
-    <link media="all" type="text/css" rel="stylesheet" href="assets/strict/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
-
-  <!-- common css -->
-  <link media="all" type="text/css" rel="stylesheet" href="assets/strict/css/app.css">
+  @isset($data['css'])
+        @foreach ($data['css'] as $item)
+        <link rel="stylesheet" type="text/css" href="assets/strict/css/{{$item}}"/>  
+        @endforeach
+  @endisset
   <!-- end common css -->
 
   </head>
