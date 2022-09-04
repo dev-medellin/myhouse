@@ -17,94 +17,55 @@ class UserController extends Controller
     public $data = [];
     public $response = [];
 
-    public function register(Request $request){
-
-        $request->validate([
-            'passwordInput' => 'required',
-            'emailInput' => 'required|email',
-            // 'captcha' => 'required|captcha'
-        ]);
-
-        $template = 'verify_code';
-        $receiver = $request->emailInput;
-        $code     = rand(1231,7879);
-        $password = Hash::make($request->passwordInput);
-
-        $user = UsersModel::where('email', '=', $request->emailInput)->first();
-        if ($user === null) {
-            $query = UsersModel::create([
-                'email'     => $request->emailInput,
-                'password' => $password,
-            ]);
-
-            $verify = Verify::where('email', '=', $request->emailInput)->first();
-            if ($user === null) {
-                $inserted = Verify::create([
-                    'user_id'     => $query->id,
-                    'email'       => $query->email,
-                    'code'        => $code
-                ]);
-            }else{
-                $inserted = Verify::where('email', $query->email)
-                                    ->update([
-                                        'code'        => $code
-                                    ]);
-            }
-
-            $test = new Mail($template, $receiver, [
-                'subject'   => "Verification Code",
-                'title'     => "Verification Code",
-                'code'     => $code,
-            ]);
-
-            return responseSuccess('Verification Code has been sent you our email!',['email' =>  $query->email]);
-        }else{
-            $inserted = Verify::where('email', $user->email)
-                                ->update([
-                                    'code'        => $code
-                                ]);
-                                $test = new Mail($template, $receiver, [
-                                    'subject'   => "Verification Code",
-                                    'title'     => "Verification Code",
-                                    'code'     => $code,
-                                ]);
-            return responseFail('Email already registered, please verify your email',['email' =>  $receiver]);
-        }
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
-    public function verify(Request $request){
-        $inserted = Verify::select('verify_code.code as code', 'verify_code.user_id as user_id', 'users.password as password', 'users.email as email')
-                                    ->where('users.email', $request->emailVerify)
-                                    ->leftJoin('users', 'users.id', '=', 'verify_code.user_id')
-                                    ->first();
-        if($inserted->code == $request->verifyCode){
-           $user_info = UsersModel::where('email', $inserted->email)
-                                ->update([
-                                    'email_status'        => 'verified'
-                                ]);
-            return responseSuccess('You are you registered!',['email' =>  $inserted->email]);
-        }else{
-            return responseFail('Invalid Verification Code!');
-        }
+    public function mypage(){
+
+        $data['js']     =  $this->js_file();
+        $data['css']    =  $this->css_file();
+
+    return view('client.pages.mypage.index')->with('data', $data);
     }
 
-    public function signin(Request $request){
-        $credentials = $request->validate([
-            'emailInputLog' => ['required', 'email'],
-            'passwordInputLog' => ['required'],
-        ]);
-        if (Auth::attempt(['email' => $request->emailInputLog, 'password' => $request->passwordInputLog])) {
-            // Authentication was successful...
-            $request->session()->regenerate();
- 
-            return responseSuccess('You are now logined!',['data' => Auth::user()]);
-        }
- 
-        return responseFail('Invalid login Code!'); 
+    public function js_file(){
+        $data = [
+            'jquery-2.2.3.min.js',
+            'jquery-ui/jquery-ui-1.12.0.min.js',
+            'bootstrap.min.js',
+            'inputmask/jquery.inputmask.bundle.js',
+            'owl.carousel.min.js',
+            'owl-1.3.2/owl.carousel.min.js',
+            'wow.min.js',
+            'typed.min.js',
+            'jquery.nouislider.min.js',
+            'jquery.mobile.custom.min.js',
+            'map-script.js',
+            'menu.js',
+            'custom.js',
+        ];
+
+        return $data;
     }
 
-    public function logout(Request $request) {
-        Auth::logout();
-        return responseSuccess('You are now logined!');
-      }
+    public function css_file(){
+        $data = [
+            'bootstrap.min.css',
+            'owl.carousel.css',
+            'owl.theme.default.css',
+            'jquery-ui-css/jquery-ui-1.12.0.min.css',
+            'jquery.nouislider.min.css',
+            'animate.min.css',
+            'font-awesome.min.css',
+            'flaticons\font\flaticon.css',
+            'style.css',
+            'header-menu-responsive.css',
+            'responsive.css',
+            'code_field.css'
+        ];
+
+        return $data;
+    }
 }

@@ -40,10 +40,8 @@
                         <div class="contact-text">
                             <ul>
                                 <li><a href="#"><i class="fa fa-map-marker"></i>23 Aro Lane, NY, USA</a></li>
-                                @if(Auth::check())
-                                <li>Welcome Dev.</li>
-                                @else
-                                <li><a href="javascript:void(0)" class="loginBtn"><i class="fa fa-user"></i>Sign Up</a></li>
+                                @if(!Auth::check())
+                                    <li><a href="javascript:void(0)" class="loginBtn"><i class="fa fa-user"></i>Sign Up</a></li>
                                 @endif
                             </ul>
                         </div>
@@ -68,9 +66,9 @@
         <div class="main-menu">
             <div class="close-nav"></div> <!-- Close the menu for mobile -->				
             <ul class="main-nav">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="overview.html">Preview</a></li>
-                <li><a href="#">Dropdown</a>
+                <li class="active"><a href="{{url('/')}}">Home</a></li>
+                <li><a href="overview.html" style="color:red"></a></li>
+                <li><a href="#" style="color:red">Dropdown</a>
                     <ul class="sub-nav">
                         <li><a href="#">Dropdown Menu 1</a></li>
                         <li><a href="#">Dropdown Menu 2</a></li>
@@ -158,8 +156,8 @@
                         </li>
                     </ul> <!-- /.sub-nav -->
                 </li>
-                <li><a href="property-details.html">Services</a></li>
-                <li><a href="#">Pages</a>
+                <li><a href="property-details.html" style="color:red">Services</a></li>
+                <li><a href="#" style="color:red">Pages</a>
                     <ul class="sub-nav">
                         <li><a href="overview.html">Overview</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -170,10 +168,15 @@
                         <li class="active"><a href="index.html">Home</a></li>
                     </ul>
                 </li>
-                <li><a href="single.html">Single</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="single.html" style="color:red">Single</a></li>
+                <li><a href="blog.html" style="color:red">Blog</a></li>
                 @if(Auth::check())
-                <li><a href="javascript:void(0)" class="logoutBtn" >Logout</a></li>
+                <li><a href="#">Welcome, {{Auth::user()->fname}}</a>
+                    <ul class="sub-nav" id="myNav">
+                        <li><a href="{{url('users/mypage')}}" >My Page</a></li>
+                        <li><a href="javascript:void(0)" class="logoutBtn" >Logout</a></li>
+                    </ul>
+                </li>
                 @endif
             </ul><!-- /.main-nav -->
 

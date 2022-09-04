@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Common\Admin\DashboardController;
 use App\Http\Controllers\Common\Admin\ProjectController;
 use App\Http\Controllers\CaptchaValidationController;
@@ -7,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\Client\HomeController;
 use App\Http\Controllers\Common\Client\UserController;
 use App\Http\Controllers\Modals;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +25,17 @@ use App\Http\Controllers\Modals;
 //     return redirect('/home');
 // });
 
-Route::group(['prefix' => 'user'], function(){
-    Route::post('/register',                [UserController::class,'register']);
-    Route::post('/verify',                  [UserController::class,'verify']);
-    Route::post('/login',                   [UserController::class,'signin']);
-    Route::get('/logout',                  [UserController::class,'logout']);
+Route::group(['prefix' => 'auth'], function(){
+    Route::post('/register',                [AuthController::class,'register']);
+    Route::post('/verify',                  [AuthController::class,'verify']);
+    Route::post('/login',                   [AuthController::class,'signin']);
+    Route::get('/logout',                   [AuthController::class,'logout']);
 });
+
+    Route::group(['prefix' => 'users'], function(){
+        Route::get('/mypage',                      [UserController::class,'mypage']);
+    });
+
 
 
 

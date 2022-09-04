@@ -74,6 +74,38 @@ ul, li {
     width: 100%;
     overflow: hidden;
 }
+
+/* Modified CSS OWNED */
+#pills-tab li a{
+    border: solid 2px #337ad7;
+    width: 100%;
+    padding: 10px 40px 10px 40px;
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+    color: #337ad7;
+}
+
+#pills-tab li {
+    padding-right: 20px;
+}
+
+#pills-tab li.active a{
+    color: #ffffff !important;
+}
+
+#myNav{
+    background-color:white;
+}
+
+#myNav li a{
+    color:black
+}
+
+.logoutBtn{
+    color:red !important;
+}
+/* END CSS MODIFIED OWN */
+
 /*For Flat Icons*/
 [class^="flaticon-"]:before, 
 [class*=" flaticon-"]:before, 
@@ -632,7 +664,7 @@ ul, li {
     right: 10px;
     top: 0;
     text-align: center;
-    color: #50514f;
+    color: #ffffff;
     z-index: 2;
 }
 .main-menu .main-nav .sub-nav li,
@@ -745,22 +777,14 @@ ul, li {
 || 4.0 - FOOTER AREA                                                     
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 .footer {
-    background-color: #8f8f8f;
-    background-image: url(../images/bg/footer-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
     margin-top: 100px;
-    padding: 40px;
 }
 .footer .footer-widget-area {
     background-color: rgba(7, 31, 49, .92);
     position: relative;
 }
 .footer .footer-widgets {
-    position: relative;
-    padding-top: 100px;
-    padding-bottom: 30px;
+    padding-top: 45px;
 }
 .footer .footer-widgets:before {
     content: '';
