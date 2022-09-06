@@ -152,6 +152,61 @@ $(document).ready(function(){
    //#endregion AuthFunction
 
 
+   //#region ProfileEdit
+   var btn_status = $('#edit_cancel').data('status');
+   $('#edit_cancel').on('click', function(e){
+         e.preventDefault();
+         console.log(btn_status)
+         if(btn_status == 'edit'){
+            $(':input').removeAttr('readonly');
+            $(this).html('Cancel');
+            $(this).attr("data-status","cancel");
+            $('#save_btn').append('<button class="btn btn-success" type="submit" id="saveBtn" style="outline: none;"><i class="fa fa-check"></i> Save</button>');
+            $('#change_btn').append('<span id="changepass">Request <a href="javascript:void();" id="pass_btn" style="color:red">Change Password</a> here!</span>');
+           return btn_status = 'cancel'
+         }
+         if(btn_status == 'cancel'){
+            $(':input').prop('readonly', true);
+            $(this).html('<i class="fa fa-edit"></i> Edit');
+            $(this).attr("data-status","edit");
+            $('#saveBtn').remove();
+            $('#changepass').remove();
+            return btn_status = 'edit'
+         }
+   });
+
+   //#endregion ProfileEdit
+
+   $('#forms-edit').on('submit',function(e){
+      e.preventDefault();
+      var   pathUrl               = base_url+"/users/update",
+      method            	 = "POST",
+      dtype 	             = "json",
+      rdata 	             = $(this).serialize(); 
+
+      $.ajax({
+         type: method,  
+         url: pathUrl,
+         dataType: dtype,
+         data: rdata, 
+         success: function(response){  
+               if(response.status == "SUCCESS"){
+                  alert(response.message);
+                  setTimeout(function(){// wait for 5 secs(2)
+                     location.reload(); // then reload the page.(3)
+               }, 1000);
+               }else{
+                  alert(response.message);
+               }
+            },
+      });
+   });
+
+   $(document).on('click','#pass_btn',function(e){
+      e.preventDefault();
+      alert('password');
+   });
+
 });
 
 

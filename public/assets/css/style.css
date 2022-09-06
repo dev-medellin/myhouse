@@ -83,6 +83,7 @@ ul, li {
     margin: 10px 0px 10px 0px;
     text-align: center;
     color: #337ad7;
+    font-weight: 700;
 }
 
 #pills-tab li {
@@ -104,6 +105,30 @@ ul, li {
 .logoutBtn{
     color:red !important;
 }
+
+.modify-btn{
+    border: solid 2px #337ad7;
+    padding: 10px 40px 10px 40px;
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+    color: #337ad7 !important;
+    float: right;
+    background-color: transparent;
+    font-weight: 700;
+}
+
+.modify-btn:hover{
+    background-color: #337ad7;
+    color: white !important;
+    font-weight: 700;
+}
+
+.modify-btn:active{
+    background-color: #337ad7;
+    color: white;
+    font-weight: 700;
+}
+
 /* END CSS MODIFIED OWN */
 
 /*For Flat Icons*/

@@ -13,6 +13,9 @@ class UsersModel extends Model
     protected $fillable = [
         'email',
         'password',
+        'contact',
+        'fname',
+        'lname',
         'role'
     ];
 }

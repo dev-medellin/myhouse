@@ -34,6 +34,7 @@ Route::group(['prefix' => 'auth'], function(){
 
     Route::group(['prefix' => 'users'], function(){
         Route::get('/mypage',                      [UserController::class,'mypage']);
+        Route::post('/update',                      [UserController::class,'updateInfo']);
     });
 
 

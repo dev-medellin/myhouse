@@ -27,8 +27,38 @@ class UserController extends Controller
         $data['js']     =  $this->js_file();
         $data['css']    =  $this->css_file();
 
-    return view('client.pages.mypage.index')->with('data', $data);
+        return view('client.pages.mypage.index')->with('data', $data);
     }
+
+    public function updateInfo(Request $request){
+
+        $data = [
+            'email'             => ($request->email == '' ? null : $request->email),
+            'contact'           => ($request->phone == '' ? null : $request->phone),
+            'fname'             => ($request->fname == '' ? null : $request->fname),
+            'lname'             => ($request->lname == '' ? null : $request->lname),
+        ];
+
+        $query = UsersModel::where('id',Auth::user()->id)
+                             ->where($data)
+                             ->get();
+
+        if($query->isEmpty()){
+            UsersModel::where('id',Auth::user()->id)->update($data);
+            return responseSuccess('Information Updated Successfully!');
+        }else{
+            return responseFail('Update Failed!, you don`t have any changes on data!');
+        }
+    }
+
+
+
+
+
+
+
+
+    // design
 
     public function js_file(){
         $data = [
@@ -68,4 +98,5 @@ class UserController extends Controller
 
         return $data;
     }
+
 }
