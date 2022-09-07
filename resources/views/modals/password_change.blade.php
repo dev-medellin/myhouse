@@ -1,4 +1,4 @@
-<div class="modal fade" id="passwordchangeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-status="false" data-backdrop="static" data-keyboard="false" aria-hidden="true" style="z-index: 10000;">
+<div class="modal fade" id="passwordchangeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-status="false" data-backdrop="static" data-keyboard="false" aria-hidden="true" style="z-index: 15000;">
     <div class="modal-dialog" role="document" style="height:100%">
       <div class="modal-content">
         <div class="modal-header">

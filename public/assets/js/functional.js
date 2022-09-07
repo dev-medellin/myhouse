@@ -62,12 +62,18 @@ $(document).ready(function(){
                      $('#return_text').html(response.message);
                      $('#email_text').html(response.data.email);
                      $('#emailVerify').val(response.data.email);
+                     setTimeout(() => {
+                        $(document.body).addClass('modal-open');
+                     }, 1000)
                   }else{
                      $('#verifyModal').modal('show');
                      $('#loginModal').modal('hide');
                      $('#return_text').html(response.message);
                      $('#email_text').html(response.data.email);
                      $('#emailVerify').val(response.data.email);
+                     setTimeout(() => {
+                        $(document.body).addClass('modal-open');
+                     }, 1000)
                   }
                },
                error: function(X) { 
@@ -201,16 +207,10 @@ $(document).ready(function(){
             },
       });
    });
-   var staus = $('#modBody').data('status');
    $(document).on('click','#pass_btn',function(e){
       e.preventDefault();
       $('#passwordModal').modal('show');
-      if(staus =='hidden'){
-         return staus = 'display'
-      }
-      if(staus =='display'){
-         return staus = 'hidden';
-      }
+
    });
 
 });
@@ -218,6 +218,9 @@ $('#verifyPassForm').on('submit', function(event){
    event.preventDefault();
    $('#passwordModal').modal('hide');
    $('#passwordchangeModal').modal('show');
+   setTimeout(() => {
+      $(document.body).addClass('modal-open');
+   }, 1000)
 });
 
 
