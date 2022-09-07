@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
    var base_url = $('#url').val();
+
    
    //#region URL Function
    $('#pills-profile-tab').trigger('click')
@@ -209,20 +210,122 @@ $(document).ready(function(){
    });
    $(document).on('click','#pass_btn',function(e){
       e.preventDefault();
-      $('#passwordModal').modal('show');
+      document.getElementById("changepass").innerHTML = "Sending to you email......";
+      var timeleft = 10;
+
+      var   pathUrl         = base_url+"/users/getcode",
+      method            	 = "POST",
+      dtype 	             = "json";
+
+      $.ajax({
+         type: method,  
+         url: pathUrl,
+         dataType: dtype,
+         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+         success: function(response){  
+               if(response.status == "SUCCESS"){
+                  var downloadTimer = setInterval(function(){
+                     if(timeleft <= 0){
+                        clearInterval(downloadTimer);
+                        $('#email_text_pass').html(response.data.email);
+                        $('#passwordModal').modal('show');
+                        document.getElementById("changepass").innerHTML = 'Request <a href="javascript:void();" id="pass_btn" style="color:red">Change Password</a> here!';
+                     } else {
+                        document.getElementById("changepass").innerHTML = "Sending code to your email <span style='color:red' >" + timeleft + "</span> seconds remaining";
+                     }
+                     timeleft -= 1;
+                     }, 1000);
+                  // alert(response.message);
+               }else{
+                  alert(response.message);
+               }
+            },
+      });
 
    });
 
 });
+
+var base_url = $('#url').val();
 $('#verifyPassForm').on('submit', function(event){
    event.preventDefault();
-   $('#passwordModal').modal('hide');
-   $('#passwordchangeModal').modal('show');
-   setTimeout(() => {
-      $(document.body).addClass('modal-open');
-   }, 1000)
+
+var   pathUrl               = base_url+"/users/sendPassVerify",
+      method            	 = "POST",
+      dtype 	             = "json",
+      rdata 	             = $(this).serialize(); 
+
+   $.ajax({
+      type: method,  
+      url: pathUrl,
+      dataType: dtype,
+      data: rdata,
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+      success: function(response){  
+            if(response.status == "SUCCESS"){
+               alert(response.message);
+               $('#passwordModal').modal('hide');
+               $('#passwordchangeModal').modal('show');
+               $('#email_text_changepass').html(response.data.email)
+               setTimeout(() => {
+                  $(document.body).addClass('modal-open');
+               }, 1000)
+            }else{
+               alert(response.message);
+            }
+         },
+   });
 });
 
+$('#changePassForm').on('submit', function(event){
+      event.preventDefault();
+      var password         = $('#new_password').val(),
+          confirm_password = $('#confirm_password').val();
+      if(password != confirm_password){
+         alert('Password not match!');
+      }else{
+         var   pathUrl               = base_url+"/users/changepassword",
+         method            	 = "POST",
+         dtype 	             = "json",
+         rdata 	             = $(this).serialize(); 
+
+         $.ajax({
+         type: method,  
+         url: pathUrl,
+         dataType: dtype,
+         data: rdata,
+         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+         success: function(response){  
+               if(response.status == "SUCCESS"){
+                  alert(response.message);
+                  $('#passwordchangeModal').modal('hide');
+                  $('#edit_cancel').trigger('click');
+               }else{
+                  $('#return_text_error').html(response.message)
+                  setTimeout(() => {
+                     $('#return_text_error').html('')
+                  }, 4000)
+               }
+            },
+         });
+      }
+});
+
+
+function timerset(){
+      var timeleft = 10;
+      var downloadTimer = setInterval(function(){
+      if(timeleft <= 0){
+         clearInterval(downloadTimer);
+         document.getElementById("countdown").innerHTML = "Finished";
+      } else {
+         document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+      }
+      timeleft -= 1;
+      }, 1000);
+}
+
+{/* <div id="countdown"></div> */}
 
 
 (function($) {

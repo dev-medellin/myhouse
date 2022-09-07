@@ -7,8 +7,10 @@ use App\Helpers\Mail\SenderHelper as Mail;
 use Illuminate\Http\Request;
 use App\Models\UsersModel;
 use App\Models\EmailVerifyModel as Verify;
+use App\Models\PasswordVerifyModel as PassVerify;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Libraries\MailSender;
 
 class UserController extends Controller
 {
@@ -48,6 +50,68 @@ class UserController extends Controller
             return responseSuccess('Information Updated Successfully!');
         }else{
             return responseFail('Update Failed!, you don`t have any changes on data!');
+        }
+    }
+
+    public function getcode(Request $request){
+        $template = 'verify_password_code';
+        $code     = rand(1231,7879);
+        $user  = Auth::user();
+
+        $user = UsersModel::where('id', '=', $user->id)->first();
+
+
+        $test = new Mail($template, $user->email, [
+            'subject'   => "Verification Code Request Password",
+            'title'     => "Verification Code Request Password",
+            'code'     => $code,
+        ]);
+
+        $verify = PassVerify::where('email', '=', $user->email)->first();
+        if ($verify === null) {
+            $inserted = PassVerify::updateOrCreate([
+                'user_id'     => $user->id,
+                'email'       => $user->email,
+                'code'        => $code
+            ]);
+        }else{
+            $inserted = PassVerify::where('email', $user->email)
+                                ->update([
+                                    'code'        => $code
+                                ]);
+        }
+
+        return responseSuccess('Verification Code has been sent you our email!',['email' =>  $user->email]);
+    }
+
+    public function sendPassVerify(Request $request){
+
+        $user  = Auth::user();
+
+        $verify = PassVerify::where('email', '=', $user->email)->first();
+        if ($verify != null) {
+            if($verify->code == $request->verifyCode){
+                return responseSuccess('Code verified!',['email' => $user->email]);
+            }else{
+                return responseFail('Code is not match!');
+            }
+        }else{
+            return responseFail('Data not found!');
+        }
+    }
+
+    public function changepassword(Request $request){
+        $query = UsersModel::where('id',Auth::user()->id)
+        ->first();
+        if($query){
+            $password = Hash::make($request->new_password);
+            UsersModel::where('id',Auth::user()->id)->update(['password' => $password ]);
+            if(Hash::check($request->new_password, $query->password)){
+                return responseFail('Please enter another password that not similar to your current password!');
+            }
+             return responseSuccess('Password Change Successfully!');
+        }else{
+            return responseFail('Change password Failed!, you don`t have any changes on data!');
         }
     }
 

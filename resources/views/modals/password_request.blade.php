@@ -14,12 +14,11 @@
                   <p style="color:red !important">Verification Code Required to change password</p>
                   <p>Please enter the verification code sent to:
                       <br>
-                  <span class="high_text" id="email_text">asdasdasd</span>
+                  <span class="high_text" id="email_text_pass"></span>
                   </p> 
                   <label class="code_field">
                           <input type="text" maxlength="4" id="verifyCode" name="verifyCode" required="required"> 
-                          <input type="hidden" id="emailVerify" name="emailVerify" required="required"> 
-                          <span>••••</span>
+                          <span style="top:54% !important">••••</span>
                   </label>
                   <button type="submit" class="button-primary-full">Verify Email Address</button>
                   <p><span class="high_text" id="return_text"></span></p>

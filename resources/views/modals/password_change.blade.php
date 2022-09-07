@@ -8,24 +8,22 @@
         </div> 
         <div class="modal-body" id="modBody" data-status="hidden">
             <form id="changePassForm">
-            {{-- @csrf --}}
               <div class="verification_form">
-                  <h2>Request Verification Code Sent!</h2>
-                  <p style="color:red !important">Verification Code Required to change password</p>
-                  <p>Please enter the verification code sent to:
+                  <h2>Change Password</h2>
+                  <p>Please enter the new password for:
                       <br>
-                  <span class="high_text" id="email_text">asdasdasd</span>
+                  <span class="high_text" id="email_text_changepass"></span>
                   </p> 
                   <label class="code_field">
                     <div class="fields input_text">
-                      <input type="password" placeholder="Password" style="outline: none;" autofocus="autofocus" class="">
+                      <input type="password" placeholder="Password" name="new_password" id="new_password" style="outline: none;" autofocus="autofocus" class="" required>
                     </div>
                     <div class="fields input_text">
-                      <input type="password" placeholder="Confirm Password" style="outline: none;" autofocus="autofocus" class="">
+                      <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" style="outline: none;" autofocus="autofocus" class="" required>
                     </div>
                   </label>
                   <button type="submit" class="button-primary-full">Verify Email Address</button>
-                  <p><span class="high_text" id="return_text"></span></p>
+                  <p><span class="high_text" id="return_text_error"></span></p>
                   <div class="foot_note">
                       <p>Didn’t receive email? Please check your Spam folder or<br>
                           <a href="javascript:;" class="high_text">resend email verification</a>.

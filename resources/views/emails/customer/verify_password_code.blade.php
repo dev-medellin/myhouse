@@ -48,10 +48,10 @@
     <table role="presentation" cellpadding="0" cellspacing="0" style="max-width: 720px; width: 100%; margin: 0 auto; border-top: 1px solid #d42941; padding: 30px 40px; text-align: center;">
         <tr>
             <td>
-                <h2 style="font-size: 24px; font-weight: bold; color: #464646; margin: 0 0 25px; padding: 0;">Verification code to complete registration</h2>
+                <h2 style="font-size: 24px; font-weight: bold; color: #464646; margin: 0 0 25px; padding: 0;">Verification for Request Change Password!</h2>
                 <p style="font-size: 15px; font-weight: 500; color: #5a5a5a; margin: 15px 0; padding: 0; line-height: 1.5em;">
                     Please find the verification code to <br>
-                    registration below.
+                    change password.
                 </p>
                 <span style="display: inline-block; color: #464646; font-size: 29px; font-weight: 500; background: #f5f5f5; padding: 18px 0; margin: 20px 0 0; min-width: 324px;">{{$details['code']}}</span>
             </td>

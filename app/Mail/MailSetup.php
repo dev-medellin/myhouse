@@ -43,6 +43,10 @@ class MailSetup extends Mailable
                 $page = "emails.customer.verifyCode";
             break;
 
+            case 'verify_password_code':
+                $page = "emails.customer.verify_password_code";
+            break;
+
             default:
                 $page = "emails.templates.".$this->mail_template;
             break;

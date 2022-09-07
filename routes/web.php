@@ -33,8 +33,11 @@ Route::group(['prefix' => 'auth'], function(){
 });
 
     Route::group(['prefix' => 'users'], function(){
-        Route::get('/mypage',                      [UserController::class,'mypage']);
-        Route::post('/update',                      [UserController::class,'updateInfo']);
+        Route::get('/mypage',                               [UserController::class,'mypage']);
+        Route::post('/update',                              [UserController::class,'updateInfo']);
+        Route::post('/getcode',                             [UserController::class,'getcode']);
+        Route::post('/sendPassVerify',                      [UserController::class,'sendPassVerify']);
+        Route::post('/changepassword',                      [UserController::class,'changepassword']);
     });
 
 

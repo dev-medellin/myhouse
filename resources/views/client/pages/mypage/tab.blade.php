@@ -40,7 +40,6 @@
                         </div>
                     </div>
                 </form>
-                <a href="javascript:void();" id="testbtn">Test only</a>
                 <button class="btn btn-md modify-btn" id="edit_cancel" data-status="edit" style="outline: none;"><i class="fa fa-edit"></i> Edit</button>
             </div>
         </div>

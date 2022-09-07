@@ -38,7 +38,7 @@ class AuthController extends Controller
             ]);
 
             $verify = Verify::where('email', '=', $request->emailInput)->first();
-            if ($user === null) {
+            if ($verify === null) {
                 $inserted = Verify::create([
                     'user_id'     => $query->id,
                     'email'       => $query->email,

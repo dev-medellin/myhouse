@@ -8,8 +8,8 @@
 					</div>
 				</div> <!-- /.section-heading -->
 				<!-- Contact Everything Here -->
-				<div class="contact-everything">
-					<div class="boundary">
+				<div class="contact-everything" style="min-height: 527px;" >
+					<div class="boundary" style="min-height: 461px;">
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-2">
 								<!-- Conatact Form Begin -->
