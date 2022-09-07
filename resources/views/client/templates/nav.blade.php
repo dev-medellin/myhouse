@@ -200,7 +200,9 @@
                             <ul>
                                 <li><a href="#"><i class="fa fa-map-marker"></i>23 Aro Lane, NY, USA</a></li>
                                 <li><a href="#"><i class="fa fa-mobile-phone"></i>+345-000-111-2222</a></li>
-                                <li><a href="#"><i class="fa fa-clock-o"></i>Mon - Sat  10.00 - 19.00</a></li>
+                                @if(!Auth::check())
+                                    <li><a href="javascript:void(0)" class="loginBtn"><i class="fa fa-user"></i>Sign Up</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div> <!-- /.contact-to -->

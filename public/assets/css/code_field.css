@@ -11,7 +11,7 @@
 }
 
 .code_field input {
-    border: solid 2px black;
+    /* border: solid 2px black; */
     display: block;
     width: 50%;
     text-align: center;
@@ -31,7 +31,7 @@
     position: absolute;
     font-size: 30px;
     left: 50%;
-    top: 44%;
+    top: 54%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     -webkit-transition: .2s ease;
@@ -41,6 +41,10 @@
 
 .code_field input:valid ~ span {
     display: none;
+}
+
+.code_field .input_text{
+    margin-bottom: 10px;
 }
 
 .verification_form h2 {

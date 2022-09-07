@@ -129,6 +129,20 @@ ul, li {
     font-weight: 700;
 }
 
+.tab-login{
+    font-weight: 600;
+    color: black;
+}
+.tab-login li.active a{
+    color: white !important;
+    background-color: #337ad7 !important;
+    font-weight: 600;
+}
+
+#passwordchangeModal .in {
+    overflow-y: auto;
+}
+
 /* END CSS MODIFIED OWN */
 
 /*For Flat Icons*/

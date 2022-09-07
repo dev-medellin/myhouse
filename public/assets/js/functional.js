@@ -201,13 +201,25 @@ $(document).ready(function(){
             },
       });
    });
-
+   var staus = $('#modBody').data('status');
    $(document).on('click','#pass_btn',function(e){
       e.preventDefault();
-      alert('password');
+      $('#passwordModal').modal('show');
+      if(staus =='hidden'){
+         return staus = 'display'
+      }
+      if(staus =='display'){
+         return staus = 'hidden';
+      }
    });
 
 });
+$('#verifyPassForm').on('submit', function(event){
+   event.preventDefault();
+   $('#passwordModal').modal('hide');
+   $('#passwordchangeModal').modal('show');
+});
+
 
 
 (function($) {

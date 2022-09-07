@@ -8,9 +8,9 @@
       </div>
       <div class="modal-body">
         <div>
-          <ul  class="nav nav-tabs nav-justified" role="tablist">
+          <ul  class="nav nav-tabs nav-justified tab-login"  role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home-1" role="tab" aria-controls="home-1" aria-selected="true">Login</a>
+              <a class="nav-link" id="home-tab" data-toggle="tab" href="#home-1" role="tab" aria-controls="home-1" aria-selected="true">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile-1" role="tab" aria-controls="profile-1" aria-selected="false">Register</a>
