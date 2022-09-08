@@ -10,8 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- CSRF Token -->
-  <meta name="_token" content="pFHSzwA6cNSBPUdXtqdRwdxN2juCixNmaXa0MiPJ">
-    
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link rel="shortcut icon" href="favicon.ico">
 
   @isset($data['css'])
@@ -22,7 +21,7 @@
   <!-- end common css -->
 
   </head>
-<body data-base-url="https://www.bootstrapdash.com/demo/justdo-laravel-pro/template/vertical-default-light">
+<body>
 
   <div class="container-scroller" id="app">
     @include('admin.templates.nav')

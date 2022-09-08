@@ -32,13 +32,26 @@ Route::group(['prefix' => 'auth'], function(){
     Route::get('/logout',                   [AuthController::class,'logout']);
 });
 
-    Route::group(['prefix' => 'users'], function(){
-        Route::get('/mypage',                               [UserController::class,'mypage']);
-        Route::post('/update',                              [UserController::class,'updateInfo']);
-        Route::post('/getcode',                             [UserController::class,'getcode']);
-        Route::post('/sendPassVerify',                      [UserController::class,'sendPassVerify']);
-        Route::post('/changepassword',                      [UserController::class,'changepassword']);
+Route::group(['prefix' => 'users'], function(){
+    Route::get('/mypage',                               [UserController::class,'mypage']);
+    Route::post('/update',                              [UserController::class,'updateInfo']);
+    Route::post('/getcode',                             [UserController::class,'getcode']);
+    Route::post('/sendPassVerify',                      [UserController::class,'sendPassVerify']);
+    Route::post('/changepassword',                      [UserController::class,'changepassword']);
+});
+
+Route::group(['prefix' => 'admin'], function(){
+
+    //Projects
+    Route::group(['prefix' => 'project'], function(){
+        Route::post('create',           [ProjectController::class,'insertProj']);
     });
+
+    // Route::post('/update',                              [UserController::class,'updateInfo']);
+    // Route::post('/getcode',                             [UserController::class,'getcode']);
+    // Route::post('/sendPassVerify',                      [UserController::class,'sendPassVerify']);
+    // Route::post('/changepassword',                      [UserController::class,'changepassword']);
+});
 
 
 

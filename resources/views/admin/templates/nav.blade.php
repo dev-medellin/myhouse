@@ -127,11 +127,11 @@
                 </a>
             </div>
             </li>
-            <li class="nav-item nav-settings d-none d-lg-flex">
+            <!-- <li class="nav-item nav-settings d-none d-lg-flex">
             <a class="nav-link" href="#">
                 <i class="ti-more"></i>
             </a>
-            </li>
+            </li> -->
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="ti-layout-grid2"></span>
