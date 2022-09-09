@@ -11,12 +11,41 @@ class ProjectController extends Controller
     //
 
     public function index(){
-        $data['page'] = 'project';
+        $data['page'] = "main";
 
-        $data['js']     =  $this->js_file();
-        $data['css']    =  $this->css_file();
+        $data['js']         =  $this->js_file();
+        $data['css']        =  $this->css_file();
+        $data['projects']   =  Project::select('projects.*','project_type.type as type')
+                                        ->leftJoin('project_type', 'project_type.id', '=', 'projects.proj_type')
+                                        ->get();
 
          return view('admin.pages.projects.index')->with('data' ,$data);
+
+    }
+
+    public function insertProj(Request $request){
+        $data = [
+            'proj_name'             => $request->proj_name,
+            'proj_area'             => $request->proj_area,
+            'proj_type'             => $request->proj_type,
+            'status'                => 'inactive',
+            'proj_description'      => $request->proj_desc
+        ];
+
+       $query = Project::updateOrCreate(['proj_name' => $request->proj_name],$data);
+       if($query){
+        return responseSuccess('Project Added Successfully');
+       }else{
+        return responseFail('Data not found!');
+       }
+
+    }
+
+    public function editProj($id){
+        $data['page'] = 'edit';
+        $data['js']         =  $this->js_file();
+        $data['css']        =  $this->css_file();
+        return view('admin.pages.projects.index')->with('data' ,$data);
     }
 
     public function js_file(){
@@ -46,23 +75,5 @@ class ProjectController extends Controller
         ];
 
         return $data;
-    }
-
-    public function insertProj(Request $request){
-        $data = [
-            'proj_name'             => $request->proj_name,
-            'proj_area'             => $request->proj_area,
-            'proj_type'             => $request->proj_type,
-            'status'                => 'inactive',
-            'proj_description'      => $request->proj_desc
-        ];
-
-       $query = Project::updateOrCreate(['proj_name' => $request->proj_name],$data);
-       if($query){
-        return responseSuccess('Project Added Successfully');
-       }else{
-        return responseFail('Data not found!');
-       }
-
     }
 }

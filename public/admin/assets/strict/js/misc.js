@@ -106,6 +106,7 @@ if ($('canvas').length) {
     //Active class can be hard coded directly in html file also as required
     if (!$('#sidebar').hasClass("dynamic-active-class-disabled")) {
       var current = location.pathname.split("/").slice(-1)[0].replace(/^\/|\/$/g, '');
+      var currentnot = location.pathname.split("/").slice(-3)[0].replace(/^\/|\/$/g, '');
       $('#sidebar >.nav > li:not(.not-navigation-link) a').each(function () {
         var $this = $(this);
         if (current === "") {
@@ -118,8 +119,11 @@ if ($('canvas').length) {
           }
         } else {
           //for other url
+          console.log(currentnot+' '+current)
           if ($this.attr('href').indexOf(current) !== -1) {
-            $(this).parents('.nav-item').last().addClass('active');
+            if(currentnot == current || currentnot == ''){
+              $(this).parents('.nav-item').last().addClass('active');
+            }
             if ($(this).parents('.sub-menu').length) {
               $(this).addClass('active');
             }

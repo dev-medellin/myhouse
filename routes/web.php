@@ -43,8 +43,9 @@ Route::group(['prefix' => 'users'], function(){
 Route::group(['prefix' => 'admin'], function(){
 
     //Projects
-    Route::group(['prefix' => 'project'], function(){
-        Route::post('create',           [ProjectController::class,'insertProj']);
+    Route::group(['prefix' => 'projects'], function(){
+        Route::post('create',                      [ProjectController::class,'insertProj']);
+        Route::get('edit/{param}',                   [ProjectController::class,'editProj']);
     });
 
     // Route::post('/update',                              [UserController::class,'updateInfo']);

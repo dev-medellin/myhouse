@@ -15,7 +15,7 @@
 
   @isset($data['css'])
         @foreach ($data['css'] as $item)
-        <link rel="stylesheet" type="text/css" href="assets/strict/css/{{$item}}"/>  
+        <link rel="stylesheet" type="text/css" href="{{url('admin/assets/strict/css/'.$item)}}"/>  
         @endforeach
   @endisset
   <!-- end common css -->

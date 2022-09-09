@@ -12,7 +12,7 @@ var base_url = $('#url').val();
 $('#projInserForm').on('submit', function(event){
     event.preventDefault();
 
-    var   pathUrl            = base_url+"/admin/project/create",
+    var   pathUrl            = base_url+"/admin/projects/create",
       method            	 = "POST",
       dtype 	             = "json",
       rdata 	             = $(this).serialize(); 
@@ -37,4 +37,10 @@ $('#projInserForm').on('submit', function(event){
             }
             },
     });
+});
+
+$('.modify-proj').on('click', function(e){
+    e.preventDefault();
+    var id = $('.modify-proj').data('id');
+    window.location.href = base_url+"/admin/projects/edit/"+id;
 });

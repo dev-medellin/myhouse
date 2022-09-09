@@ -166,15 +166,15 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
     <li class="nav-item">
-        <a class="nav-link" href="dashboard">
+        <a class="nav-link" href="{{url('/admin/dashboard')}}">
         <i class="ti-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
         </a>
     </li>
     <li class="nav-item ">
-        <a class="nav-link" href="projects">
+        <a class="nav-link" href="{{url('/admin/projects')}}">
         <i class="ti-clipboard menu-icon"></i>
-        <span class="menu-title">Projects</span>
+        <span class="menu-title">Project</span>
         </a>
     </li>
     </ul>
