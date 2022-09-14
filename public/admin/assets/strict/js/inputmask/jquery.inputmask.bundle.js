@@ -135,6 +135,9 @@
             pcsnum: {
                 regex: "[0-9]{4} pcs"
             },
+            boxnum: {
+                regex: "[0-9]{4} box"
+            },
             bagsnum: {
                 regex: "[0-9]{4} bags"
             },
