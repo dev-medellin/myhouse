@@ -54,6 +54,7 @@ class ProjectController extends Controller
             'plugins/perfect-scrollbar/perfect-scrollbar.min.js',
             'plugins/datatables.net/jquery.dataTables.min.js',
             'plugins/datatables.net-bs4/js/dataTables.bootstrap4.js',
+            'js/inputmask/jquery.inputmask.bundle.js',
             'js/off-canvas.js',
             'js/hoverable-collapse.js',
             'js/misc.js',

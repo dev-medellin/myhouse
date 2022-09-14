@@ -1,4 +1,12 @@
 (function($) {
+    'use strict';
+  
+    // initializing inputmask
+    $(":input").inputmask();
+  
+  })(jQuery);
+  
+(function($) {
     "use strict";
     $(function() {
         $(".nav-settings").click(function() {
