@@ -210,6 +210,95 @@
                                         <input class="form-control" data-inputmask="'alias': 'kg'"/>
                                     </div>
                                 </div>
+                                <h5 class="text-dark my-4">Plumbing Materials (Clean Waterline)</h5>
+                                <div class="form-group row">
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>PPR pipe #1/2</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'" />
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>PPR elbow with thread #1/2</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'" />
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>PPR elbow #1/2</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'" />
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>PPR tee 1/2</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Teflon tape</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Angle bulb #1/2</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'"/>
+                                    </div>
+                                </div>
+                                <h5 class="text-dark my-4">Floor Tiles Materials</h5>
+                                <div class="form-group row">
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Granite tiles 60 x 60</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'" />
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Bath room 60x60 ceramic tiles (Floor)</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'" />
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Bath room 60x60 ceramic tiles (Wall)</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'" />
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Water closet</label>
+                                        <input class="form-control" data-inputmask="'alias': 'setsnum'"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Bath tub</label>
+                                        <input class="form-control" data-inputmask="'alias': 'setsnum'"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Lavatory</label>
+                                        <input class="form-control" data-inputmask="'alias': 'setsnum'"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Kitchen sink</label>
+                                        <input class="form-control" data-inputmask="'alias': 'setsnum'"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Grout</label>
+                                        <input class="form-control" data-inputmask="'alias': 'setsnum'"/>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 mb-4">
+                                        <label>Adhesive cement</label>
+                                        <input class="form-control" data-inputmask="'alias': 'setsnum'"/>
+                                    </div>
+                                </div>
+                                <h5 class="text-dark my-4">Doors and Jambs Materials</h5>
+                                <div class="form-group row">
+                                    <div class="col-lg-4 col-md-4 mb-4">
+                                        <label>Door & jambs 100x210</label>
+                                        <input class="form-control" data-inputmask="'alias': 'setsnum'" />
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 mb-4">
+                                        <label>Door & jambs 80x210</label>
+                                        <input class="form-control" data-inputmask="'alias': 'setsnum'" />
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 mb-4">
+                                        <label>Sliding Door and jambs 80 x 210</label>
+                                        <input class="form-control" data-inputmask="'alias': 'setsnum'" />
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 mb-4">
+                                        <label>Loose pin hinges</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'" />
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 mb-4">
+                                        <label>Door knob</label>
+                                        <input class="form-control" data-inputmask="'alias': 'pcsnum'" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     <!--form mask ends-->
