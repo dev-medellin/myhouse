@@ -20,8 +20,8 @@
                 <div class="form-group">
                     <label for="exampleSelectGender">Project Type</label>
                      <select id="proj_type" name="proj_type" class="form-control">
-                        <option value="1">Male</option> 
-                        <option value="2">Female</option>
+                        <option value="1">Type1</option> 
+                        <option value="2">Type2</option>
                     </select>
                 </div>
                 <div class="form-group">

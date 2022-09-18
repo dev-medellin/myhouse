@@ -124,28 +124,40 @@
                 regex: "[a-zA-Z- ]+"
             },
             setsnum: {
-                regex: "[0-9]{0,2} set"
+                regex: "[0-9]{0,2}"
+            },
+            sacknum: {
+                regex: "[0-9]{0,2}"
+            },
+            tinnum: {
+                regex: "[0-9]{0,2}"
+            },
+            ftnum: {
+                regex: "[0-9]{0,2}"
+            },
+            ltnum: {
+                regex: "[0-9]{0,2}"
             },
             rollnum: {
-                regex: "[0-9] roll"
+                regex: "[0-9]{0,2}"
             },
             kg: {
-                regex: "[0-9]{0,2} kg"
+                regex: "[0-9]{0,2}"
             },
             gallonnum: {
-                regex: "[0-9]{0,2} gallons"
+                regex: "[0-9]{0,2}"
             },
             pcsnum: {
-                regex: "[0-9]{0,2} pcs"
+                regex: "[0-9]{0,2}"
             },
             boxnum: {
-                regex: "[0-9] box"
+                regex: "[0-9]{0,2}"
             },
             bagsnum: {
-                regex: "[0-9] bags"
+                regex: "[0-9]{0,2}"
             },
             cubicnum: {
-                regex: "[0-9] m3 (Cubic Meter)"
+                regex: "[0-9]{0,2}"
             },
             cssunit: {
                 regex: "[+-]?[0-9]+\\.?([0-9]+)?(px|em|rem|ex|%|in|cm|mm|pt|pc)"

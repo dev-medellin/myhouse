@@ -15,7 +15,6 @@
    <script type="text/javascript" src="{{url('admin/assets/strict/'.$item)}}"></script>   
   @endforeach
 @endisset
-<script type="text/javascript" src="{{url('admin/assets/strict/functional.js')}}"></script>
 </body>
 
 <!-- Mirrored from www.bootstrapdash.com/demo/justdo-laravel-pro/template/vertical-default-light/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Aug 2022 01:58:37 GMT -->

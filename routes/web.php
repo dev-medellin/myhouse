@@ -44,8 +44,22 @@ Route::group(['prefix' => 'admin'], function(){
 
     //Projects
     Route::group(['prefix' => 'projects'], function(){
-        Route::post('create',                      [ProjectController::class,'insertProj']);
-        Route::get('edit/{param}',                   [ProjectController::class,'editProj']);
+        Route::get('edit/{slug}',                   [ProjectController::class,'editSlug']);
+        Route::post('create',                       [ProjectController::class,'insertProj']);
+        Route::post('edit',                         [ProjectController::class,'editProj']);
+        Route::post('update',                       [ProjectController::class,'updateProj']);
+        Route::post('status',                       [ProjectController::class,'updateStatus']);
+        Route::post('delete/image',                 [ProjectController::class,'imageDelete']);
+
+
+        Route::group(['prefix' => 'update'], function(){
+            Route::post('project',                      [ProjectController::class,'imageupload']);
+        });
+
+
+        Route::group(['prefix' => 'images'], function(){
+            Route::post('upload',                      [ProjectController::class,'imageupload']);
+        });
     });
 
     // Route::post('/update',                              [UserController::class,'updateInfo']);
