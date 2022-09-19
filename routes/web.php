@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Common\Admin\DashboardController;
 use App\Http\Controllers\Common\Admin\ProjectController;
+use App\Http\Controllers\Common\Client\ProjectController as PCC;
 use App\Http\Controllers\CaptchaValidationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\Client\HomeController;
@@ -42,6 +43,9 @@ Route::group(['prefix' => 'users'], function(){
 
 Route::group(['prefix' => 'admin'], function(){
 
+    Route::get('/dashboard', [DashboardController::class,'index']);
+    Route::get('/projects',   [ProjectController::class,'index']);
+
     //Projects
     Route::group(['prefix' => 'projects'], function(){
         Route::get('edit/{slug}',                   [ProjectController::class,'editSlug']);
@@ -72,11 +76,8 @@ Route::group(['prefix' => 'admin'], function(){
 
 
 Route::get('/', [HomeController::class,'index'])->name('/');
+Route::get('/projects',                 [PCC::class,'index']);
 
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [DashboardController::class,'index']);
-    Route::get('/projects',   [ProjectController::class,'index']);
-});
 
 Route::prefix('modal')->group(function () {
     Route::get('/loginModal', [Modals::class,'loginModal']);
