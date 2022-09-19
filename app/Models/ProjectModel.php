@@ -14,6 +14,9 @@ class ProjectModel extends Model
         'proj_name',
         'proj_area',
         'proj_type',
+        'bed_room',
+        'bath_room',
+        'story',
         'status',
         'proj_description',
     ];

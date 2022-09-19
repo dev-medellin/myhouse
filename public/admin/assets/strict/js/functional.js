@@ -66,14 +66,9 @@ var     pathUrl              = base_url+"/admin/projects/edit",
 
 $('#EditProForm').on('submit',function(e){
    e.preventDefault();
-
-   $('#EditProForm input').each(function() {
-        if(!$(this).val()){
-            $('#EditProForm input:text').filter(function(){
-                return $.trim(this.value).length == 0;
-             }).css("border","1px solid red");
+        if ($('#summernoteExample').summernote('isEmpty')){
             $.toast({
-                heading: 'Input Missing',
+                heading: 'Editor is Empty',
                 text: 'Please fillup the missing attributes',
                 position: "bottom-right",
                 icon: 'error',
@@ -82,8 +77,9 @@ $('#EditProForm').on('submit',function(e){
               })
             return false;
         }else{
-            $('#EditProForm input').removeAttr('style');
-            var form = $('#EditProForm').serialize(); 
+            var textareaValue = $('#summernoteExample').summernote('code');
+            var form = $('#EditProForm').serializeArray();
+            form.push({name: 'dataCode', value: textareaValue});
 
             var   pathUrl            = base_url+"/admin/projects/update",
             method            	 = "POST",
@@ -114,7 +110,6 @@ $('#EditProForm').on('submit',function(e){
                     }
                 });
         }
-    });
 
 })
 

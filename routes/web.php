@@ -77,6 +77,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::get('/', [HomeController::class,'index'])->name('/');
 Route::get('/projects',                 [PCC::class,'index']);
+Route::get('/projects/selected',        [PCC::class,'selected']);
 
 
 Route::prefix('modal')->group(function () {

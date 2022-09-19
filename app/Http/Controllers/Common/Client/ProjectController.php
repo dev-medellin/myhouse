@@ -18,6 +18,14 @@ class ProjectController extends Controller
         return view('client.pages.projects.index')->with('data', $data);
     }
 
+    public function selected(){
+
+        $data['js']     =  $this->js_file();
+        $data['css']    =  $this->css_file();
+
+    return view('client.pages.projects.selected.index')->with('data', $data);
+}
+
     public function js_file(){
         $data = [
             'jquery-2.2.3.min.js',

@@ -24,6 +24,20 @@
                         <option value="2">Type2</option>
                     </select>
                 </div>
+                <div class="form-group row">
+                    <div class="col-lg-4 col-md-4">
+                        <label for="exampleSelectGender">Bed Room</label>
+                        <input type="text" class="form-control" id="bed_room" name="bed_room">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <label for="exampleSelectGender">Bathroom</label>
+                        <input type="text" class="form-control" id="bath_room" name="bath_room">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <label for="exampleSelectGender">Story</label>
+                        <input type="text" class="form-control" id="story" name="story">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="message-text" class="col-form-label">Description:</label>
                     <textarea class="form-control" id="proj_desc" name="proj_desc"></textarea>

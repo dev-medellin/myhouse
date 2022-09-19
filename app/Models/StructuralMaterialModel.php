@@ -22,13 +22,22 @@ class StructuralMaterialModel extends Model
     public function insertData($data){
 
         
-        $attr = [
-            'gi_wire'                           => $data['sm_type1'],
-            'sixteen_deform_bar'                => $data['sm_type2'],
-            'twelve_deform_bar'                 => $data['sm_type3'],
-            'ten_deform_bar'                    => $data['sm_type4'],
-            'nine_deform_bar'                   => $data['sm_type5'],
-        ];
+        if($data['projType'] != 1){
+            $attr = [
+                'gi_wire'                           => $data['sm_type1'],
+                'sixteen_deform_bar'                => $data['sm_type2'],
+                'twelve_deform_bar'                 => $data['sm_type3'],
+                'ten_deform_bar'                    => $data['sm_type4'],
+                'nine_deform_bar'                   => $data['sm_type5'],
+            ];
+        }else{
+            $attr = [
+                'gi_wire'                           => $data['sm_type1'],
+                'twelve_deform_bar'                 => $data['sm_type2'],
+                'ten_deform_bar'                    => $data['sm_type3'],
+                'nine_deform_bar'                   => $data['sm_type4'],
+            ];
+        }
 
         $query = $this->updateOrCreate($attr);
 

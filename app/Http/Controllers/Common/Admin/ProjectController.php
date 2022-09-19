@@ -9,19 +9,7 @@ use Illuminate\Support\Str;
 use App\Traits\UploadOne;
 use Illuminate\Http\Request;
 use App\Models\{
-    TrustRoofMaterialModel          as TRM, 
-    StructuralMaterialModel         as SM,
-    SlabFrameBoardModel             as SFB,
-    WallingMaterialModel            as WM,
-    ElectricalMaterialModel         as EM,
-    CeilingMaterialModel            as CM,
-    PlumbingMaterialModel           as PM,
-    FloorTilesMaterialModel         as FTM,
-    DoorJambMaterialModel           as DJM,
-    SlidingWindowMaterialModel      as SWM,
-    PlumbingSewerMaterialModel      as PSL,
-    CabinetMaterialModel            as CAB,
-    PaintingMaterialModel           as PAM,
+    MaterialModel                   as MM,
     ProjectImageModel               as PIM,
     ProjectDetailsModel             as PDM
 };
@@ -50,6 +38,9 @@ class ProjectController extends Controller
             'proj_name'             => $request->proj_name,
             'proj_area'             => $request->proj_area,
             'proj_type'             => $request->proj_type,
+            'bed_room'              => $request->bed_room,
+            'bath_room'             => $request->bath_room,
+            'story'                 => $request->story,
             'status'                => 'inactive',
             'proj_description'      => $request->proj_desc
         ];
@@ -72,8 +63,8 @@ class ProjectController extends Controller
     public function editSlug($slug){
         $series = str_replace('-', ' ', $slug); 
         $queryProj = Project::where('proj_name',$series)->first();
-        $images = PIM::where('proj_id', $queryProj->id)->get();
         if($queryProj){
+            $images = PIM::where('proj_id', $queryProj->id)->get();
             $data['page'] = 'edit';
             $data['info'] =$queryProj;
             $data['images'] = $images;
@@ -115,69 +106,26 @@ class ProjectController extends Controller
 
     public function updateProj(Request $request){
 
-        $trm    = new TRM;
-        $sm     = new SM;
-        $sfb    = new SFB;
-        $wm     = new WM;
-        $em     = new EM;
-        $cm     = new CM;
-        $pm     = new PM;
-        $ftm    = new FTM;
-        $djm    = new DJM;
-        $swm    = new SWM;
-        $psl    = new PSL;
-        $cab    = new CAB;
-        $pam    = new PAM;
+        return $request->all();
 
-        $resultTRM      = $trm->insertData($request);
-        $resultSM       = $sm->insertData($request);
-        $resultSFB      = $sfb->insertData($request);
-        $resultWM       = $wm->insertData($request);
-        $resultEM       = $em->insertData($request);
-        $resultCM       = $cm->insertData($request);
-        $resultPM       = $pm->insertData($request);
-        $resultFTM      = $ftm->insertData($request);
-        $resultDJM      = $djm->insertData($request);
-        $resultSWM      = $swm->insertData($request);
-        $resultPSL      = $psl->insertData($request);
-        $resultCAB      = $cab->insertData($request);
-        $resultPAM      = $pam->insertData($request);
+        // $check = MM::where('proj_id',$request->projID)->first();
+        // if($check){
+        //     $updated = MM::where('id',$request->projID)->update($);
+        //     if($updated){
+        //         return responseSuccess('Materials Updated Successfully');
+        //     }else{
+        //         return responseFail('Data not found!');
+        //     }
+        // }else{
+        //     $create = PDM::create($dataID);
+        //     if($create){
+        //         return responseSuccess('Materials Create Successfully');
+        //     }else{
+        //         return responseFail('Data not found!');
+        //     }
+        // }
 
-        $dataID = [
-            'proj_id'           => $request->projID,
-            'sm_id'             => $resultSM->id,
-            'wm_id'             => $resultWM->id,
-            'trm_id'            => $resultTRM->id,
-            'sfb_id'            => $resultSFB->id,
-            'em_id'             => $resultEM->id,
-            'cm_id'             => $resultCM->id,
-            'pm_id'             => $resultPM->id,
-            'ftm_id'            => $resultFTM->id,
-            'djm_id'            => $resultDJM->id,
-            'swm_id'            => $resultSWM->id,
-            'psl_id'            => $resultPSL->id,
-            'cab_id'            => $resultCAB->id,
-            'pam_id'            => $resultPAM->id,
-        ];
-
-        $check = PDM::where('proj_id',$request->projID)->first();
-        if($check){
-            $updated = PDM::where('id',$request->projID)->update($dataID);
-            if($updated){
-                return responseSuccess('Materials Updated Successfully');
-            }else{
-                return responseFail('Data not found!');
-            }
-        }else{
-            $create = PDM::create($dataID);
-            if($create){
-                return responseSuccess('Materials Create Successfully');
-            }else{
-                return responseFail('Data not found!');
-            }
-        }
-
-        return $dataID;
+        // return $dataID;
     }
 
     public function imageupload(Request $request){
@@ -212,6 +160,7 @@ class ProjectController extends Controller
         $data = [
             'app.js',
             'plugins/dropzone/dropzone.min.js',
+            'plugins/summernote/summernote-bs4.min.js',
             'plugins/perfect-scrollbar/perfect-scrollbar.min.js',
             'plugins/datatables.net/jquery.dataTables.min.js',
             'plugins/datatables.net-bs4/js/dataTables.bootstrap4.js',
@@ -225,6 +174,7 @@ class ProjectController extends Controller
             'js/todolist.js',
             'js/data-table.js',
             'js/functional.js',
+            'js/summernote.js',
             'js/dropzone.js',
         ];
 
@@ -233,6 +183,7 @@ class ProjectController extends Controller
 
     public function css_file(){
         $data = [
+            'plugins/summernote/summernote-bs4.css',
             'plugins/font-awesome/css/font-awesome.min.css',
             'plugins/ti-icons/css/themify-icons.css',
             'plugins/perfect-scrollbar/perfect-scrollbar.css',
