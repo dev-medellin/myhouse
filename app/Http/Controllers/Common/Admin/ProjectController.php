@@ -41,6 +41,8 @@ class ProjectController extends Controller
             'bed_room'              => $request->bed_room,
             'bath_room'             => $request->bath_room,
             'story'                 => $request->story,
+            'proj_slug'             => Str::slug($request->proj_name,"-"),
+            'proj_est_price'        => '800,000',
             'status'                => 'inactive',
             'proj_description'      => $request->proj_desc
         ];
@@ -61,8 +63,8 @@ class ProjectController extends Controller
     }
 
     public function editSlug($slug){
-        $series = str_replace('-', ' ', $slug); 
-        $queryProj = Project::where('proj_name',$series)->first();
+        // $series = str_replace('-', ' ', $slug); 
+        $queryProj = Project::where('proj_slug',$slug)->first();
         if($queryProj){
             $images = PIM::where('proj_id', $queryProj->id)->get();
             $data['page'] = 'edit';
@@ -76,6 +78,12 @@ class ProjectController extends Controller
         }else{
             return Redirect::to('admin/projects');
         }
+    }
+    
+    public function getMaterials(Request $request){
+       $materials =  MM::where('proj_id',$request->projID)->first();
+       return responseSuccess(null,['materials' => isset($materials->materials_desc) ? $materials->materials_desc : '']);
+
     }
 
     public function updateStatus(Request $request){
@@ -100,32 +108,34 @@ class ProjectController extends Controller
                 }
             }
         }
-        die();
 
     }
 
     public function updateProj(Request $request){
 
-        return $request->all();
-
-        // $check = MM::where('proj_id',$request->projID)->first();
-        // if($check){
-        //     $updated = MM::where('id',$request->projID)->update($);
-        //     if($updated){
-        //         return responseSuccess('Materials Updated Successfully');
-        //     }else{
-        //         return responseFail('Data not found!');
-        //     }
-        // }else{
-        //     $create = PDM::create($dataID);
-        //     if($create){
-        //         return responseSuccess('Materials Create Successfully');
-        //     }else{
-        //         return responseFail('Data not found!');
-        //     }
-        // }
-
-        // return $dataID;
+        $check = MM::where('proj_id',$request->projID)->first();
+        if($check){
+            $data = [
+                'materials_desc' => $request->dataCode
+            ];
+            $updated = MM::where('proj_id',$request->projID)->update($data);
+            if($updated){
+                return responseSuccess('Materials Updated Successfully');
+            }else{
+                return responseFail('Data not found!');
+            }
+        }else{
+            $data = [
+                'proj_id' => $request->projID,
+                'materials_desc' => $request->dataCode
+            ];
+            $create = MM::create($data);
+            if($create){
+                return responseSuccess('Materials Create Successfully');
+            }else{
+                return responseFail('Data not found!');
+            }
+        }
     }
 
     public function imageupload(Request $request){

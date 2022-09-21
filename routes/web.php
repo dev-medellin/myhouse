@@ -49,11 +49,13 @@ Route::group(['prefix' => 'admin'], function(){
     //Projects
     Route::group(['prefix' => 'projects'], function(){
         Route::get('edit/{slug}',                   [ProjectController::class,'editSlug']);
+        Route::post('getmaterials',                  [ProjectController::class,'getMaterials']);
         Route::post('create',                       [ProjectController::class,'insertProj']);
         Route::post('edit',                         [ProjectController::class,'editProj']);
         Route::post('update',                       [ProjectController::class,'updateProj']);
         Route::post('status',                       [ProjectController::class,'updateStatus']);
         Route::post('delete/image',                 [ProjectController::class,'imageDelete']);
+        
 
 
         Route::group(['prefix' => 'update'], function(){
@@ -77,7 +79,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::get('/', [HomeController::class,'index'])->name('/');
 Route::get('/projects',                 [PCC::class,'index']);
-Route::get('/projects/selected',        [PCC::class,'selected']);
+Route::get('/projects/{slug}',         [PCC::class,'selected']);
 
 
 Route::prefix('modal')->group(function () {

@@ -30,19 +30,10 @@
             <div class="advanced-search-sec row">
                 <form method="get">
                     <div class="col-xs-12 col-sm-6 col-md-me-15 col-lg-me-17 search-field">
-                        <label for="property-location">Location</label>
-                        <select id="property-location" name="Cities">
-                            <option value="0">All Cities</option>
-                            <option value="1">Chicago</option>
-                            <option value="2">Phoenix</option>
-                            <option value="3">San Diego</option>
-                            <option value="4">Austin</option>
-                            <option value="5">Detroit</option>
-                        </select>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-me-15 col-lg-me-17 search-field">
-                        <label for="proeprty-type">Property Type</label>
-                        <select id="proeprty-type" name="Property-type">
+                        <label for="proeprty-type">Bed Room</label>
+                        <select id="bed_room" name="bed_room">
                             <option value="0">All Types</option>
                             <option value="1">Apartment</option>
                             <option value="2">House</option>
@@ -52,8 +43,8 @@
                         </select>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-me-13 col-lg-me-13 search-field">
-                        <label for="property-room">Total Room</label>
-                        <select id="property-room" name="Total-room">
+                        <label for="property-room">Bathroom</label>
+                        <select id="bath_room" name="bath_room">
                             <option value="0">Choose</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -64,8 +55,8 @@
                         </select>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-me-13 col-lg-me-13 search-field">
-                        <label for="property-bathroom">Bathroom</label>
-                        <select id="property-bathroom" name="Bathrooms">
+                        <label for="property-bathroom">Stories</label>
+                        <select id="stories" name="stories">
                             <option value="0">Choose</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -81,11 +72,11 @@
                                 <label>Price Range</label>
                                 <div class="price-range">
                                     <div class="price-input-count">
-                                        <input type="text" name="price min" id="price-min" />
+                                        <input type="text" name="price_min" id="price_min" />
                                     </div>
                                     <span class="price-money">-</span>
                                     <div class="price-input-count">
-                                        <input type="text" name="price max" id="price-max" />
+                                        <input type="text" name="price_max" id="price_max" />
                                     </div>
                                 </div>
                                 <div class="price-range-select">

@@ -11,7 +11,7 @@ class HomeController extends Controller
     public $data = [];
 
     public function index(){
-
+            $data['page'] = "home";
             $data['js']     =  $this->js_file();
             $data['css']    =  $this->css_file();
 

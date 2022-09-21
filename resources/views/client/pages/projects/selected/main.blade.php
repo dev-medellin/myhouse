@@ -3,54 +3,74 @@
 		<section class="showcase-feature">
 			<div class="container">	
 				<div class="section-heading">
-					<h5>Check Out</h5>
+					<h5>Wish List</h5>
 					<div class="main-title">
-						<h2><span>Property</span> Details</h2>
+						<h2><span>Project</span> Details</h2>
 						<strong></strong> <!-- Use for heading after effect -->
 					</div>
 				</div> <!-- /.section-heading -->
 				<div id="showcase-main-thumb-slider-section">
 					<!-- Showcase Slider Main -->
 					<div id="showcase-main-area-slider">
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
-						</div>
+						@isset($data['image'])
+							@if($data['image'])
+								@foreach($data['image'] as $image)
+								<div class="items">
+									<div class="img-pot" data-bg-img="{{url('storage/').$image->image_path}}"></div>
+								</div>
+								@endforeach
+							@else
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
+							</div>
+							@endif
+						@endisset
 					</div> <!-- /#showcase-main-area-slider -->
 					<!-- Showcase Slider Thumbnail -->
 					<div id="showcase-thumb-slider">
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
-						</div>
-						<div class="items">
-							<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
-						</div>
+						@isset($data['image'])
+							@if($data['image'])
+								@foreach($data['image'] as $image)
+								<div class="items">
+									<div class="img-pot" data-bg-img="{{url('storage/').$image->image_path}}"></div>
+								</div>
+								@endforeach
+							@else
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
+							</div>
+						@endif
+						@endisset
 					</div> <!-- /#showcase-thumb-slider -->
 				</div> <!-- /#showcase-main-thumb-slider-section --> 
 			</div> <!-- /.container -->
@@ -65,11 +85,11 @@
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<article class="awesome-content">
 								<div class="awesome-header stylist-bottom-right">
-									<h3>Our Awesome Property</h3>
-									<p><i class="fa fa-map-marker"></i> 530, Khan A Sabur Road, Khulna, Bangladesh</p>
+									<h3>{{$data['project']->proj_name}}</h3>
+									<!-- <p><i class="fa fa-map-marker"></i> 530, Khan A Sabur Road, Khulna, Bangladesh</p> -->
 								</div>
 								<div class="awesome-footer">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nstrud exercitation ullamco laboris nisi ut aliquip</p>
+									<p>{{$data['project']->proj_description}}</p>
 									<div class="awesome-btn">
 										<a href="#" class="dream-btn">Book Now</a>
 									</div>
@@ -78,36 +98,38 @@
 						</div> <!-- /.col- -->
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 							<div class="total-package shadow-bottom-items">
-								<strong>$12000</strong>
+								<strong>Est. Price  ₱{{$data['project']->proj_est_price}}</strong>
 								<div class="price-list">
 									<ul>
 										<li>
 											<span>Total area</span>
-											<span>4500m</span>
+											<span>{{$data['project']->proj_area}}m</span>
 										</li>
-										<li>
+										<!-- <li>
 											<span>Total rooms</span>
-											<span>6</span>
-										</li>
+											<span>{{$data['project']->bed_room}}</span>
+										</li> -->
 										<li>
 											<span>Bed rooms</span>
-											<span>3</span>
+											<span>{{$data['project']->bed_room}}</span>
 										</li>
 										<li>
 											<span>Bath room</span>
-											<span>2</span>
+											<span>{{$data['project']->bath_room}}</span>
 										</li>
 										<li>
-											<span>Parking car</span>
-											<span>2</span>
+											<span>Stories</span>
+											<span>{{$data['project']->story}}</span>
 										</li>
 									</ul>
 								</div>
 							</div> <!-- /.total-package -->
 						</div> <!-- /.col -->
 					</div> <!-- /.row -->  
-                    <div class="mt-5" id="display_materials">
-                        
+                    <div class="mt-5 " id="display_materials">
+                        @isset($data['materials']->materials_desc)
+							{!!$data['materials']->materials_desc!!}
+						@endisset
                     </div>
 				</div> <!-- /.awesome-items -->
 			</div> <!-- /.container -->

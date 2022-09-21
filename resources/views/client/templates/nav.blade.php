@@ -66,9 +66,9 @@
         <div class="main-menu">
             <div class="close-nav"></div> <!-- Close the menu for mobile -->				
             <ul class="main-nav">
-                <li class="active"><a href="{{url('/')}}">Home</a></li>
+                <li <?php echo $data['page'] == 'home' ? 'class="active"' : '';?> ><a href="{{url('/')}}">Home</a></li>
                 <li><a href="overview.html" style="color:red"></a></li>
-                <li><a href="#" style="color:red">Dropdown</a>
+                <!-- <li><a href="#" style="color:red">Dropdown</a>
                     <ul class="sub-nav">
                         <li><a href="#">Dropdown Menu 1</a></li>
                         <li><a href="#">Dropdown Menu 2</a></li>
@@ -114,7 +114,7 @@
                                         <li><a href="#">Submenu Item 4</a></li>
                                     </ul>
                                 </li>
-                            </ul> <!-- /.sub-nav -->
+                            </ul>
                         </li>
                         <li><a href="#">Look Right Submenu</a>
                             <ul class="sub-nav">
@@ -152,11 +152,11 @@
                                         <li><a href="#">Submenu Item 4</a></li>
                                     </ul>
                                 </li>
-                            </ul> <!-- /.sub-nav -->
+                            </ul>
                         </li>
-                    </ul> <!-- /.sub-nav -->
-                </li>
-                <li><a href="property-details.html" style="color:red">Services</a></li>
+                    </ul>
+                </li> -->
+                <li <?php echo $data['page'] == 'project' ? 'class="active"' : '';?> ><a href="{{url('/projects')}}">Projects</a></li>
                 <li><a href="#" style="color:red">Pages</a>
                     <ul class="sub-nav">
                         <li><a href="overview.html">Overview</a></li>
