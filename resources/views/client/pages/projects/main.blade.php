@@ -56,6 +56,7 @@
                     </div> <!-- /.col- -->
                     @endforeach
                 @endisset
+                <?php header("Location: projects");?>
             </div> <!-- /.blog-list -->
         </div> <!-- /.row -->  
     </div> <!-- /.container -->
@@ -63,4 +64,5 @@
 <!-- /PROPERTIES BLOG AREA END -->	
 
 <!-- PAGINATION AREA START -->
+{{ $data['projects']->links('vendor.pagination.default')}}
 <!-- /PAGINATION AREA END -->

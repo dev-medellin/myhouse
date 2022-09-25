@@ -1,11 +1,27 @@
 (function($) {
     
     "use strict";
-
+    var bed_room = sessionStorage.getItem('bed_room');
+    var bath_room = sessionStorage.getItem('bath_room');
+    var stories = sessionStorage.getItem('stories');
+    var price_min = sessionStorage.getItem('price_min');
+    var price_max = sessionStorage.getItem('price_max');
     //Begin Loading Handler
     $(window).load(function() {
+        // var bed_room = sessionStorage.getItem('bed_room');
+        // var bath_room = sessionStorage.getItem('bath_room');
+        // var stories = sessionStorage.getItem('stories');
+        // var price_min = sessionStorage.getItem('price_min');
+        // var price_max = sessionStorage.getItem('price_max');
         $("#loader").delay(800).fadeOut();
         $("#cover").delay(1200).fadeOut("slow");
+        $('#bed_room').val(bed_room);
+        $('#bath_room').val(bath_room);
+        $('#stories').val(stories);
+        if(price_min != null && price_max != null){
+            $('.price_min').val(price_min);
+            $('.price_max').val(price_max);
+        }
     });
 
     // Go to the page top
@@ -174,43 +190,74 @@
         }
 
     });
+    var priceMin = 0;
+    var priceMax = 0;
 
+        var base_url = $('#url').val();
+        var   pathUrl         = base_url+"/price",
+        method            	 = "POST",
+        dtype 	             = "json";
+  
+        $.ajax({
+           type: method,  
+           url: pathUrl,
+           dataType: dtype,
+           async: false,
+           headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+           success: function(response){  
+                 if(response.status == "SUCCESS"){
+                    priceMin =  response.data.priceMin 
+                    priceMax =  response.data.priceMax
+                 }else{
+                    alert(response.message);
+                 }
+              },
+        });
     //Setup price slider (Price Range)
     var priceSlider = $(".priceSlider");
     if( priceSlider.length> 0 ) {
         var Link = $.noUiSlider.Link;
-
+        var priceMinRage,priceMaxRage;
+        if(price_min != null && price_max != null){
+            var finalPriceMin = price_min.replace(/\s*(,|$)\s*/g, '');
+            var finalPriceMax = price_max.replace(/\s*(,|$)\s*/g, '');
+            priceMinRage = finalPriceMin;
+            priceMaxRage = finalPriceMax;
+        }else{
+            priceMinRage = priceMin;
+            priceMaxRage = priceMax;
+        }
         priceSlider.noUiSlider({
-             range: {
-              'min': 500,
-              'max': 80000,
-            },
-            start: [19480, 50800],
-            step: 1000,
-            margin: 0,
-            connect: true,
-            direction: 'ltr',
-            orientation: 'horizontal',
-            behaviour: 'tap-drag',
-            serialization: {
-                lower: [
-                    new Link({
-                        target: $("#price-min")
-                    })
-                ],
-                upper: [
-                    new Link({
-                        target: $("#price-max")
-                    })
-                ],
-                format: {
-                // Set formatting
-                    decimals: 0,
-                    thousand: ',',
-                    prefix: '$'
-                }
-            }
-        });
+            range: {
+             'min': parseInt(priceMin),
+             'max': parseInt(priceMax),
+           },
+           start: [priceMinRage, priceMaxRage],
+           step: 1000,
+           margin: 0,
+           connect: true,
+           direction: 'ltr',
+           orientation: 'horizontal',
+           behaviour: 'tap-drag',
+           serialization: {
+               lower: [
+                   new Link({
+                       target: $("#price-min")
+                   })
+               ],
+               upper: [
+                   new Link({
+                       target: $("#price-max")
+                   })
+               ],
+               format: {
+               // Set formatting
+                   decimals: 0,
+                   thousand: ',',
+                   prefix: '$'
+               }
+           }
+       });
     }
 
     // WoW Js

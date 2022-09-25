@@ -25,7 +25,7 @@ class UserController extends Controller
     }
 
     public function mypage(){
-
+        $data['page']       =  "mypage";
         $data['js']     =  $this->js_file();
         $data['css']    =  $this->css_file();
 

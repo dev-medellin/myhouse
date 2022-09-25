@@ -1,4 +1,4 @@
-@include('client.pages.projects.selected.area')
+@include('client.pages.projects.area')
 		<!-- SHOWCASE FEATURE AREA START -->
 		<section class="showcase-feature">
 			<div class="container">	
@@ -40,6 +40,24 @@
 							</div>
 							@endif
 						@endisset
+						<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
+							</div>
+							<div class="items">
+								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
+							</div>
 					</div> <!-- /#showcase-main-area-slider -->
 					<!-- Showcase Slider Thumbnail -->
 					<div id="showcase-thumb-slider">
@@ -51,6 +69,7 @@
 								</div>
 								@endforeach
 							@else
+						@endif
 							<div class="items">
 								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
 							</div>
@@ -69,7 +88,6 @@
 							<div class="items">
 								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
 							</div>
-						@endif
 						@endisset
 					</div> <!-- /#showcase-thumb-slider -->
 				</div> <!-- /#showcase-main-thumb-slider-section --> 
@@ -119,7 +137,7 @@
 										</li>
 										<li>
 											<span>Stories</span>
-											<span>{{$data['project']->story}}</span>
+											<span>{{$data['project']->stories}}</span>
 										</li>
 									</ul>
 								</div>

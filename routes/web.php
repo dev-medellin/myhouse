@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('update',                       [ProjectController::class,'updateProj']);
         Route::post('status',                       [ProjectController::class,'updateStatus']);
         Route::post('delete/image',                 [ProjectController::class,'imageDelete']);
+        Route::post('search',                       [ProjectController::class,'searchProj']);
         
 
 
@@ -79,7 +80,8 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::get('/', [HomeController::class,'index'])->name('/');
 Route::get('/projects',                 [PCC::class,'index']);
-Route::get('/projects/{slug}',         [PCC::class,'selected']);
+Route::get('/projects/{slug}',          [PCC::class,'selected']);
+Route::post('/price',                   [PCC::class,'getPrice']);
 
 
 Route::prefix('modal')->group(function () {

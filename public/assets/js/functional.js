@@ -1,8 +1,10 @@
+// const { functionsIn } = require("lodash");
+
 $(document).ready(function(){
 
    var base_url = $('#url').val();
 
-   
+   sessionStorage.clear()
    //#region URL Function
    $('#pills-profile-tab').trigger('click')
    //#endregion
@@ -245,6 +247,26 @@ $(document).ready(function(){
    });
 
 });
+$("#searchForm").on('submit',function() {
+   $(this).find(":input").filter(function(){ return !this.value; }).attr("disabled", "disabled");
+   return true; // ensure form still submits
+});
+
+$("#searchBtn").on('click',function(){
+      var bed_room   = $('#bed_room').val();
+      var bath_room  = $('#bath_room').val();
+      var stories    = $('#stories').val();
+      var price_min    = $('.price_min').val();
+      var price_max    = $('.price_max').val();
+
+      sessionStorage.setItem('bed_room', bed_room);
+      sessionStorage.setItem('bath_room', bath_room);
+      sessionStorage.setItem('stories', stories);
+      sessionStorage.setItem('price_min', price_min);
+      sessionStorage.setItem('price_max', price_max);
+});
+
+
 
 var base_url = $('#url').val();
 $('#verifyPassForm').on('submit', function(event){
@@ -324,6 +346,32 @@ function timerset(){
       timeleft -= 1;
       }, 1000);
 }
+
+
+// $('#searchForm').on('submit',function(e){
+//    e.preventDefault();
+
+//       var   pathUrl               = base_url+"/projects",
+//       method            	 = "GET",
+//       dtype 	             = "json",
+//       rdata 	             = $(this).serialize(); 
+
+//       $.ajax({
+//          type: method,  
+//          url: pathUrl,
+//          dataType: dtype,
+//          data: rdata,
+//          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+//          success: function(response){  
+//                if(response.status == "SUCCESS"){
+//                   alert(response.message);
+//                   rel
+//                }else{
+//                   alert(response.message);
+//                }
+//             },
+//       });
+// })
 
 {/* <div id="countdown"></div> */}
 

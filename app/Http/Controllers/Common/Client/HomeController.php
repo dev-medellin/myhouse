@@ -23,6 +23,7 @@ class HomeController extends Controller
             'jquery-2.2.3.min.js',
             'jquery-ui/jquery-ui-1.12.0.min.js',
             'bootstrap.min.js',
+            'inputmask/jquery.inputmask.bundle.js',
             'owl.carousel.min.js',
             'owl-1.3.2/owl.carousel.min.js',
             'wow.min.js',
