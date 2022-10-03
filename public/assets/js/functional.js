@@ -69,18 +69,28 @@ $(document).ready(function(){
                         $(document.body).addClass('modal-open');
                      }, 1000)
                   }else{
-                     $('#verifyModal').modal('show');
-                     $('#loginModal').modal('hide');
-                     $('#return_text').html(response.message);
-                     $('#email_text').html(response.data.email);
-                     $('#emailVerify').val(response.data.email);
-                     setTimeout(() => {
-                        $(document.body).addClass('modal-open');
-                     }, 1000)
+
+                     if(response.data.status == 'exist'){
+                        $('#home-tab').trigger('click')
+                        $('#registerForm')[0].reset();
+                        // Put the results in a div
+                        $('#loginModal').modal('show');
+                        $('#emailInputLog').val(response.data.email);
+
+                     }else{
+                        $('#verifyModal').modal('show');
+                        $('#loginModal').modal('hide');
+                        $('#return_text').html(response.message);
+                        $('#email_text').html(response.data.email);
+                        $('#emailVerify').val(response.data.email);
+                        setTimeout(() => {
+                           $(document.body).addClass('modal-open');
+                        }, 1000)
+                     }
                   }
                },
                error: function(X) { 
-                  console.log(X.responseJSON.errors.captcha[0])
+                  alert('please fill-up the inputs')
                }       
             });
          }
@@ -99,12 +109,18 @@ $(document).ready(function(){
             dataType: dtype,
             data: rdata, 
             success: function(response){  
-                  if(response.status == "SUCESS"){
+                  if(response.status == "SUCCESS"){
                      $('#verifyModal').modal('hide');
                      $('#email_text').html('');
                      $('#emailVerify').val('');
                      $('#return_text').html('');
+                     $('#home-tab').trigger('click')
+                     $('#registerForm')[0].reset();
+                     // Put the results in a div
+                     $('#loginModal').modal('show');
+                     $('#emailInputLog').val(response.data.email);
                      alert(response.message);
+                     // location.reload();
                   }else{
                      alert(response.message);
                   }
@@ -332,6 +348,54 @@ $('#changePassForm').on('submit', function(event){
          });
       }
 });
+
+$('#wishList').on('click', function(e){
+   e.preventDefault();
+   var   pathUrl               = base_url+"/check/user",
+   method            	 = "POST",
+   dtype 	             = "json";
+   // rdata 	             = $(this).serialize(); 
+
+   $.ajax({
+   type: method,  
+   url: pathUrl,
+   dataType: dtype,
+   // data: rdata,
+   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+   success: function(response){  
+         if(response.status == "SUCCESS"){
+            postWishList();
+         }else{
+            $('#home-tab').trigger('click')
+            $('#loginModal').modal('show');
+         }
+      },
+   });
+
+});
+
+function postWishList(){
+   var projectID = $('#projectID').val();
+  var   pathUrl               = base_url+"/users/wishlist",
+   method            	 = "POST",
+   dtype 	             = "json"
+   rdata 	             = {projectID:projectID}; 
+
+   $.ajax({
+   type: method,  
+   url: pathUrl,
+   dataType: dtype,
+   data: rdata,
+   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+   success: function(response){  
+         if(response.status == "SUCCESS"){
+            
+         }else{
+            
+         }
+      },
+   });
+}
 
 
 function timerset(){

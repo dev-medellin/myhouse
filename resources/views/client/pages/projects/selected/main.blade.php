@@ -103,20 +103,21 @@
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<article class="awesome-content">
 								<div class="awesome-header stylist-bottom-right">
-									<h3>{{$data['project']->proj_name}}</h3>
+									<h3>{{$data['project']->proj_name}} <?php echo ($data['wish'] != null ? '<i class="fa fa-star"></i>' : '')?></h3>
 									<!-- <p><i class="fa fa-map-marker"></i> 530, Khan A Sabur Road, Khulna, Bangladesh</p> -->
 								</div>
 								<div class="awesome-footer">
 									<p>{{$data['project']->proj_description}}</p>
 									<div class="awesome-btn">
-										<a href="#" class="dream-btn">Book Now</a>
+										<input type="hidden" value="{{$data['project']->id}}" id="projectID" name="projectID">
+										<a href="javascrtipt:void(0);" id="wishList" class="dream-btn">Add to Wishlist</a>
 									</div>
 								</div>
 							</article> <!-- /.awesome-content -->
 						</div> <!-- /.col- -->
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 							<div class="total-package shadow-bottom-items">
-								<strong>Est. Price  ₱{{$data['project']->proj_est_price}}</strong>
+								<strong>Estimated Price : ₱{{number_format($data['project']->proj_est_price, 2, '.',',')}}</strong>
 								<div class="price-list">
 									<ul>
 										<li>

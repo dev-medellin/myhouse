@@ -1,10 +1,4 @@
-(function($) {
-    'use strict';
-  
-    // initializing inputmask
-    $(":input").inputmask();
-  
-  })(jQuery);
+
   
 (function($) {
     "use strict";

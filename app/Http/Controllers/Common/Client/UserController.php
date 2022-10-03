@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Helpers\Mail\SenderHelper as Mail;
 use Illuminate\Http\Request;
 use App\Models\UsersModel;
+use App\Models\WishListModel;
 use App\Models\EmailVerifyModel as Verify;
 use App\Models\PasswordVerifyModel as PassVerify;
 use Illuminate\Support\Facades\Hash;
@@ -25,9 +26,18 @@ class UserController extends Controller
     }
 
     public function mypage(){
+        $user_id = Auth::user()->id;
+        $favorite = WishListModel::select('user_wishlist.*','projects.*')
+                                   ->leftJoin('projects','projects.id','user_wishlist.proj_id')
+                                   ->where('user_wishlist.user_id',$user_id)
+                                   ->where('projects.status','active')
+                                   ->get();
+
         $data['page']       =  "mypage";
-        $data['js']     =  $this->js_file();
-        $data['css']    =  $this->css_file();
+        $data['js']         =  $this->js_file();
+        $data['css']        =  $this->css_file();
+        $data['favorite']   =  $favorite;
+
 
         return view('client.pages.mypage.index')->with('data', $data);
     }
@@ -115,6 +125,23 @@ class UserController extends Controller
         }
     }
 
+    public function wishlistInsert(Request $request){
+        $projectID = $request->projectID;
+        $user_id   = Auth::user()->id;
+
+        $data = [
+            'proj_id'   => $projectID,
+            'user_id'   => $user_id
+        ];
+        $query = WishListModel::updateOrCreate(['proj_id' => $projectID, 'user_id' => $user_id], $data);
+        if($query){
+            return responseSuccess('Project Added to your WishList');
+        }else{
+            return responseFail('Cannot add this project');
+        }
+
+    }
+
 
 
 
@@ -130,6 +157,8 @@ class UserController extends Controller
             'jquery-ui/jquery-ui-1.12.0.min.js',
             'bootstrap.min.js',
             'inputmask/jquery.inputmask.bundle.js',
+            'datatables.net/jquery.dataTables.min.js',
+            'datatables.net-bs4/js/dataTables.bootstrap4.js',
             'owl.carousel.min.js',
             'owl-1.3.2/owl.carousel.min.js',
             'wow.min.js',
@@ -137,6 +166,7 @@ class UserController extends Controller
             'jquery.nouislider.min.js',
             'jquery.mobile.custom.min.js',
             'map-script.js',
+            'data-table.js',
             'menu.js',
             'custom.js',
         ];
@@ -150,14 +180,17 @@ class UserController extends Controller
             'owl.carousel.css',
             'owl.theme.default.css',
             'jquery-ui-css/jquery-ui-1.12.0.min.css',
+            'dataTables.bootstrap4.css',
             'jquery.nouislider.min.css',
             'animate.min.css',
             'font-awesome.min.css',
-            'flaticons\font\flaticon.css',
+            'flaticons/font/flaticon.css',
             'style.css',
+            'badge.css',
             'header-menu-responsive.css',
             'responsive.css',
             'code_field.css'
+            
         ];
 
         return $data;

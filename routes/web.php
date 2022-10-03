@@ -5,6 +5,7 @@ use App\Http\Controllers\Common\Admin\DashboardController;
 use App\Http\Controllers\Common\Admin\ProjectController;
 use App\Http\Controllers\Common\Client\ProjectController as PCC;
 use App\Http\Controllers\CaptchaValidationController;
+use App\Http\Controllers\Common\Admin\UsersInfoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\Client\HomeController;
 use App\Http\Controllers\Common\Client\UserController;
@@ -39,12 +40,15 @@ Route::group(['prefix' => 'users'], function(){
     Route::post('/getcode',                             [UserController::class,'getcode']);
     Route::post('/sendPassVerify',                      [UserController::class,'sendPassVerify']);
     Route::post('/changepassword',                      [UserController::class,'changepassword']);
+    Route::post('/wishlist',                            [UserController::class,'wishlistInsert']);
 });
 
+// Admins Route
 Route::group(['prefix' => 'admin'], function(){
 
-    Route::get('/dashboard', [DashboardController::class,'index']);
+    Route::get('/dashboard',  [DashboardController::class,'index']);
     Route::get('/projects',   [ProjectController::class,'index']);
+    Route::get('/users',      [UsersInfoController::class,'index']);
 
     //Projects
     Route::group(['prefix' => 'projects'], function(){
@@ -55,6 +59,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('update',                       [ProjectController::class,'updateProj']);
         Route::post('status',                       [ProjectController::class,'updateStatus']);
         Route::post('delete/image',                 [ProjectController::class,'imageDelete']);
+        Route::post('update/image',                 [ProjectController::class,'imageUpdate']);
         Route::post('search',                       [ProjectController::class,'searchProj']);
         
 
@@ -69,6 +74,9 @@ Route::group(['prefix' => 'admin'], function(){
         });
     });
 
+    Route::group(['prefix' => 'users'], function(){
+        Route::get('edit/{id}',                         [UsersInfoController::class,'editUsers']);
+    });
     // Route::post('/update',                              [UserController::class,'updateInfo']);
     // Route::post('/getcode',                             [UserController::class,'getcode']);
     // Route::post('/sendPassVerify',                      [UserController::class,'sendPassVerify']);
@@ -82,6 +90,7 @@ Route::get('/', [HomeController::class,'index'])->name('/');
 Route::get('/projects',                 [PCC::class,'index']);
 Route::get('/projects/{slug}',          [PCC::class,'selected']);
 Route::post('/price',                   [PCC::class,'getPrice']);
+Route::post('/check/user',              [AuthController::class,'checkUser']);
 
 
 Route::prefix('modal')->group(function () {

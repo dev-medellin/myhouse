@@ -46,10 +46,37 @@
     </div>
         <div class="tab-pane fade" id="pills-favorite" role="tabpanel" aria-labelledby="pills-favorite-tab">
             <div class="media">
-            <img class="mr-3 w-25 rounded" src="../assets/images/samples/300X300/10.html" alt="sample image">
             <div class="media-body">
-                <p>I'm thinking two circus clowns dancing. You? Finding a needle in a haystack isn't hard when every straw is computerized. Tell him time is of the essence. 
-                Somehow, I doubt that. You have a good heart, Dexter.</p>
+            <div class="table-responsive">
+                      <table id="order-listing" class="table">
+                        <thead>
+                          <tr>
+                            <th>Project Name</th>
+                            <th>Project Area</th>
+                            <th>Project Type</th>
+                            <th>Est. Price</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @isset($data['favorite'])
+                            @foreach($data['favorite'] as $proj)
+                              <tr>
+                                <td>{{$proj->proj_name}}</td>
+                                <td>{{$proj->proj_area}} sqm.</td>
+                                <td>{{$proj->type}}</td>
+                                <td>₱{{number_format($proj->proj_est_price, 2, '.',',')}}</td>
+                                <td>
+                                  <a href="{{url('/projects/'.$proj->proj_slug)}}" class="btn btn-primary "">View</a>
+                                  <a href="javascript:void(0);" class="btn btn-danger remove_proj" data-id="{{$proj->id}}">Remove</a>
+                                </td>
+                              </tr>
+                            @endforeach
+                          @endisset
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
             </div>
             </div>
         </div>

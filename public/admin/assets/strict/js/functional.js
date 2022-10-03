@@ -64,6 +64,7 @@ var     pathUrl              = base_url+"/admin/projects/edit",
     });
 });
 
+
 $('#EditProForm').on('submit',function(e){
    e.preventDefault();
         if ($('#summernoteExample').summernote('isEmpty')){
@@ -206,3 +207,64 @@ $('.btnImgDel').on('click', function(e){
        //success method
     });
 })
+
+$('#myfile').change(function(evt) {
+    // alert($(this).val());
+
+
+    swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3f51b5',
+        cancelButtonColor: '#ff4081',
+        confirmButtonText: 'Great ',
+        buttons: {
+            confirm: {
+                text: "Yes Please!",
+                value: true,
+                visible: true,
+                className: "btn btn-primary",
+                closeModal: true
+            },
+          cancel: {
+            text: "Cancel",
+            value: null,
+            visible: true,
+            className: "btn btn-danger",
+            closeModal: true,
+          },
+        }
+      }).then((result) => {
+        if (result) {
+
+            var formData = new FormData($('#update_image')[0]);
+            var     pathUrl          = base_url+"/admin/projects/update/image",
+                method            	 = "POST",
+                dtype 	             = "json",
+                rdata 	             = formData;
+
+                console.log(formData);
+            $.ajax({
+                type: method,  
+                url: pathUrl,
+                dataType: dtype,
+                processData : false,
+                contentType: false,
+                data: rdata,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+                success: function(response){ 
+                    if(response.status == "SUCCESS"){
+                        $.toast({heading:"Success",text:`${response.message}`,position:"bottom-right",icon:"success",showHideTransition:"slide",loaderBg:"#f96868"})
+                        setTimeout(() => {
+                            location.reload();
+                        }, 3000)
+                    }else{
+                        $.toast({heading:"Failed",text:`${response.message}`,position:"bottom-right",icon:"error",showHideTransition:"slide",loaderBg:"#f2a654"})
+                    }
+                }
+            });
+        }
+      });
+});

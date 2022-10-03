@@ -177,5 +177,19 @@
         <span class="menu-title">Project</span>
         </a>
     </li>
+    <li class="nav-item ">
+        <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="false" aria-controls="basic-ui">
+        <i class="ti-palette menu-icon"></i>
+        <span class="menu-title">Users Components</span>
+        <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse " id="basic-ui">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item ">
+             <a class="nav-link" href="{{url('/admin/users')}}">Users List</a>
+            </li>
+        </ul>
+        </div>
+    </li>
     </ul>
 </nav>

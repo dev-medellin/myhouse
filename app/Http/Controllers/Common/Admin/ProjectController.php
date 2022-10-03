@@ -111,6 +111,33 @@ class ProjectController extends Controller
 
     }
 
+    public function imageUpdate(Request $request){
+
+        $check = PIM::where('id', $request->pic_id)->first();
+        if($check){
+            if ($request->has('myfile')) {
+                $image = $request->file('myfile');
+                    $name = Str::slug($request->input('image_name')).'_'.time();
+                    $folder = '/uploads/images/';
+                    $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+                    $image_name =  $this->uploadOne($image, $folder, 'public', $name);
+                    $data = [
+                        'image_path' => $filePath
+                    ];
+                $update = PIM::where('id', $request->pic_id)->update($data);
+                    if($update){
+                        if(Storage::disk('public')->exists($check->image_path)){
+                            if(Storage::disk('public')->delete($check->image_path)) {
+                                    return responseSuccess('Status Deleted');
+                            }else{
+                                return responseFail('Data not found!');
+                            }
+                        }
+                    } 
+            }
+        }
+    }
+
     public function updateProj(Request $request){
 
         $check = MM::where('proj_id',$request->projID)->first();
@@ -181,6 +208,7 @@ class ProjectController extends Controller
             'js/hoverable-collapse.js',
             'js/misc.js',
             'js/settings.js',
+            'js/inputmaskset.js',
             'js/todolist.js',
             'js/data-table.js',
             'js/functional.js',
@@ -201,6 +229,7 @@ class ProjectController extends Controller
             'plugins/dropzone/dropzone.min.css',
             'plugins/jquery-toast-plugin/jquery.toast.min.css',
             'app.css',
+            'style.css'
         ];
 
         return $data;

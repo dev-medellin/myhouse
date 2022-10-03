@@ -59,28 +59,34 @@ class AuthController extends Controller
 
             return responseSuccess('Verification Code has been sent you our email!',['email' =>  $query->email]);
         }else{
-            $inserted = Verify::where('email', $user->email)
-                                ->update([
-                                    'code'        => $code
-                                ]);
-                                $test = new Mail($template, $receiver, [
-                                    'subject'   => "Verification Code",
-                                    'title'     => "Verification Code",
-                                    'code'     => $code,
-                                ]);
-            return responseFail('Email already registered, please verify your email',['email' =>  $receiver]);
+
+            if($user->email_status != 'verified'){
+                $inserted = Verify::updateOrCreate(['email'  => $user->email],[
+                    'code'        => $code,
+                    'user_id'     => $user->id,
+                    'email'       => $user->email
+                ]);
+                $test = new Mail($template, $receiver, [
+                    'subject'   => "Verification Code",
+                    'title'     => "Verification Code",
+                    'code'     => $code,
+                ]);
+                return responseFail('Email already registered, please verify your email',['email' =>  $receiver,'status' => 'not_verify']);
+            }else{
+                return responseFail('Email already registered, please login your account',['email' =>  $user->email,'status' => 'exist']);
+            }
         }
     }
 
     public function verify(Request $request){
-        $inserted = Verify::select('verify_code.code as code', 'verify_code.user_id as user_id', 'users.password as password', 'users.email as email')
+        $inserted = Verify::select('verify_code.code as codex', 'verify_code.user_id as user_id', 'users.email as email')
                                     ->where('users.email', $request->emailVerify)
                                     ->leftJoin('users', 'users.id', '=', 'verify_code.user_id')
                                     ->first();
-        if($inserted->code == $request->verifyCode){
+        if($inserted->codex == $request->verifyCode){
            $user_info = UsersModel::where('email', $inserted->email)
                                 ->update([
-                                    'email_status'        => 'verified'
+                                    'email_status'        => 'verified',
                                 ]);
             return responseSuccess('You are you registered!',['email' =>  $inserted->email]);
         }else{
@@ -106,5 +112,9 @@ class AuthController extends Controller
     public function logout(Request $request) {
         Auth::logout();
         return responseSuccess('You logout successfully!');
+    }
+
+    public function checkUser(){
+        return Auth::user() != null ? responseSuccess('Price Successfully Loaded!', Auth::user()->id): responseFail('Data not found!');;
     }
 }

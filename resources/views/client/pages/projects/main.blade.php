@@ -23,15 +23,15 @@
                                 <div class="post-metadata">
                                     <span class="total-place">
                                         <i class="flaticon-ten-commandment"></i>
-                                        <a href="#">13K Sq Ft</a>
+                                        <a href="#">{{$proj->proj_area}} Sq Ft</a>
                                     </span>
                                     <span class="bedroom">
                                         <i class="flaticon-bed"></i>
-                                        <a href="#">4 bedrooms</a>
+                                        <a href="#">{{$proj->bed_room}} bedrooms</a>
                                     </span>
                                     <span class="bathroom"> 
                                         <i class="flaticon-bathtub"></i>
-                                        <a href="#">3 Bathrooms</a>
+                                        <a href="#">{{$proj->bath_room}} Bathrooms</a>
                                     </span>    
                                 </div> <!-- /.post-metadata -->
                                 <div class="post-content border-top">
@@ -39,15 +39,11 @@
                                         <h5><a href="{{url('/projects/'.$proj->proj_slug)}}">{{$proj->proj_name}}</a></h5>
                                     </div>
                                     <div class="post-entry">
-                                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem..</p>
+                                        <p>{{substr($proj->proj_description,0,50).'...'}}</p>
                                     </div>
                                     <div class="post-about border-top">
                                         <span>
-                                            <i class="fa fa-map-marker"></i>
-                                            530 B.I.D.C Road, Khulna
-                                        </span>
-                                        <span>
-                                            <strong>$1500</strong>/month
+                                           Estimated Price : <strong>₱{{number_format($proj->proj_est_price, 2, '.',',')}}</strong>
                                         </span>
                                     </div>
                                 </div> <!-- /.post-content -->
@@ -56,7 +52,6 @@
                     </div> <!-- /.col- -->
                     @endforeach
                 @endisset
-                <?php header("Location: projects");?>
             </div> <!-- /.blog-list -->
         </div> <!-- /.row -->  
     </div> <!-- /.container -->
