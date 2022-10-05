@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/dashboard',  [DashboardController::class,'index']);
     Route::get('/projects',   [ProjectController::class,'index']);
     Route::get('/users',      [UsersInfoController::class,'index']);
+    Route::post('/chart',     [DashboardController::class,'get_chart']);
 
     //Projects
     Route::group(['prefix' => 'projects'], function(){

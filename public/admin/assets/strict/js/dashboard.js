@@ -1,156 +1,45 @@
 (function($) {
     "use strict";
-    $(function() {
-        // if ($("#order-chart").length) {
-        //     var areaData = {
-        //         labels: [
-        //             "10",
-        //             "",
-        //             "",
-        //             "20",
-        //             "",
-        //             "",
-        //             "30",
-        //             "",
-        //             "",
-        //             "40",
-        //             "",
-        //             "",
-        //             "50",
-        //             "",
-        //             "",
-        //             "60",
-        //             "",
-        //             "",
-        //             "70"
-        //         ],
-        //         datasets: [
-        //             {
-        //                 data: [
-        //                     200,
-        //                     480,
-        //                     700,
-        //                     600,
-        //                     620,
-        //                     350,
-        //                     380,
-        //                     350,
-        //                     850,
-        //                     "600",
-        //                     "650",
-        //                     "350",
-        //                     "590",
-        //                     "350",
-        //                     "620",
-        //                     "500",
-        //                     "990",
-        //                     "780",
-        //                     "650"
-        //                 ],
-        //                 borderColor: ["#248afd"],
-        //                 borderWidth: 3,
-        //                 fill: false,
-        //                 label: "Orders"
-        //             },
-        //             {
-        //                 data: [
-        //                     400,
-        //                     450,
-        //                     410,
-        //                     500,
-        //                     480,
-        //                     600,
-        //                     450,
-        //                     550,
-        //                     460,
-        //                     "560",
-        //                     "450",
-        //                     "700",
-        //                     "450",
-        //                     "640",
-        //                     "550",
-        //                     "650",
-        //                     "400",
-        //                     "850",
-        //                     "800"
-        //                 ],
-        //                 borderColor: ["#ff4747"],
-        //                 borderWidth: 3,
-        //                 fill: false,
-        //                 label: "Downloads"
-        //             }
-        //         ]
-        //     };
-        //     var areaOptions = {
-        //         responsive: true,
-        //         maintainAspectRatio: true,
-        //         plugins: {
-        //             filler: {
-        //                 propagate: false
-        //             }
-        //         },
-        //         scales: {
-        //             xAxes: [
-        //                 {
-        //                     display: true,
-        //                     ticks: {
-        //                         display: true,
-        //                         padding: 10
-        //                     },
-        //                     gridLines: {
-        //                         display: false,
-        //                         drawBorder: false,
-        //                         color: "transparent",
-        //                         zeroLineColor: "#eeeeee"
-        //                     }
-        //                 }
-        //             ],
-        //             yAxes: [
-        //                 {
-        //                     display: true,
-        //                     ticks: {
-        //                         display: true,
-        //                         autoSkip: false,
-        //                         maxRotation: 0,
-        //                         stepSize: 200,
-        //                         min: 200,
-        //                         max: 1200,
-        //                         padding: 18
-        //                     },
-        //                     gridLines: {
-        //                         display: false,
-        //                         drawBorder: false
-        //                     }
-        //                 }
-        //             ]
-        //         },
-        //         legend: {
-        //             display: false
-        //         },
-        //         tooltips: {
-        //             enabled: true
-        //         },
-        //         elements: {
-        //             line: {
-        //                 tension: 0.35
-        //             },
-        //             point: {
-        //                 radius: 0
-        //             }
-        //         }
-        //     };
-        //     var revenueChartCanvas = $("#order-chart")
-        //         .get(0)
-        //         .getContext("2d");
-        //     var revenueChart = new Chart(revenueChartCanvas, {
-        //         type: "line",
-        //         data: areaData,
-        //         options: areaOptions
-        //     });
-        // }
+
+    var month_list = null,
+        month_name = null,
+        res = 0,
+        total_count = 0,
+        record = [],
+        month_data = 0;
+
+    var base_url         = $('#url').val();
+    var pathUrl          = base_url+"/admin/chart",
+    method            	 = "POST",
+    dtype 	             = "json";
+
+    $.ajax({
+       type: method,  
+       url: pathUrl,
+       dataType: dtype,
+       async: false,
+       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+       success: function(response){  
+        month_list  = response.data.month;
+        month_name  = response.data.query_month;
+        res         = response.data.res;
+        total_count = response.data.total_count;
 
         
-
+            //  if(response.status == "SUCCESS"){
+            //     priceMin =  response.data.priceMin 
+            //     priceMax =  response.data.priceMax
+            //  }else{
+            //     alert(response.message);
+            //  }
+          },
+    });
+    Object.values(res).forEach(val => {
+        record.push(val.month_name);
+        month_data = month_list.map(i => record.includes(i) ? val.total : 0)
+      });
+    
+    $(function() {
         if ($("#sales-chart").length) {
             var SalesChartCanvas = $("#sales-chart")
                 .get(0)
@@ -158,11 +47,11 @@
             var SalesChart = new Chart(SalesChartCanvas, {
                 type: "bar",
                 data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+                    labels: month_list,
                     datasets: [
                         {
-                            label: "Offline Sales",
-                            data: [480, 230, 470, 210, 330],
+                            label: "Customer Project",
+                            data: month_data,
                             backgroundColor: "#ffc100"
                         },
                         // {
@@ -194,7 +83,7 @@
                                 ticks: {
                                     display: true,
                                     min: 0,
-                                    max: 1000
+                                    max: total_count
                                 }
                             }
                         ],

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Common\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\WishListModel;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,6 +16,30 @@ class DashboardController extends Controller
             $data['css']    =  $this->css_file();
 
         return view('admin.pages.dashboard.index')->with('data' ,$data);
+    }
+
+    public function get_chart(){
+        $query = WishListModel::selectRaw("COUNT(*) as total,DATE_FORMAT(created_at,'%b') as month_name,DATE_FORMAT(created_at,'%m') as month,YEAR(created_at) as year")
+                                ->whereYear("created_at","2022")
+                                ->groupBy("month")
+                                ->get();
+        $count = WishListModel::get();
+        foreach($query as $key){
+            $month_name[] = $key->month_name;
+        }
+            
+        for($m=1;$m <= 12; $m++){
+            $month[] = date('M', mktime(0,0,0,$m,1,date('Y')));
+            $check_month[] = date('M', mktime(0,0,0,$m,1,date('Y')));
+        }
+        $data = [
+            'month'       => $month,
+            'query_month' => $month_name,
+            'res'         => $query,
+            'total_count' => count($count)
+        ];
+
+        return responseSuccess('Project Added Successfully',$data);
     }
 
     public function js_file(){
