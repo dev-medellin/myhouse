@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Common\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\WishListModel;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,13 @@ class DashboardController extends Controller
                                 ->whereYear("created_at","2022")
                                 ->groupBy("month")
                                 ->get();
+        $query_user = User::selectRaw("COUNT(*) as total,DATE_FORMAT(created_at,'%b') as month_name,DATE_FORMAT(created_at,'%m') as month,YEAR(created_at) as year")
+                                ->whereYear("created_at","2022")
+                                ->groupBy("month")
+                                ->get();
+        
         $count = WishListModel::get();
+        $count_user = User::get();
         foreach($query as $key){
             $month_name[] = $key->month_name;
         }
@@ -36,7 +43,9 @@ class DashboardController extends Controller
             'month'       => $month,
             'query_month' => $month_name,
             'res'         => $query,
-            'total_count' => count($count)
+            'total_count' => count($count),
+            'total_count_user' => count($count_user),
+            'user_count'  => $query_user
         ];
 
         return responseSuccess('Project Added Successfully',$data);
