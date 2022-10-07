@@ -31,7 +31,7 @@
         total_count_users = response.data.total_count_user;
         user_name   = response.data.user_count;
 
-        $('.project_text').html(response.data.total_count);
+        $('.project_text').html(response.data.total_proj);
         $('.client_text').html(response.data.total_count_user);
         
             //  if(response.status == "SUCCESS"){
@@ -140,13 +140,13 @@
                     labels: month_list,
                     datasets: [
                         {
-                            label: "Total User Registered",
+                            label: "User Registered",
                             data: user_data,
                             backgroundColor: "#03FB56"
                         },
                         // {
                         //     label: "Online Sales",
-                        //     data: [400, 340, 550, 480, 170],
+                        //     // data: [400, 340, 550, 480, 170],
                         //     backgroundColor: "#f5a623"
                         // }
                     ]
@@ -186,7 +186,7 @@
                                 },
                                 gridLines: {
                                     color: "rgba(0, 0, 0, 0)",
-                                    display: true
+                                    display: false
                                 },
                                 barPercentage: 1
                             }

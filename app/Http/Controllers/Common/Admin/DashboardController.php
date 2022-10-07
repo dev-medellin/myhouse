@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Common\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\ProjectModel;
 use App\Models\WishListModel;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,7 @@ class DashboardController extends Controller
         
         $count = WishListModel::get();
         $count_user = User::get();
+        $count_project = ProjectModel::get();
         foreach($query as $key){
             $month_name[] = $key->month_name;
         }
@@ -44,6 +46,7 @@ class DashboardController extends Controller
             'query_month' => $month_name,
             'res'         => $query,
             'total_count' => count($count),
+            'total_proj'  => count($count_project),
             'total_count_user' => count($count_user),
             'user_count'  => $query_user
         ];

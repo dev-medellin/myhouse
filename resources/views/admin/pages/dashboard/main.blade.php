@@ -76,7 +76,6 @@
                       <div class="card">
                         <div class="card-body">
                           <p class="card-title">Wislist Report</p>
-                          <p class="text-muted font-weight-light">The total number of user added to their wishlist on count of month</p>
                           <div id="sales-legend" class="chartjs-legend mt-4 mb-2"></div>
                           <canvas id="sales-chart"></canvas>
                         </div>
@@ -102,7 +101,6 @@
                       <div class="card">
                         <div class="card-body">
                           <p class="card-title">User List Report</p>
-                          <p class="text-muted font-weight-light">The total number of user registered on the month.</p>
                           <div id="user-count" class="chartjs-legend mt-4 mb-2"></div>
                           <canvas id="user-chart"></canvas>
                         </div>
