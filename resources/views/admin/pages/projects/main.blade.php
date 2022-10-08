@@ -35,7 +35,8 @@
                                   <label class="badge <?php echo ($proj->status == 'active' ? 'badge-success' : 'badge-danger');?>">{{ucfirst($proj->status)}}</label>
                                 </td>
                                 <td>
-                                  <a href="javascript:void()" class="btn btn-outline-primary modify-proj" data-id="{{$proj->id}}">View</a>
+                                  <a href="javascript:void()" class="btn btn-primary modify-proj" data-id="{{$proj->id}}">Edit</a>
+                                  <a href="{{url('/projects/'.$proj->proj_slug)}}" class="btn btn-success" data-id="{{$proj->id}}">View</a>
                                 </td>
                               </tr>
                             @endforeach

@@ -27,14 +27,14 @@ use Illuminate\Support\Facades\Auth;
 //     return redirect('/home');
 // });
 
-Route::group(['prefix' => 'auth'], function(){
+Route::group(['prefix' => 'auth',], function(){
     Route::post('/register',                [AuthController::class,'register']);
     Route::post('/verify',                  [AuthController::class,'verify']);
     Route::post('/login',                   [AuthController::class,'signin']);
     Route::get('/logout',                   [AuthController::class,'logout']);
 });
 
-Route::group(['prefix' => 'users'], function(){
+Route::prefix('users')->middleware('client')->group(function() {
     Route::get('/mypage',                               [UserController::class,'mypage']);
     Route::post('/update',                              [UserController::class,'updateInfo']);
     Route::post('/getcode',                             [UserController::class,'getcode']);
@@ -44,8 +44,7 @@ Route::group(['prefix' => 'users'], function(){
 });
 
 // Admins Route
-Route::group(['prefix' => 'admin'], function(){
-
+Route::prefix('admin')->middleware('admin')->group(function() {
     Route::get('/dashboard',  [DashboardController::class,'index']);
     Route::get('/projects',   [ProjectController::class,'index']);
     Route::get('/users',      [UsersInfoController::class,'index']);
@@ -78,12 +77,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::group(['prefix' => 'users'], function(){
         Route::get('edit/{id}',                         [UsersInfoController::class,'editUsers']);
     });
-    // Route::post('/update',                              [UserController::class,'updateInfo']);
-    // Route::post('/getcode',                             [UserController::class,'getcode']);
-    // Route::post('/sendPassVerify',                      [UserController::class,'sendPassVerify']);
-    // Route::post('/changepassword',                      [UserController::class,'changepassword']);
 });
-
 
 
 

@@ -202,8 +202,32 @@ $(document).ready(function(){
 
    //#endregion ProfileEdit
 
+   $('#save_btn').on('click',function(){
+      $("#forms-edit input").each(function(){
+         if ($.trim($(this).val()).length == 0){
+             $(".empty_text").addClass("(This field is required!)");
+             isFormValid = false;
+         }
+         else{
+            $(".empty_text").html("");
+         }
+     });
+   alert();
+   })
+
    $('#forms-edit').on('submit',function(e){
       e.preventDefault();
+
+      $(".required input").each(function(){
+         if ($.trim($(this).val()).length == 0){
+             $(".error_empty").html("highlight");
+             isFormValid = false;
+         }
+         else{
+             $(this).removeClass("highlight");
+         }
+     });
+     
       var   pathUrl               = base_url+"/users/update",
       method            	 = "POST",
       dtype 	             = "json",

@@ -91,11 +91,15 @@ class ProjectController extends Controller
 
     public function selected($slug){
         $queryProj = Project::where('proj_slug',$slug)->first();
-        $user_id   = Auth::user() != null ? Auth::user()->id : '';
+        $user_id   = Auth::check() != null ? Auth::user()->id : '';
+        $wish = Auth::check() ? WishListModel::where('user_id', $user_id) : null;
+        if(Auth::check()){
+            $wish = WishListModel::where('proj_id',$queryProj->id)->where('user_id',$user_id)->first();
+        }
         if($queryProj){
             $data['materials']  = MM::where('proj_id',$queryProj->id)->first();
             $data['project']    = $queryProj;
-            $data['wish']       = Auth::user() != null ? WishListModel::where('user_id', $user_id) : null;
+            $data['wish']       = $wish != null ? true : false;
             $data['image']      = PIM::where('proj_id',$queryProj->id)->get();
             $data['page']       = "project";
             $data['slugs']      =  $queryProj->project_slug;

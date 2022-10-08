@@ -9,26 +9,26 @@
                 @csrf
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label>First Name</label>
-                            <input class="form-control" id="fname" name="fname" value="<?php echo (auth()->user() != null ? auth()->user()->fname : '');?>" readonly data-inputmask="'alias': 'text'" />
+                            <label>First Name</label>&nbsp;<span class="empty_text text-danger"></span>
+                            <input class="form-control" id="fname" name="fname" value="<?php echo (auth()->user() != null ? auth()->user()->fname : '');?>" required title="This field should not be left blank." readonly data-inputmask="'alias': 'text'" />
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label>Last Name</label>
-                            <input class="form-control" id="lname" name="lname" value="<?php echo (auth()->user() != null ? auth()->user()->lname : '');?>" readonly data-inputmask="'alias': 'text'" />
+                            <label>Last Name</label>&nbsp;<span class="empty_text text-danger"></span>
+                            <input class="form-control" id="lname" name="lname" value="<?php echo (auth()->user() != null ? auth()->user()->lname : '');?>" required  title="This field should not be left blank." readonly data-inputmask="'alias': 'text'" />
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label>Phone:</label>
-                            <input class="form-control" id="phone" name="phone" value="<?php echo (auth()->user() != null ? auth()->user()->contact : '');?>" readonly data-inputmask-alias="(+63) 9999-9999-99"/>
+                            <label>Phone:</label>&nbsp;<span class="empty_text text-danger"></span>
+                            <input class="form-control" id="phone" name="phone" value="<?php echo (auth()->user() != null ? auth()->user()->contact : '');?>" required title="This field should not be left blank." readonly data-inputmask-alias="(+63) 9999-9999-99"/>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label>Email:</label>
-                            <input class="form-control" id="email" name="email" value="<?php echo (auth()->user() != null ? auth()->user()->email : '');?>" readonly data-inputmask="'alias': 'email'" />
+                            <label>Email:</label>&nbsp;<span class="empty_text text-danger"></span>
+                            <input class="form-control" id="email" name="email" value="<?php echo (auth()->user() != null ? auth()->user()->email : '');?>" required title="This field should not be left blank." readonly data-inputmask="'alias': 'email'" />
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

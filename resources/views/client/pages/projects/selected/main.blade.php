@@ -103,7 +103,7 @@
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<article class="awesome-content">
 								<div class="awesome-header stylist-bottom-right">
-									<h3>{{$data['project']->proj_name}} <?php echo ($data['wish'] != null ? '<i class="fa fa-star"></i>' : '')?></h3>
+									<h3>{{$data['project']->proj_name}} <?php echo ($data['wish'] != false ? '<i class="fa fa-star"></i>' : '')?></h3>
 									<!-- <p><i class="fa fa-map-marker"></i> 530, Khan A Sabur Road, Khulna, Bangladesh</p> -->
 								</div>
 								<div class="awesome-footer">
