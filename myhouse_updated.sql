@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2022 at 06:08 PM
+-- Generation Time: Oct 08, 2022 at 04:59 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -187,8 +187,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `contact`, `fname`, `lname`, `role`, `email_status`, `status`, `email_verified_at`, `created_at`, `updated_at`) VALUES
-(26, 'dev.arthurmedellin@gmail.com', '$2y$10$ctYFoSMSDCEWCgXBNCt.uedorOulCo55WacsmEY85Zh3q0OnZV09m', '(+63) 1231-2312-31', 'Arthur', 'Medellin II', 0, 'verified', 'active', '2022-10-03 15:45:16', '2022-09-03 19:12:30', '2022-10-03 15:45:16'),
-(27, 'alberto.bugnot02@gmail.com', '$2y$10$peJPKwj2NT5DoACIRqSgc.6Oz5pj09a8Vg.Jky8SR1wn/CWmtHVp6', NULL, NULL, NULL, 0, 'verified', 'active', '2022-09-06 15:44:04', '2022-09-06 05:00:12', '2022-09-06 15:44:04');
+(26, 'dev.arthurmedellin@gmail.com', '$2y$10$ctYFoSMSDCEWCgXBNCt.uedorOulCo55WacsmEY85Zh3q0OnZV09m', '(+63) 1231-2312-31', 'Arthur', 'Medellin II', 1, 'verified', 'active', '2022-10-07 18:27:24', '2022-09-03 19:12:30', '2022-10-07 18:27:24'),
+(27, 'alberto.bugnot02@gmail.com', '$2y$10$ctYFoSMSDCEWCgXBNCt.uedorOulCo55WacsmEY85Zh3q0OnZV09m', NULL, NULL, NULL, 0, 'verified', 'active', '2022-10-07 17:58:29', '2022-09-06 05:00:12', '2022-09-06 15:44:04');
 
 -- --------------------------------------------------------
 
@@ -210,7 +210,9 @@ CREATE TABLE `user_wishlist` (
 
 INSERT INTO `user_wishlist` (`id`, `proj_id`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 3, 26, '2022-09-28 17:18:00', '2022-09-29 01:18:00'),
-(2, 5, 26, '2022-09-28 18:13:19', '2022-09-29 02:13:19');
+(2, 5, 26, '2022-09-28 18:13:19', '2022-09-29 02:13:19'),
+(3, 6, 26, '2022-10-05 08:39:06', '2022-10-05 16:39:06'),
+(4, 4, 26, '2022-10-05 08:39:06', '2022-10-05 16:40:33');
 
 -- --------------------------------------------------------
 
@@ -343,7 +345,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_wishlist`
 --
 ALTER TABLE `user_wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `verify_code`
