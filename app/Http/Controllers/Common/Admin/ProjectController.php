@@ -14,6 +14,7 @@ use App\Models\{
     ProjectDetailsModel             as PDM
 };
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\File;
 
 class ProjectController extends Controller
 {
@@ -118,17 +119,17 @@ class ProjectController extends Controller
             if ($request->has('myfile')) {
                 $image = $request->file('myfile');
                     $name = Str::slug($request->input('image_name')).'_'.time();
-                    $folder = '/uploads/images/';
-                    $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
-                    $image_name =  $this->uploadOne($image, $folder, 'public', $name);
+                    $folder = public_path().'/uploads/images/';
+                    $fileName = $name. '.' . $image->getClientOriginalExtension();
+                    $image_name = $image->move($folder,$fileName);
                     $data = [
-                        'image_path' => $filePath
+                        'image_path' => $fileName
                     ];
                 $update = PIM::where('id', $request->pic_id)->update($data);
                     if($update){
-                        if(Storage::disk('public')->exists($check->image_path)){
-                            if(Storage::disk('public')->delete($check->image_path)) {
-                                    return responseSuccess('Status Deleted');
+                        if (File::exists(public_path('uploads/images/'.$check->image_path))) {
+                            if(File::delete(public_path('uploads/images/'.$check->image_path))) {
+                                return responseSuccess('Status Deleted');
                             }else{
                                 return responseFail('Data not found!');
                             }
@@ -171,19 +172,17 @@ class ProjectController extends Controller
         if ($request->has('file')) {
             $image = $request->file('file');
             $name = Str::slug($request->input('file')).'_'.time();
-            $folder = '/uploads/images/';
-            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
-            $image_name =  $this->uploadOne($image, $folder, 'public', $name);
-            // $image_path = Storage::disk('public')->put('uploads/images', $request->file('file'));
-            // $request['image_path'] = $image_path;
+            $folder = public_path().'/uploads/images/';
+            $fileName = $name. '.' . $image->getClientOriginalExtension();
+            $image_name = $image->move($folder,$fileName);
             $data = [
                 'proj_id' => $request->projID,
-                'image_path' => $filePath
+                'image_path' => $fileName
             ];
             PIM::updateOrCreate($data);
 
 
-            return ['image' => $image_name];
+            return responseSuccess('Image Uploaded!');
         }
     }
 

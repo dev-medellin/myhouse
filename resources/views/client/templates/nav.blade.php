@@ -67,97 +67,9 @@
             <div class="close-nav"></div> <!-- Close the menu for mobile -->				
             <ul class="main-nav">
                 <li <?php echo $data['page'] == 'home' ? 'class="active"' : '';?> ><a href="{{url('/')}}">Home</a></li>
-                <li><a href="overview.html" style="color:red"></a></li>
-                <!-- <li><a href="#" style="color:red">Dropdown</a>
-                    <ul class="sub-nav">
-                        <li><a href="#">Dropdown Menu 1</a></li>
-                        <li><a href="#">Dropdown Menu 2</a></li>
-                        <li><a href="#">Dropdown Menu 3</a></li>
-                        <li><a href="#">Dropdown Menu 4</a></li>
-                        <li><a href="#">Dropdown Menu 5</a></li>
-                        <li><a href="#">View Right Submenu</a>
-                            <ul class="sub-nav">
-                                <li><a href="#">More Right Submenu</a>
-                                    <ul class="sub-nav">
-                                        <li><a href="#">Submenu Item 1</a></li>
-                                        <li><a href="#">Submenu Item 2</a></li>
-                                        <li><a href="#">Submenu Item 3</a></li>
-                                        <li><a href="#">Submenu Item 4</a></li>
-                                        <li><a href="#">Submenu Item 5</a></li>
-                                        <li><a href="#">Submenu Item 6</a></li>
-                                        <li><a href="#">Submenu Item 7</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Many Right Submenu</a>
-                                    <ul class="sub-nav">
-                                        <li><a href="#">Another Item 1</a></li>
-                                        <li><a href="#">Another Item 2</a></li>
-                                        <li><a href="#">Another Item 3</a></li>
-                                        <li><a href="#">Another Item 4</a></li>
-                                        <li><a href="#">Another Item 5</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">More Right Submenu</a>
-                                    <ul class="sub-nav">
-                                        <li><a href="#">Submenu Item 1</a></li>
-                                        <li><a href="#">Submenu Item 2</a></li>
-                                        <li><a href="#">Submenu Item 3</a></li>
-                                        <li><a href="#">Submenu Item 4</a></li>
-                                        <li><a href="#">Submenu Item 5</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Many Right Submenu</a>
-                                    <ul class="sub-nav">
-                                        <li><a href="#">Submenu Item 1</a></li>
-                                        <li><a href="#">Submenu Item 2</a></li>
-                                        <li><a href="#">Submenu Item 3</a></li>
-                                        <li><a href="#">Submenu Item 4</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Look Right Submenu</a>
-                            <ul class="sub-nav">
-                                <li><a href="#">More Right Submenu</a>
-                                    <ul class="sub-nav">
-                                        <li><a href="#">Submenu Item 1</a></li>
-                                        <li><a href="#">Submenu Item 2</a></li>
-                                        <li><a href="#">Submenu Item 3</a></li>
-                                        <li><a href="#">Submenu Item 4</a></li>
-                                        <li><a href="#">Submenu Item 5</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Many Right Submenu</a>
-                                    <ul class="sub-nav">
-                                        <li><a href="#">Another Item 1</a></li>
-                                        <li><a href="#">Another Item 2</a></li>
-                                        <li><a href="#">Another Item 3</a></li>
-                                        <li><a href="#">Another Item 4</a></li>
-                                        <li><a href="#">Another Item 5</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">More Right Submenu</a>
-                                    <ul class="sub-nav">
-                                        <li><a href="#">Submenu Item 1</a></li>
-                                        <li><a href="#">Submenu Item 2</a></li>
-                                        <li><a href="#">Submenu Item 3</a></li>
-                                        <li><a href="#">Submenu Item 4</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Many Right Submenu</a>
-                                    <ul class="sub-nav">
-                                        <li><a href="#">Submenu Item 1</a></li>
-                                        <li><a href="#">Submenu Item 2</a></li>
-                                        <li><a href="#">Submenu Item 3</a></li>
-                                        <li><a href="#">Submenu Item 4</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li> -->
+                <li><a href="{{url('/about')}}" style="color:red">About</a></li>
                 <li <?php echo $data['page'] == 'project' ? 'class="active"' : '';?> ><a href="{{url('/projects')}}">Projects</a></li>
-                <li><a href="#" style="color:red">Pages</a>
+                <!-- <li><a href="#" style="color:red">Pages</a>
                     <ul class="sub-nav">
                         <li><a href="overview.html">Overview</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -167,13 +79,15 @@
                         <li><a href="single.html">Right Sidebar Page</a></li>
                         <li class="active"><a href="index.html">Home</a></li>
                     </ul>
-                </li>
-                <li><a href="single.html" style="color:red">Single</a></li>
-                <li><a href="blog.html" style="color:red">Blog</a></li>
+                </li> -->
+                <li <?php echo $data['page'] == 'contact' ? 'class="active"' : '';?>><a href="{{url('/contact')}}" >Contact</a></li>
                 @if(Auth::check())
                 <li><a href="#">Welcome, {{Auth::user()->fname}}</a>
                     <ul class="sub-nav" id="myNav">
                         <li><a href="{{url('users/mypage')}}" >My Page</a></li>
+                        @if(Auth::user()->role == 1)
+                        <li><a href="{{url('admin/dashboard')}}" >Admin Panel</a></li>
+                        @endif
                         <li><a href="javascript:void(0)" class="logoutBtn" >Logout</a></li>
                     </ul>
                 </li>

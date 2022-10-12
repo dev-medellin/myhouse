@@ -65,29 +65,29 @@
 							@if($data['image'])
 								@foreach($data['image'] as $image)
 								<div class="items">
-									<div class="img-pot" data-bg-img="{{url('storage/').$image->image_path}}"></div>
+									<div class="img-pot" data-bg-img="{{asset('storage/').$image->image_path}}"></div>
 								</div>
 								@endforeach
 							@else
-						@endif
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
-							</div>
+								<div class="items">
+									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
+								</div>
+								<div class="items">
+									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
+								</div>
+								<div class="items">
+									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
+								</div>
+								<div class="items">
+									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
+								</div>
+								<div class="items">
+									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
+								</div>
+								<div class="items">
+									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
+								</div>
+							@endif
 						@endisset
 					</div> <!-- /#showcase-thumb-slider -->
 				</div> <!-- /#showcase-main-thumb-slider-section --> 

@@ -6,11 +6,13 @@ use App\Http\Controllers\Common\Admin\ProjectController;
 use App\Http\Controllers\Common\Client\ProjectController as PCC;
 use App\Http\Controllers\CaptchaValidationController;
 use App\Http\Controllers\Common\Admin\UsersInfoController;
+use App\Http\Controllers\Common\Client\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\Client\HomeController;
 use App\Http\Controllers\Common\Client\UserController;
 use App\Http\Controllers\Modals;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,8 +86,10 @@ Route::prefix('admin')->middleware('admin')->group(function() {
 Route::get('/', [HomeController::class,'index'])->name('/');
 Route::get('/projects',                 [PCC::class,'index']);
 Route::get('/projects/{slug}',          [PCC::class,'selected']);
+Route::get('/contact',                  [ContactController::class,'index']);
 Route::post('/price',                   [PCC::class,'getPrice']);
 Route::post('/check/user',              [AuthController::class,'checkUser']);
+Route::post('/contact',                 [ContactController::class,'sumbitContact']);
 
 
 Route::prefix('modal')->group(function () {

@@ -402,7 +402,7 @@ function postWishList(){
    var projectID = $('#projectID').val();
   var   pathUrl               = base_url+"/users/wishlist",
    method            	 = "POST",
-   dtype 	             = "json"
+   dtype 	             = "json",
    rdata 	             = {projectID:projectID}; 
 
    $.ajax({
@@ -433,6 +433,55 @@ function timerset(){
       }
       timeleft -= 1;
       }, 1000);
+}
+
+$('#contactForm').on('submit',function(e){
+
+   e.preventDefault();
+   var   pathUrl               = base_url+"/check/user",
+   method            	 = "POST",
+   dtype 	             = "json";
+   // rdata 	             = $(this).serialize(); 
+
+   $.ajax({
+   type: method,  
+   url: pathUrl,
+   dataType: dtype,
+   // data: rdata,
+   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+   success: function(response){  
+         if(response.status == "SUCCESS"){
+            getContact();
+         }else{
+            $('#home-tab').trigger('click')
+            $('#loginModal').modal('show');
+         }
+      },
+   });
+});
+
+function getContact(){
+   var   pathUrl               = base_url+"/contact",
+   method            	       = "POST",
+   dtype 	                   = "json",
+   rdata 	                   = $(this).serializeArray(); 
+
+
+
+   $.ajax({
+   type: method,  
+   url: pathUrl,
+   dataType: dtype,
+   data: rdata,
+   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+   success: function(response){  
+         if(response.status == "SUCCESS"){
+            
+         }else{
+            
+         }
+      },
+   });
 }
 
 

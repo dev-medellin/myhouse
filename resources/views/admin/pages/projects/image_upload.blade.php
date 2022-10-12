@@ -1,4 +1,4 @@
-    <div class="card-body">
+<div class="card-body">
         <h4 class="card-title">Upload New Images</h4>
         <div class="dropzone" name="file" id="my-awesome-dropzone"></div>
 
@@ -8,7 +8,7 @@
         <div class="card-columns">
             @foreach($data['images'] as $key)
                 <div class="card">
-                    <img src="{{url('storage/').$key->image_path}}" style="min-height:350px; max-height:350px; min-width:350px; max-width:500px"alt="Card image cap" class="card-img-top">
+                    <img src="{{url('/uploads/images/'.$key->image_path.'')}}" style="min-height:350px; max-height:350px; min-width:350px; max-width:500px"alt="Card image cap" class="card-img-top">
                     <div class="card-body">
                         <div class="float-left pb-3">
                             <div id="mybutton">

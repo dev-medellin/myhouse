@@ -21,6 +21,8 @@ class AuthController extends Controller
 
         $request->validate([
             'passwordInput' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
             'emailInput' => 'required|email',
             // 'captcha' => 'required|captcha'
         ]);
@@ -35,6 +37,8 @@ class AuthController extends Controller
             $query = UsersModel::create([
                 'email'     => $request->emailInput,
                 'password' => $password,
+                'fname'    => $request->fname,
+                'lname'    => $request->lname
             ]);
 
             $verify = Verify::where('email', '=', $request->emailInput)->first();
@@ -115,6 +119,6 @@ class AuthController extends Controller
     }
 
     public function checkUser(){
-        return Auth::user() != null ? responseSuccess('Price Successfully Loaded!', Auth::user()->id): responseFail('Data not found!');;
+        return Auth::user() != null ? responseSuccess('User loaded!', Auth::user()->id): responseFail('Data not found!');;
     }
 }
