@@ -29,8 +29,8 @@
                                 <td>{{$proj->id}}</td>
                                 <td>{{$proj->proj_name}}</td>
                                 <td>{{$proj->proj_area}} sqm.</td>
-                                <td>{{$proj->type}}</td>
-                                <td>$1500</td>
+                                <td>{{isset($proj->proj_type) && $proj->proj_type == 1 ? 'Single Stories' : 'Two Stories'}}</td>
+                                <td>₱{{number_format($proj->proj_est_price, 2, '.',',')}}</td>
                                 <td>
                                   <label class="badge <?php echo ($proj->status == 'active' ? 'badge-success' : 'badge-danger');?>">{{ucfirst($proj->status)}}</label>
                                 </td>

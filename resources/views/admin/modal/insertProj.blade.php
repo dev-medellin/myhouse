@@ -15,27 +15,27 @@
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Project Area:</label>
-                    <input type="text" class="form-control" id="proj_area" name="proj_area">
+                    <input type="text" class="form-control" id="proj_area" name="proj_area" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                 </div>
                 <div class="form-group">
                     <label for="exampleSelectGender">Project Type</label>
                      <select id="proj_type" name="proj_type" class="form-control">
-                        <option value="1">Type1</option> 
-                        <option value="2">Type2</option>
+                        <option value="1">Single Stories</option> 
+                        <option value="2">Two Stories</option>
                     </select>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-4 col-md-4">
                         <label for="exampleSelectGender">Bed Room</label>
-                        <input type="text" class="form-control" id="bed_room" name="bed_room">
+                        <input type="text" class="form-control" id="bed_room" name="bed_room" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                     <div class="col-lg-4 col-md-4">
                         <label for="exampleSelectGender">Bathroom</label>
-                        <input type="text" class="form-control" id="bath_room" name="bath_room">
+                        <input type="text" class="form-control" id="bath_room" name="bath_room" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                     <div class="col-lg-4 col-md-4">
                         <label for="exampleSelectGender">Story</label>
-                        <input type="text" class="form-control" id="story" name="story">
+                        <input type="text" class="form-control" id="story" name="story" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                 </div>
                 <div class="form-group">

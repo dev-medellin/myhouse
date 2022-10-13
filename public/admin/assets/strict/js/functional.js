@@ -268,3 +268,41 @@ $('#myfile').change(function(evt) {
         }
       });
 });
+
+$('#editInfoProj').on('submit', function(e){
+    e.preventDefault();
+    var formData = new FormData(this);
+
+    var   pathUrl            = base_url+"/admin/projects/update/info",
+    method            	 = "POST",
+    dtype 	             = "json",
+    rdata 	             = formData; 
+
+    $.ajax({
+        type: method,  
+        url: pathUrl,
+        dataType: dtype,
+        data: rdata,
+        cache: false,
+        contentType: false,
+        processData: false,
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+        success: function(response){  
+            if(response.status == "SUCCESS"){
+                // swal(
+                //     `${response.status}`,
+                //     `${response.message}`,
+                //     'success'
+                // )
+                // setTimeout(() => {
+                //     location.reload();
+                // }, 3000)
+            }else{
+                // alert(response.message);
+            }
+        },error:function(){
+            // $.toast({heading:"Failed",text:`Please fillup the missing attributes`,position:"bottom-right",icon:"error",showHideTransition:"slide",loaderBg:"#f2a654"})
+        }
+    });
+
+})

@@ -41,7 +41,7 @@ class ProjectController extends Controller
             'proj_type'             => $request->proj_type,
             'bed_room'              => $request->bed_room,
             'bath_room'             => $request->bath_room,
-            'story'                 => $request->story,
+            'stories'                 => $request->story,
             'proj_slug'             => Str::slug($request->proj_name,"-"),
             'proj_est_price'        => '800,000',
             'status'                => 'inactive',
@@ -186,6 +186,49 @@ class ProjectController extends Controller
         }
     }
 
+    public function updateInfo(Request $request){
+
+        if ($request->has('file')) {
+            $image = $request->file('file');
+            $name = Str::slug($request->input('file')).'thumbnail_'.time();
+            $folder = public_path().'/thumbnail';
+            $fileName = $name. '.' . $image->getClientOriginalExtension();
+            $image_name = $image->move($folder,$fileName);
+            $data = [
+                'proj_name'             => $request->proj_name,
+                'proj_area'             => $request->proj_area,
+                'proj_type'             => $request->proj_type,
+                'thumbnail'             => $fileName,
+                'bed_room'              => $request->proj_bed_room,
+                'bath_room'             => $request->proj_bath_room,
+                'stories'                 => $request->proj_stories,
+                'proj_slug'             => Str::slug($request->proj_name,"-"),
+                'proj_est_price'        => $request->proj_est_price,
+                'proj_description'      => $request->proj_desc
+            ];
+            Project::where('id',$request->proj_id)->where('proj_name',$request->proj_name)->update($data);
+
+
+            return responseSuccess('Image Uploadedssss!');
+        }else{
+            $data = [
+                    'proj_name'             => $request->proj_name,
+                    'proj_area'             => $request->proj_area,
+                    'proj_type'             => $request->proj_type,
+                    'bed_room'              => $request->proj_bed_room,
+                    'bath_room'             => $request->proj_bath_room,
+                    'stories'                 => $request->proj_stories,
+                    'proj_slug'             => Str::slug($request->proj_name,"-"),
+                    'proj_est_price'        => $request->proj_est_price,
+                    'proj_description'      => $request->proj_desc
+            ];
+            Project::where('id',$request->proj_id)->where('proj_name',$request->proj_name)->update($data);
+
+
+            return responseSuccess('Image Uploaded!');
+        }
+    }
+
 
 
 
@@ -213,6 +256,7 @@ class ProjectController extends Controller
             'js/functional.js',
             'js/summernote.js',
             'js/dropzone.js',
+            'js/file-upload.js'
         ];
 
         return $data;

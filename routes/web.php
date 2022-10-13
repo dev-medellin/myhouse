@@ -63,6 +63,7 @@ Route::prefix('admin')->middleware('admin')->group(function() {
         Route::post('delete/image',                 [ProjectController::class,'imageDelete']);
         Route::post('update/image',                 [ProjectController::class,'imageUpdate']);
         Route::post('search',                       [ProjectController::class,'searchProj']);
+        Route::post('update/info',                  [ProjectController::class,'updateInfo']);
         
 
 

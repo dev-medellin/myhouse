@@ -1,11 +1,11 @@
 (function($) {
     
     "use strict";
-    var bed_room = sessionStorage.getItem('bed_room');
-    var bath_room = sessionStorage.getItem('bath_room');
-    var stories = sessionStorage.getItem('stories');
-    var price_min = sessionStorage.getItem('price_min');
-    var price_max = sessionStorage.getItem('price_max');
+    var bed_room = localStorage.getItem('bed_room');
+    var bath_room = localStorage.getItem('bath_room');
+    var stories = localStorage.getItem('stories');
+    var price_min = localStorage.getItem('price_min');
+    var price_max = localStorage.getItem('price_max');
     //Begin Loading Handler
     $(window).load(function() {
         // var bed_room = sessionStorage.getItem('bed_room');

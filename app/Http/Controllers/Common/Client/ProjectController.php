@@ -34,36 +34,36 @@ class ProjectController extends Controller
             $projects  = Project::select("*")
                             ->when($request->has('bed_room'), function ($query) use ($request) {
                                if($request->bed_room >= 6){
-                                $query->orWhere('bed_room','>',5);
+                                $query->where('bed_room','>',5);
                                }else{
-                                $query->orWhere('bed_room', $request->bed_room);
+                                $query->where('bed_room', $request->bed_room);
                                }
                             })
                             ->when($request->has('bath_room'), function ($query) use ($request) {
                                 if($request->bath_room >= 6){
-                                    $query->orWhere('bath_room','>',5);
+                                    $query->where('bath_room','>',5);
                                    }else{
-                                    $query->orWhere('bath_room', $request->bath_room);
+                                    $query->where('bath_room', $request->bath_room);
                                    }
                             })
                             ->when($request->has('stories'), function ($query) use ($request) {
                                 if($request->stories >= 6){
-                                    $query->orWhere('stories','>',5);
+                                    $query->where('stories','>',5);
                                    }else{
-                                    $query->orWhere('stories', $request->stories);
+                                    $query->where('stories', $request->stories);
                                    }
                             })
                             ->when($request->has('price_min') && $request->has('price_max'), function ($query) use ($request) {
                                 $price_min = str_replace(str_split(',$'), '',$request->price_min);
                                 $price_max = str_replace(str_split(',$'), '',$request->price_max);
-                                $query->orWhere('proj_est_price',">=", $price_min)->where('proj_est_price',"<=", $price_max);
+                                $query->where('proj_est_price',">=", $price_min)->where('proj_est_price',"<=", $price_max);
                                 // $query->where('')
                             })
                             ->where('status','active')
                             ->get();
 
                             if ( count($projects) == 0 ) {
-                                $projects  = Project::select("*")->where('status','active')->get();
+                                // $projects  = Project::select("*")->where('status','active')->get();
                             }
 
                             $totalGroup = count($projects);
@@ -73,6 +73,7 @@ class ProjectController extends Controller
                             $projects = new LengthAwarePaginator($projects->forPage($page, $perPage), $totalGroup, $perPage, $page, [
                                 'path' => Paginator::resolveCurrentPath(),
                                 'pageName' => 'page',
+                                'project_count' => count($projects)
                             ]);
 
                             // $projects = $projects->paginate(6);

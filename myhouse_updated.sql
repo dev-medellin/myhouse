@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2022 at 04:59 AM
+-- Generation Time: Oct 13, 2022 at 06:47 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `myhouse`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `full_name` varchar(255) DEFAULT NULL,
+  `message` longtext DEFAULT NULL,
+  `phone_no` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -74,6 +92,7 @@ CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `proj_name` varchar(255) NOT NULL,
   `proj_area` varchar(255) NOT NULL,
+  `thumbnail` varchar(255) NOT NULL,
   `proj_type` int(11) NOT NULL,
   `proj_slug` varchar(255) NOT NULL,
   `proj_est_price` varchar(50) NOT NULL,
@@ -90,13 +109,13 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `proj_name`, `proj_area`, `proj_type`, `proj_slug`, `proj_est_price`, `status`, `bed_room`, `bath_room`, `stories`, `proj_description`, `created_at`, `updated_at`) VALUES
-(3, 'Single story Simple Style', '50', 1, 'single-story-simple-style', '800000', 'active', 7, 1, 1, 'Claritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasd', '2022-09-19 07:25:53', '2022-10-03 15:02:16'),
-(4, 'Single-story Simple Style2', '50', 1, 'single-story-simple-style2', '700000', 'active', 1, 2, 1, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:10:40', '2022-09-21 15:10:40'),
-(5, 'Single-story Simple Style3', '50', 1, 'single-story-simple-style3', '800000', 'active', 2, 2, 2, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:11:05', '2022-09-21 15:11:05'),
-(6, 'Two-storey Simple Style', '50', 2, 'two-storey-simple-style', '800000', 'active', 2, 2, 2, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:11:19', '2022-09-21 15:11:19'),
-(7, 'Two-storey Simple Style2', '50', 2, 'two-storey-simple-style2', '800000', 'active', 3, 3, 2, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:11:36', '2022-09-21 15:11:36'),
-(8, 'Two-storey Simple Style3', '50', 2, 'two-storey-simple-style3', '910000', 'active', 5, 4, 2, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:11:50', '2022-09-21 15:11:50');
+INSERT INTO `projects` (`id`, `proj_name`, `proj_area`, `thumbnail`, `proj_type`, `proj_slug`, `proj_est_price`, `status`, `bed_room`, `bath_room`, `stories`, `proj_description`, `created_at`, `updated_at`) VALUES
+(3, 'Single story Simple Style', '50', 'thumbnail_1665679173.jpg', 1, 'single-story-simple-style', '800000', 'active', 7, 1, 1, 'Claritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasdClaritas est etiam processus dynamicus, qui sequitur mutationem asdasdasdasd', '2022-09-19 07:25:53', '2022-10-13 16:39:33'),
+(4, 'Single-story Simple Style2', '50', '', 1, 'single-story-simple-style2', '700000', 'active', 1, 2, 1, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:10:40', '2022-09-21 15:10:40'),
+(5, 'Single-story Simple Style3', '50', '', 1, 'single-story-simple-style3', '800000', 'active', 2, 2, 2, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:11:05', '2022-09-21 15:11:05'),
+(6, 'Two-storey Simple Style', '50', '', 2, 'two-storey-simple-style', '800000', 'active', 2, 2, 2, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:11:19', '2022-09-21 15:11:19'),
+(7, 'Two-storey Simple Style2', '50', '', 2, 'two-storey-simple-style2', '800000', 'active', 3, 3, 2, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:11:36', '2022-09-21 15:11:36'),
+(8, 'Two-storey Simple Style3', '50', '', 2, 'two-storey-simple-style3', '910000', 'active', 5, 4, 2, 'Claritas est etiam processus dynamicus, qui sequitur mutationem', '2022-09-21 07:11:50', '2022-09-21 15:11:50');
 
 -- --------------------------------------------------------
 
@@ -143,9 +162,7 @@ CREATE TABLE `project_images` (
 --
 
 INSERT INTO `project_images` (`id`, `proj_id`, `image_path`, `created_at`, `updated_at`) VALUES
-(12, 3, '/uploads/images/_1664809063.png', '2022-09-21 06:08:01', '2022-10-03 14:57:44'),
-(13, 3, '/uploads/images/_1663771212.jpg', '2022-09-21 06:40:12', '2022-09-21 14:40:12'),
-(14, 3, '/uploads/images/_1663771213.png', '2022-09-21 06:40:13', '2022-09-21 14:40:13');
+(24, 3, '_1665587663.png', '2022-10-12 07:13:59', '2022-10-12 15:14:23');
 
 -- --------------------------------------------------------
 
@@ -187,8 +204,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `contact`, `fname`, `lname`, `role`, `email_status`, `status`, `email_verified_at`, `created_at`, `updated_at`) VALUES
-(26, 'dev.arthurmedellin@gmail.com', '$2y$10$ctYFoSMSDCEWCgXBNCt.uedorOulCo55WacsmEY85Zh3q0OnZV09m', '(+63) 1231-2312-31', 'Arthur', 'Medellin II', 1, 'verified', 'active', '2022-10-07 18:27:24', '2022-09-03 19:12:30', '2022-10-07 18:27:24'),
-(27, 'alberto.bugnot02@gmail.com', '$2y$10$ctYFoSMSDCEWCgXBNCt.uedorOulCo55WacsmEY85Zh3q0OnZV09m', NULL, NULL, NULL, 0, 'verified', 'active', '2022-10-07 17:58:29', '2022-09-06 05:00:12', '2022-09-06 15:44:04');
+(26, 'dev.arthurmedellin@gmail.com', '$2y$10$ctYFoSMSDCEWCgXBNCt.uedorOulCo55WacsmEY85Zh3q0OnZV09m', '(+63) 1231-2312-31', 'Arthur', 'Medellin II', 1, 'verified', 'active', '2022-10-10 12:59:20', '2022-09-03 19:12:30', '2022-10-07 18:27:24'),
+(27, 'alberto.bugnot02@gmail.com', '$2y$10$ctYFoSMSDCEWCgXBNCt.uedorOulCo55WacsmEY85Zh3q0OnZV09m', NULL, NULL, NULL, 0, 'verified', 'active', '2022-10-07 17:58:29', '2022-09-06 05:00:12', '2022-09-06 15:44:04'),
+(28, 'hasike7805@deitada.com', '$2y$10$RLdX.BBkkfE.p6LQikyDFuz/F134WL.YkvSxXemV6PixVdwYsmrfW', NULL, 'Test', 'Test', 0, 'verified', 'active', '2022-10-08 21:20:37', '2022-10-08 13:20:08', '2022-10-08 21:20:37');
 
 -- --------------------------------------------------------
 
@@ -234,11 +252,18 @@ CREATE TABLE `verify_code` (
 --
 
 INSERT INTO `verify_code` (`id`, `user_id`, `email`, `code`, `created_at`, `updated_at`) VALUES
-(3, 26, 'dev.arthurmedellin@gmail.com', 3599, '2022-10-03 07:35:36', '2022-10-03 15:45:08');
+(3, 26, 'dev.arthurmedellin@gmail.com', 3599, '2022-10-03 07:35:36', '2022-10-03 15:45:08'),
+(5, 28, 'hasike7805@deitada.com', 1544, '2022-10-08 13:20:08', '2022-10-08 21:20:08');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `materials`
@@ -300,6 +325,12 @@ ALTER TABLE `verify_code`
 --
 
 --
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
@@ -315,7 +346,7 @@ ALTER TABLE `password_code`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `project_details`
@@ -327,7 +358,7 @@ ALTER TABLE `project_details`
 -- AUTO_INCREMENT for table `project_images`
 --
 ALTER TABLE `project_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `project_type`
@@ -339,7 +370,7 @@ ALTER TABLE `project_type`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `user_wishlist`
@@ -351,7 +382,7 @@ ALTER TABLE `user_wishlist`
 -- AUTO_INCREMENT for table `verify_code`
 --
 ALTER TABLE `verify_code`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

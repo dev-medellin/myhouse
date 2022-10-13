@@ -299,11 +299,11 @@ $("#searchBtn").on('click',function(){
       var price_min    = $('.price_min').val();
       var price_max    = $('.price_max').val();
 
-      sessionStorage.setItem('bed_room', bed_room);
-      sessionStorage.setItem('bath_room', bath_room);
-      sessionStorage.setItem('stories', stories);
-      sessionStorage.setItem('price_min', price_min);
-      sessionStorage.setItem('price_max', price_max);
+      localStorage.setItem('bed_room', bed_room);
+      localStorage.setItem('bath_room', bath_room);
+      localStorage.setItem('stories', stories);
+      localStorage.setItem('price_min', price_min);
+      localStorage.setItem('price_max', price_max);
 });
 
 
