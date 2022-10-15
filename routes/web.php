@@ -79,6 +79,7 @@ Route::prefix('admin')->middleware('admin')->group(function() {
 
     Route::group(['prefix' => 'users'], function(){
         Route::get('edit/{id}',                         [UsersInfoController::class,'editUsers']);
+        Route::post('/update',                          [UsersInfoController::class,'updateInfo']);
     });
 });
 

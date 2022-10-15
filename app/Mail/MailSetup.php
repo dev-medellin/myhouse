@@ -47,13 +47,17 @@ class MailSetup extends Mailable
                 $page = "emails.customer.verify_password_code";
             break;
 
+            case 'contact_message':
+                $page = "emails.admin.contact_message";
+            break;
+
             default:
                 $page = "emails.templates.".$this->mail_template;
             break;
         }
 
         $sender     = (isset($this->details['sender']) ? $this->details['sender'] : '');
-        $reply_to   = ($this->receiver == 'myhouse.officialinfo@gmail.com' ? $this->details['sender'] : noReplyEmail($this->receiver, $sender));
+        $reply_to   = ($this->receiver == "realstate.myhouse@gmail.com" ? $this->details['sender'] : noReplyEmail($this->receiver, $sender));
         return $this
             ->view($page)
              ->from($reply_to,'MYHouse')

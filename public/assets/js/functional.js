@@ -3,6 +3,7 @@
 $(document).ready(function(){
 
    var base_url = $('#url').val();
+   var text_contact = '';
 
    sessionStorage.clear()
    //#region URL Function
@@ -29,11 +30,11 @@ $(document).ready(function(){
    }
    //#region AuthFunction
       $('.loginBtn').on('click',function(event){
-      event.preventDefault();
-      $('#verifyModal').modal('hide');
-      $('#home-tab').trigger('click')
-      // Put the results in a div
-      $('#loginModal').modal('show');
+         event.preventDefault();
+         $('#verifyModal').modal('hide');
+         $('#home-tab').trigger('click')
+         // Put the results in a div
+         $('#loginModal').modal('show');
       });
       
       $('#registerForm').on('submit', function(event){
@@ -167,6 +168,7 @@ $(document).ready(function(){
                success: function(response){
                   if(response.status == "SUCCESS"){
                      alert(response.message);
+                     localStorage.removeItem('text_contact');
                      setTimeout(function(){// wait for 5 secs(2)
                         location.reload(); // then reload the page.(3)
                   }, 2000); 
@@ -212,7 +214,6 @@ $(document).ready(function(){
             $(".empty_text").html("");
          }
      });
-   alert();
    })
 
    $('#forms-edit').on('submit',function(e){
@@ -298,12 +299,35 @@ $("#searchBtn").on('click',function(){
       var stories    = $('#stories').val();
       var price_min    = $('.price_min').val();
       var price_max    = $('.price_max').val();
+      var sq_area    = $('#sq_area').val();
 
       localStorage.setItem('bed_room', bed_room);
       localStorage.setItem('bath_room', bath_room);
       localStorage.setItem('stories', stories);
       localStorage.setItem('price_min', price_min);
       localStorage.setItem('price_max', price_max);
+      localStorage.setItem('sq_area', sq_area);
+});
+
+$('#clearSearch').on('click', function(e){
+   e.preventDefault();
+   localStorage.removeItem('bed_room');
+   localStorage.removeItem('bath_room');
+   localStorage.removeItem('stories');
+   localStorage.removeItem('price_min');
+   localStorage.removeItem('price_max');
+   localStorage.removeItem('sq_area');
+
+   $('#bed_room').val("");
+   $('#bath_room').val("");
+   $('#stories').val("");
+   $('#sq_area').val("");
+
+   var check_url = window.location.href;
+
+   if(check_url == base_url+"/projects"){
+      window.location.href = base_url+"/projects";
+   }
 });
 
 
@@ -437,6 +461,8 @@ function timerset(){
 
 $('#contactForm').on('submit',function(e){
 
+   text_contact = $('#message').val();
+
    e.preventDefault();
    var   pathUrl               = base_url+"/check/user",
    method            	 = "POST",
@@ -453,6 +479,7 @@ $('#contactForm').on('submit',function(e){
          if(response.status == "SUCCESS"){
             getContact();
          }else{
+            localStorage.setItem('text_contact', text_contact);
             $('#home-tab').trigger('click')
             $('#loginModal').modal('show');
          }
@@ -461,10 +488,11 @@ $('#contactForm').on('submit',function(e){
 });
 
 function getContact(){
+   
    var   pathUrl               = base_url+"/contact",
    method            	       = "POST",
    dtype 	                   = "json",
-   rdata 	                   = $(this).serializeArray(); 
+   rdata 	                   = $('#contactForm').serialize(); 
 
 
 
@@ -476,7 +504,7 @@ function getContact(){
    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
    success: function(response){  
          if(response.status == "SUCCESS"){
-            
+            $('#message').val("");
          }else{
             
          }

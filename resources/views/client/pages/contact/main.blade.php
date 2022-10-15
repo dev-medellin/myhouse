@@ -45,7 +45,7 @@
 										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 											<div class="form-group">
 												<div class="text-area">
-													<textarea name="message" class="form-control" placeholder="Text"></textarea>
+													<textarea name="message" id="message" class="form-control" placeholder="Text"></textarea>
 												</div>
 											</div>
 										</div> <!-- /.col- -->

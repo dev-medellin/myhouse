@@ -17,6 +17,7 @@
       var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
       search_input.attr('placeholder', 'Search');
       search_input.removeClass('form-control-sm');
+      search_input.addClass('filter_search_data');
       // LENGTH - Inline-Form control
       var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
       length_sel.removeClass('form-control-sm');

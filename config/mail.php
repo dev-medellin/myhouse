@@ -3,7 +3,7 @@
 $mail_driver     = 'smtp';
 $mail_host       = 'smtp.gmail.com'; //'smtp.googlemail.com';
 $mail_port       =  587;       //465;
-$mail_username   = 'realstate.myhouse@gmail.com ';
+$mail_username   = 'realstate.myhouse@gmail.com';
 $mail_password   = 'spowwtifueqqtluz';
 $mail_encryption =  'tls'; //'ssl';
 

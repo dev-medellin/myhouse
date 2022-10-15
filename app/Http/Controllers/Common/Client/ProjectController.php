@@ -54,12 +54,13 @@ class ProjectController extends Controller
                                    }
                             })
                             ->when($request->has('price_min') && $request->has('price_max'), function ($query) use ($request) {
-                                $price_min = str_replace(str_split(',$'), '',$request->price_min);
-                                $price_max = str_replace(str_split(',$'), '',$request->price_max);
-                                $query->where('proj_est_price',">=", $price_min)->where('proj_est_price',"<=", $price_max);
+                                $price_min = str_replace(str_split(',₱'), '',$request->price_min);
+                                $price_max = str_replace(str_split(',₱'), '',$request->price_max);
+                                $query->whereBetween('proj_est_price',[$price_min, $price_max+1]);
                                 // $query->where('')
                             })
-                            ->where('status','active')
+                            ->where('status',"active")
+                            ->where('thumbnail',"!=","")
                             ->get();
 
                             if ( count($projects) == 0 ) {
@@ -114,9 +115,17 @@ class ProjectController extends Controller
     }
 
     public function getPrice(){
-        $priceMin = Project::where('status','active')->orderBy('proj_est_price','asc')->value('proj_est_price');
-        $priceMax = Project::where('status','active')->orderBy('proj_est_price','desc')->value('proj_est_price');
-        return responseSuccess('Price Successfully Loaded!',['priceMin' => $priceMin, 'priceMax' => $priceMax]);
+        $priceMin = Project::where('status','active')->min('proj_est_price');
+        $priceMax = Project::where('status','active')->max('proj_est_price');
+
+        if($priceMax < $priceMin){
+            $price_min_edited = $priceMax;
+            $price_max_edited = $priceMin;
+        }else{
+            $price_max_edited = $priceMax;
+            $price_min_edited = $priceMin;
+        }
+        return responseSuccess('Price Successfully Loaded!',['priceMin' => $price_min_edited, 'priceMax' => $price_max_edited]);
     }
 
     public function js_file(){

@@ -39,7 +39,7 @@
                     <div class="contact-to">
                         <div class="contact-text">
                             <ul>
-                                <li><a href="#"><i class="fa fa-map-marker"></i>23 Aro Lane, NY, USA</a></li>
+                                <li><a href="https://www.google.com/maps/search/?api=1&query=14.1699,121.2441" target="_blank"><i class="fa fa-map-marker"></i>Los Baños, Laguna, Philippines</a></li>
                                 @if(!Auth::check())
                                     <li><a href="javascript:void(0)" class="loginBtn"><i class="fa fa-user"></i>Sign Up</a></li>
                                 @endif

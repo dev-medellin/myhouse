@@ -2,7 +2,7 @@
         <div class="property-search-form ">
             <div class="advanced-search-sec row">
                 <form id="searchForm" action="{{url('projects')}}" method="get">
-                    <div class="col-xs-12 col-sm-6 col-md-me-15 col-lg-me-17 search-field">
+                    <div class="col-xs-12 col-sm-6 col-md-me-15 col-lg-me-17 search-field" style="width: 120px;">
                         <label for="proeprty-type">Bed Room</label>
                         <select id="bed_room" name="bed_room">
                             <option value="">Choose</option>
@@ -14,7 +14,7 @@
                             <option value="6">+5</option>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-me-13 col-lg-me-13 search-field">
+                    <div class="col-xs-12 col-sm-6 col-md-me-13 col-lg-me-13 search-field" style="width: 120px;">
                         <label for="property-room">Bathroom</label>
                         <select id="bath_room" name="bath_room">
                             <option value="">Choose</option>
@@ -26,7 +26,7 @@
                             <option value="6">+5</option>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-me-13 col-lg-me-13 search-field">
+                    <div class="col-xs-12 col-sm-6 col-md-me-13 col-lg-me-13 search-field" style="width: 120px;">
                         <label for="property-bathroom">Stories</label>
                         <select id="stories" name="stories">
                             <option value="">Choose</option>
@@ -38,11 +38,11 @@
                             <option value="6">+5</option>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-me-15 col-lg-me-17 search-field">
-                        <label for="property-bathroom">Square Ft.</label>
-                        <input type="text" name="Name" class="form-control" style="background-color: white;text-align:center;" placeholder="" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                    <div class="col-xs-12 col-sm-6 col-md-me-15 col-lg-me-17 search-field" style="width: 150px;">
+                        <label for="property-bathroom">Square Meter</label>
+                        <input type="text" name="sq_area" id="sq_area" class="form-control" style="background-color: white;text-align:center;" placeholder="" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-me-29 col-lg-me-25 search-field">
+                    <div class="col-xs-12 col-sm-6 col-md-me-29 col-lg-me-25 search-field" style="width: 300px;">
                         <div class="price-range">
                             <div class="property-price">
                                 <label>Price Range</label>

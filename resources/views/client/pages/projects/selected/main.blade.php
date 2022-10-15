@@ -12,83 +12,57 @@
 				<div id="showcase-main-thumb-slider-section">
 					<!-- Showcase Slider Main -->
 					<div id="showcase-main-area-slider">
-						@isset($data['image'])
-							@if($data['image'])
-								@foreach($data['image'] as $image)
+								@forelse ($data['image'] as $image)
 								<div class="items">
-									<div class="img-pot" data-bg-img="{{url('storage/').$image->image_path}}"></div>
+									<div class="img-pot" data-bg-img="{{url('/uploads/images/'.$image->image_path.'')}}"></div>
 								</div>
-								@endforeach
-							@else
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
-							</div>
-							@endif
-						@endisset
-						<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
-							</div>
-							<div class="items">
-								<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
-							</div>
+								@empty
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
+									</div>
+								@endif
 					</div> <!-- /#showcase-main-area-slider -->
 					<!-- Showcase Slider Thumbnail -->
 					<div id="showcase-thumb-slider">
-						@isset($data['image'])
-							@if($data['image'])
-								@foreach($data['image'] as $image)
-								<div class="items">
-									<div class="img-pot" data-bg-img="{{asset('storage/').$image->image_path}}"></div>
-								</div>
-								@endforeach
-							@else
-								<div class="items">
-									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
-								</div>
-								<div class="items">
-									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
-								</div>
-								<div class="items">
-									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
-								</div>
-								<div class="items">
-									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
-								</div>
-								<div class="items">
-									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
-								</div>
-								<div class="items">
-									<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
-								</div>
-							@endif
-						@endisset
+								@forelse ($data['image'] as $image)
+									<div class="items">
+										<div class="img-pot" data-bg-img="{{url('/uploads/images/'.$image->image_path.'')}}"></div>
+									</div>
+								@empty
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/1.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/2.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/3.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/4.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/5.jpg"></div>
+									</div>
+									<div class="items">
+										<div class="img-pot" data-bg-img="../assets/images/slider/showcase/6.jpg"></div>
+									</div>
+								@endif
 					</div> <!-- /#showcase-thumb-slider -->
 				</div> <!-- /#showcase-main-thumb-slider-section --> 
 			</div> <!-- /.container -->

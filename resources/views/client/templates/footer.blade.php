@@ -17,7 +17,7 @@
 						<br>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 							<div class="copyright">
-								<p>&copy; Copyright 2016 Dream House, All Rights Reserved</p>
+								<p>&copy; Copyright <?php echo date("Y"); ?> My Home, All Rights Reserved</p>
 							</div> <!-- /.copyright -->
 						</div> <!-- /.col- -->
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -25,7 +25,7 @@
 								<p>
 									Designed and 
 									<i class="fa fa-heart"></i> by 
-									<a href="https://graphicriver.net/user/themexriver">Themexriver</a>
+									<a href="https://www.facebook.com/beerus03/">Arthur ♥</a>
 								</p>
 							</div> <!-- /.designer -->
 						</div> <!-- /.col- -->

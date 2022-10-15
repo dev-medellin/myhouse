@@ -6,6 +6,7 @@
     var stories = localStorage.getItem('stories');
     var price_min = localStorage.getItem('price_min');
     var price_max = localStorage.getItem('price_max');
+    var sq_area = localStorage.getItem('sq_area');
     //Begin Loading Handler
     $(window).load(function() {
         // var bed_room = sessionStorage.getItem('bed_room');
@@ -18,10 +19,15 @@
         $('#bed_room').val(bed_room);
         $('#bath_room').val(bath_room);
         $('#stories').val(stories);
+        $('#sq_area').val(sq_area);
         if(price_min != null && price_max != null){
             $('.price_min').val(price_min);
             $('.price_max').val(price_max);
         }
+
+        if(localStorage.getItem('text_contact') != ''){
+            $('textarea#message').val(localStorage.getItem('text_contact'))
+         }
     });
 
     // Go to the page top
@@ -254,7 +260,7 @@
                // Set formatting
                    decimals: 0,
                    thousand: ',',
-                   prefix: '$'
+                   prefix: '₱'
                }
            }
        });

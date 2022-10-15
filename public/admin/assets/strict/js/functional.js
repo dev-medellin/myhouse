@@ -41,7 +41,7 @@ $('#projInserForm').on('submit', function(event){
 
 $('.modify-proj').on('click', function(e){
     e.preventDefault();
-    var id = $('.modify-proj').data('id');
+    var id = $(this).data('id');
 
 var     pathUrl              = base_url+"/admin/projects/edit",
         method            	 = "POST",
@@ -289,14 +289,17 @@ $('#editInfoProj').on('submit', function(e){
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
         success: function(response){  
             if(response.status == "SUCCESS"){
-                // swal(
-                //     `${response.status}`,
-                //     `${response.message}`,
-                //     'success'
-                // )
-                // setTimeout(() => {
-                //     location.reload();
-                // }, 3000)
+                $.toast({
+                    heading: 'Project Updated',
+                    text: 'Project Changes are applied on live site!',
+                    position: "bottom-right",
+                    icon: 'success',
+                    stack: false,
+                    loaderBg: '#27B200'
+                  })
+                setTimeout(() => {
+                    location.reload();
+                }, 3000)
             }else{
                 // alert(response.message);
             }
@@ -306,3 +309,72 @@ $('#editInfoProj').on('submit', function(e){
     });
 
 })
+
+var btn_status = $('#edit_cancel').data('status');
+$('#edit_cancel').on('click', function(e){
+      e.preventDefault();
+      console.log(btn_status)
+      if(btn_status == 'edit'){
+         $(':input').removeAttr('readonly');
+         $(this).html('Cancel');
+         $(this).attr("data-status","cancel");
+         $('#save_btn').append('<button class="btn btn-success" type="submit" id="saveBtn" style="outline: none;"><i class="fa fa-check"></i> Save</button>');
+        return btn_status = 'cancel'
+      }
+      if(btn_status == 'cancel'){
+         $(':input:not(.filter_search_data)').prop('readonly', true);
+         $(this).html('<i class="fa fa-edit"></i> Edit');
+         $(this).attr("data-status","edit");
+         $('#saveBtn').remove();
+         $('#changepass').remove();
+         return btn_status = 'edit'
+      }
+});
+
+$('#save_btn').on('click',function(){
+    $("#forms-edit input").each(function(){
+       if ($.trim($(this).val()).length == 0){
+           $(".empty_text").addClass("(This field is required!)");
+           isFormValid = false;
+       }
+       else{
+          $(".empty_text").html("");
+       }
+   });
+ })
+
+ $('#forms-edit').on('submit',function(e){
+    e.preventDefault();
+
+    $(".required input").each(function(){
+       if ($.trim($(this).val()).length == 0){
+           $(".error_empty").html("highlight");
+           isFormValid = false;
+       }
+       else{
+           $(this).removeClass("highlight");
+       }
+   });
+   
+    var   pathUrl               = base_url+"/admin/users/update",
+    method            	 = "POST",
+    dtype 	             = "json",
+    rdata 	             = $(this).serialize(); 
+
+    $.ajax({
+       type: method,  
+       url: pathUrl,
+       dataType: dtype,
+       data: rdata, 
+       success: function(response){  
+             if(response.status == "SUCCESS"){
+                alert(response.message);
+                setTimeout(function(){// wait for 5 secs(2)
+                   location.reload(); // then reload the page.(3)
+             }, 1000);
+             }else{
+                alert(response.message);
+             }
+          },
+    });
+ });

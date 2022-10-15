@@ -251,9 +251,6 @@
                 </div>
             </div> <!-- /#showcase-thumb-slider -->
         </div> <!-- /#showcase-main-thumb-slider-section --> 
-        <div class="showcase-btn">
-            <a href="#" class="dream-btn">View Gallery</a>
-        </div>
     </div> <!-- /.container -->
 </section> <!-- /.showcase-feature -->
 <!-- /SHOWCASE FEATURE AREA END -->

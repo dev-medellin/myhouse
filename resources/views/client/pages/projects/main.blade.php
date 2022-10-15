@@ -26,13 +26,15 @@
                             <!-- post begin -->
                             <article class="post-item border-right shadow-bottom-items">
                                 <div class="post-media">
-                                    <img src="assets/images/featured/1.jpg" alt="Featured">
+                                <a href="{{url('/projects/'.$proj->proj_slug)}}">
+                                    <img src="{{url('/thumbnail/'.$proj->thumbnail.'')}}" alt="Featured" style="max-height:360px;max-width:400px;width:100%;height:100%">
+                                </a>
                                 </div>
                                 <div class="post-inner border-around">
                                     <div class="post-metadata">
                                         <span class="total-place">
                                             <i class="flaticon-ten-commandment"></i>
-                                            <a href="#">{{$proj->proj_area}} Sq Ft</a>
+                                            <a href="#">{{$proj->proj_area}} Sq Meter</a>
                                         </span>
                                         <span class="bedroom">
                                             <i class="flaticon-bed"></i>
@@ -41,7 +43,11 @@
                                         <span class="bathroom"> 
                                             <i class="flaticon-bathtub"></i>
                                             <a href="#">{{$proj->bath_room}} Bathrooms</a>
-                                        </span>    
+                                        </span>   
+                                        <span class="bathroom"> 
+                                            <i class="flaticon-house"></i>
+                                            <a href="#">{{$proj->stories}} Stories</a>
+                                        </span>  
                                     </div> <!-- /.post-metadata -->
                                     <div class="post-content border-top">
                                         <div class="post-title">

@@ -62,11 +62,6 @@
             <td>
                 <p style="color: #b3b3b3; font-size: 14px; font-weight: 300;">Copyright © 2006-2020 MyHouse. All Rights Reserved.</p>
                 <p style="color: #b3b3b3; font-size: 14px; font-weight: 300;"><a href="localhost/">Unsubscribe Here</a></p>
-                <a href="javascript:;" style="display: inline-block; vertical-align: middle; margin: 0 7px;"><img src="https://static.singaprinting.com/v2/images/email/icon_fb.png" alt="Facebook"></a>
-                <a href="javascript:;" style="display: inline-block; vertical-align: middle; margin: 0 7px;"><img src="https://static.singaprinting.com/v2/images/email/icon_twitter.png" alt="Twitter"></a>
-                <a href="javascript:;" style="display: inline-block; vertical-align: middle; margin: 0 7px;"><img src="https://static.singaprinting.com/v2/images/email/icon_insta.png" alt="Instagram"></a>
-                <a href="javascript:;" style="display: inline-block; vertical-align: middle; margin: 0 7px;"><img src="https://static.singaprinting.com/v2/images/email/icon_pinterest.png" alt="Pinterest"></a>
-                <a href="javascript:;" style="display: inline-block; vertical-align: middle; margin: 0 7px;"><img src="https://static.singaprinting.com/v2/images/email/icon_youtube.png" alt="Youtube"></a>
             </td>
         </tr>
     </table>

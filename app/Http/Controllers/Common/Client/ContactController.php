@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Common\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\UsersModel;
+use App\Models\ContactUsModel;
+use App\Helpers\Mail\SenderHelper as Mail;
 
 class ContactController extends Controller
 {
@@ -20,17 +21,34 @@ class ContactController extends Controller
     }
 
     public function sumbitContact(Request $request){
-        if(Auth::check()){
+            if(Auth::check()){
             $data = [
+                'user_id'   => Auth::user()->id,
                 'email'   => Auth::user()->email,
                 'full_name' => Auth::user()->fname.' '.Auth::user()->lname,
                 'message'   => $request->message,
                 'phone_no'  =>  Auth::user()->contact,
-                'status' => 'unread',
+                'status' => 'sent',
             ];
+
+            $created_contact = ContactUsModel::updateOrCreate(['message' => $request->message],$data);
+
+            $template = 'contact_message';
+            $full_name = Auth::user()->fname.' '.Auth::user()->lname;
+            if($created_contact){
+                $test = new Mail($template, "realstate.myhouse@gmail.com", [
+                    'subject'   => $full_name." Made A Contact Message",
+                    'title'     => $full_name." Made A Contact Message",
+                    'client'     => $full_name,
+                    'message'    => $request->message,
+                    'sender'     => Auth::user()->email,
+                ]);
+            }
+
+
         }
 
-        return $data;
+        return responseSuccess('Message Sent to Customer Service',['test' => $test]);
     }
 
     public function js_file(){

@@ -88,12 +88,19 @@ class ProjectController extends Controller
     }
 
     public function updateStatus(Request $request){
-        $updated = Project::where('id',$request->projID)->update(['status' => $request->status]);
-        if($updated){
-            return responseSuccess('Status '.ucfirst($request->status));
-        }else{
-            return responseFail('Data not found!');
-        }
+       $check = Project::where('id',$request->projID)->where('thumbnail','!=',null)->first();
+
+       if($check->thumbnail == ""){
+            $updated = Project::where('id',$request->projID)->update(['status' => 'inactive']);
+                return responseFail('Please upload image Thumbnail to allow display of the project!');
+       }else{
+            $updated = Project::where('id',$request->projID)->update(['status' => $request->status]);
+            if($updated){
+                return responseSuccess('Status '.ucfirst($request->status));
+            }else{
+                return responseFail('Data not found!');
+            }
+       }
 
     }
 
