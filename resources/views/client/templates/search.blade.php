@@ -69,6 +69,6 @@
                 </form>
             </div> <!-- /.advanced-search-sec -->
             <!-- Show or Hide Property -->
-            <a class="more-options close-element" id="clearSearch"></a>
+            <a class="more-options close-element"></a>
         </div>
     </div> <!-- /.property-search-area -->

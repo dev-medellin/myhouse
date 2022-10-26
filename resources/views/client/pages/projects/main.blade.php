@@ -12,6 +12,9 @@
         <div class="row">
             <div class="blog-list">
                 <h2>{{$data['projects']->project_count}} search {{$data['projects']->project_count > 1 ? 'results' : 'result'}}</h2>
+                <div class="search_text_area">
+
+                </div>
                 @isset($data['projects'])
                     @if($data['projects']->project_count == 0 )
                     <section style="text-align: center">
@@ -53,7 +56,7 @@
                                         <div class="post-title">
                                             <h5><a href="{{url('/projects/'.$proj->proj_slug)}}">{{$proj->proj_name}}</a></h5>
                                         </div>
-                                        <div class="post-entry">
+                                        <div class="post-entry" style="max-height: 76px;height: 76px;">
                                             <p>{{substr($proj->proj_description,0,50).'...'}}</p>
                                         </div>
                                         <div class="post-about border-top">

@@ -16,6 +16,7 @@
                   </p> 
                   <label class="code_field">
                     <div class="fields input_text">
+                      <input type="text" class="resend_Email_code" id="changePassEmails" name="changePassEmails"> 
                       <input type="password" placeholder="Password" name="new_password" id="new_password" style="outline: none;" autofocus="autofocus" class="" required>
                     </div>
                     <div class="fields input_text">
@@ -26,7 +27,9 @@
                   <p><span class="high_text" id="return_text_error"></span></p>
                   <div class="foot_note">
                       <p>Didn’t receive email? Please check your Spam folder or<br>
-                          <a href="javascript:;" class="high_text">resend email verification</a>.
+                        <div class="count_text">
+                          <p></p><a href="javascript:void(0);" class="high_text reset_code reset_text">resend email verification</a>. </p>
+                        </div>
                       </p>
                   </div>
               </div>

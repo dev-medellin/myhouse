@@ -40,7 +40,7 @@
         <tr>
             <td>
                 <a href="/static" style="padding: 15px 0; display: inline-block; margin: 0;">
-                    <img src="{{ asset('assets/images/logo/logo2.png') }}" alt="Main Logo">
+                    <img src="{{ url('assets/images/logo/logo2.png') }}" alt="Main Logo">
                 </a>
             </td>
         </tr>

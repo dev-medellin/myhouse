@@ -63,14 +63,52 @@ class UserController extends Controller
     }
 
     public function getcode(Request $request){
+
         $template = 'verify_password_code';
         $code     = rand(1231,7879);
-        $user  = Auth::user();
+        if($request->has('resetlPassmail')){
+            $reciever = $request->resetlPassmail;
+            $user = UsersModel::where('email', '=', $reciever)->where('status','active')->first(); 
+            if($user){
+                $verify = PassVerify::where('email', '=', $user->email)->first();
+                if ($verify === null) {
+                    $inserted = PassVerify::updateOrCreate([
+                        'user_id'     => $user->id,
+                        'email'       => $user->email,
+                        'code'        => $code
+                    ]);
+                }else{
+                    $inserted = PassVerify::where('email', $user->email)
+                                        ->update([
+                                            'code'        => $code
+                                        ]);
+                }
+            }else{
+                return responseFail('You are not registered!');
+            }
+        
+        }else{
+            $user  = Auth::user();
+            $user = UsersModel::where('id', '=', $user->id)->where('status','active')->first(); 
+            $reciever = $user->email;
 
-        $user = UsersModel::where('id', '=', $user->id)->first();
+            $verify = PassVerify::where('email', '=', $user->email)->first();
+            if ($verify === null) {
+                $inserted = PassVerify::updateOrCreate([
+                    'user_id'     => $user->id,
+                    'email'       => $user->email,
+                    'code'        => $code
+                ]);
+            }else{
+                $inserted = PassVerify::where('email', $user->email)
+                                    ->update([
+                                        'code'        => $code
+                                    ]);
+            }
+        }
 
 
-        $test = new Mail($template, $user->email, [
+        $test = new Mail($template, $reciever, [
             'subject'   => "Verification Code Request Password",
             'title'     => "Verification Code Request Password",
             'code'     => $code,
@@ -95,6 +133,36 @@ class UserController extends Controller
 
     public function sendPassVerify(Request $request){
 
+        if(Auth::check()){
+            
+            $user  = Auth::user();
+
+            $verify = PassVerify::where('email', '=', $user->email)->first();
+            if ($verify != null) {
+                if($verify->code == $request->verifyCode){
+                    return responseSuccess('Code verified!',['email' => $user->email]);
+                }else{
+                    return responseFail('Code is not match!');
+                }
+            }else{
+                return responseFail('Data not found!');
+            }
+        }else{
+            $verify = PassVerify::where('email', '=', $request->emailVerifyReset)->first();
+            if ($verify != null) {
+                if($verify->code == $request->verifyCode){
+                    return responseSuccess('Code verified!',['email' => $request->emailVerifyReset]);
+                }else{
+                    return responseFail('Code is not match!');
+                }
+            }else{
+                return responseFail('Data not found!');
+            }
+        }
+    }
+
+    public function sendResetVerify(Request $request){
+
         $user  = Auth::user();
 
         $verify = PassVerify::where('email', '=', $user->email)->first();
@@ -110,18 +178,34 @@ class UserController extends Controller
     }
 
     public function changepassword(Request $request){
-        $query = UsersModel::where('id',Auth::user()->id)
-        ->first();
-        if($query){
-            $password = Hash::make($request->new_password);
-            UsersModel::where('id',Auth::user()->id)->update(['password' => $password ]);
-            if(Hash::check($request->new_password, $query->password)){
-                return responseFail('Please enter another password that not similar to your current password!');
+        if(Auth::check()){
+            $query = UsersModel::where('id',Auth::user()->id)
+            ->first();
+            if($query){
+                $password = Hash::make($request->new_password);
+                UsersModel::where('id',Auth::user()->id)->update(['password' => $password ]);
+                if(Hash::check($request->new_password, $query->password)){
+                    return responseFail('Please enter another password that not similar to your current password!');
+                }
+                return responseSuccess('Password Change Successfully!');
+            }else{
+                return responseFail('Change password Failed!, you don`t have any changes on data!');
             }
-             return responseSuccess('Password Change Successfully!');
         }else{
-            return responseFail('Change password Failed!, you don`t have any changes on data!');
+            if($request->has('changePassEmails')){
+                $query = UsersModel::where('email',$request->changePassEmails)
+                ->first();
+                $password = Hash::make($request->new_password);
+                UsersModel::where('email',$request->changePassEmails)->update(['password' => $password ]);
+                if(Hash::check($request->new_password, $query->password)){
+                    return responseFail('Please enter another password that not similar to your current password!');
+                }
+                return responseSuccess('Password Change Successfully!');
+            }else{
+                return responseFail('Change password Failed!, you don`t have any changes on data!');
+            }
         }
+
     }
 
     public function wishlistInsert(Request $request){
@@ -139,6 +223,10 @@ class UserController extends Controller
             return responseFail('Cannot add this project');
         }
 
+    }
+
+    public function resentVerification(Request $request){
+        return responseSuccess('Project Added to your WishList');
     }
 
 

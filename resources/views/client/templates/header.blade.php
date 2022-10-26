@@ -39,7 +39,10 @@
 </head>
 <body>
 	@include('modals.loginModal')
+	@include('modals.resetpassword')
 	@include('modals.verify')
+	@include('modals.password_request')
+	@include('modals.password_change')
 	<!-- ALL SECTION INCLOSED TO THE WRAPPER -->
 	<div class="wrapper">
 		@include('client.templates.nav')

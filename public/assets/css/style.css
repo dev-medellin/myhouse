@@ -1089,7 +1089,7 @@ ul, li {
         opacity:1; 
     }
 }
-.main-slider .carousel .item-bg-1 {
+/* .main-slider .carousel .item-bg-1 {
     background-image: url(../images/slider/nest/bg-1.jpg);
 }
 .main-slider .carousel .item-bg-2 {
@@ -1097,13 +1097,13 @@ ul, li {
 }
 .main-slider .carousel .item-bg-3 {
     background-image: url(../images/slider/nest/bg-3.jpg);
-}
+} */
 .main-slider .carousel .item {
     background-color: #bba887;
     min-height: 720px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100% 100% 100%;
     background-attachment: fixed;
     left: 0;
     opacity: 0;

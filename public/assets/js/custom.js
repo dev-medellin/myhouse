@@ -1,5 +1,5 @@
 (function($) {
-    
+    var base_url = $('#url').val();
     "use strict";
     var bed_room = localStorage.getItem('bed_room');
     var bath_room = localStorage.getItem('bath_room');
@@ -7,7 +7,8 @@
     var price_min = localStorage.getItem('price_min');
     var price_max = localStorage.getItem('price_max');
     var sq_area = localStorage.getItem('sq_area');
-    //Begin Loading Handler
+    var searchStats = localStorage.getItem('searchStats');
+    //Begin Loading Handler=
     $(window).load(function() {
         // var bed_room = sessionStorage.getItem('bed_room');
         // var bath_room = sessionStorage.getItem('bath_room');
@@ -27,6 +28,36 @@
 
         if(localStorage.getItem('text_contact') != ''){
             $('textarea#message').val(localStorage.getItem('text_contact'))
+        }
+
+        if(searchStats){
+           var bed_room_text = bed_room > 1 && bed_room != "" ? ( bed_room == 6 ?  "+5 bedrooms," :  bed_room+" bedrooms,") : (bed_room != "" ? bed_room+" bedroom," : '');
+           var  bath_room_text = bath_room > 1  && bath_room != "" ? ( bath_room == 6 ?  "+5 bathrooms," :  bath_room+" bathrooms,") : (bath_room != "" ? bath_room+" bathroom," : '');
+           var  stories_text = stories > 1 && stories != "" ? ( stories == 6 ?  "+5 stories," :  stories+" stories,") : (stories != "" ? stories+" story," : '');
+           var  sq_area_text = sq_area > 1 && sq_area != "" ? ( sq_area == 6 ?  "+5 Sq. Meters," :  sq_area+" Sq. Meters,") : (sq_area != "" ? sq_area+" Sq. Meter," : '');
+            $( ".search_text_area" ).append('<span class="text_results">Result of '+bed_room_text+' '+bath_room_text+' '+stories_text+' '+sq_area_text+' &nbsp;<a href="javascript:void(0);" id="clearSearch" style="text-decoration: underline;color:blue">Remove Search</a></span>');
+        }
+        var check_url = window.location.href;
+        $('.search_text_area').on('click','#clearSearch',function(e){
+            e.preventDefault();
+    
+            window.location.href = base_url+"/projects";
+        })
+        if(check_url == base_url+"/projects"){
+            localStorage.removeItem('bed_room');
+            localStorage.removeItem('bath_room');
+            localStorage.removeItem('stories');
+            localStorage.removeItem('price_min');
+            localStorage.removeItem('price_max');
+            localStorage.removeItem('sq_area');
+            localStorage.removeItem('searchStats');
+         
+            $('#bed_room').val("");
+            $('#bath_room').val("");
+            $('#stories').val("");
+            $('#sq_area').val("");
+
+            $('.text_results').remove();
          }
     });
 

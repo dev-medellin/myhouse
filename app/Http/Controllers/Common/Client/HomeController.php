@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Common\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\HomeModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,6 +12,8 @@ class HomeController extends Controller
     public $data = [];
 
     public function index(){
+       $home_model = new HomeModel;
+            $data = $home_model->getData();
             $data['page'] = "home";
             $data['js']     =  $this->js_file();
             $data['css']    =  $this->css_file();

@@ -34,6 +34,9 @@
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" class="form-control" id="passwordInputLog" name="passwordInputLog" placeholder="Password">
                         </div>
+                        <div class="form-group">
+                          <span class="float-right">Forgot your password? <a href="javascript:void(0);" class="text-danger" id="resetPassword" style="text-decoration: underline;">click here!</a></span>
+                        </div>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                 </div>

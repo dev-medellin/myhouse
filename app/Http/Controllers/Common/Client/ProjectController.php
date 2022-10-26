@@ -56,7 +56,8 @@ class ProjectController extends Controller
                             ->when($request->has('price_min') && $request->has('price_max'), function ($query) use ($request) {
                                 $price_min = str_replace(str_split(',₱'), '',$request->price_min);
                                 $price_max = str_replace(str_split(',₱'), '',$request->price_max);
-                                $query->whereBetween('proj_est_price',[$price_min, $price_max+1]);
+                                $price_max +=1;
+                                $query->whereBetween('proj_est_price',[$price_min, $price_max]);
                                 // $query->where('')
                             })
                             ->where('status',"active")

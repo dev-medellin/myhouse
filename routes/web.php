@@ -41,7 +41,6 @@ Route::prefix('users')->middleware('client')->group(function() {
     Route::post('/update',                              [UserController::class,'updateInfo']);
     Route::post('/getcode',                             [UserController::class,'getcode']);
     Route::post('/sendPassVerify',                      [UserController::class,'sendPassVerify']);
-    Route::post('/changepassword',                      [UserController::class,'changepassword']);
     Route::post('/wishlist',                            [UserController::class,'wishlistInsert']);
 });
 
@@ -92,6 +91,10 @@ Route::get('/contact',                  [ContactController::class,'index']);
 Route::post('/price',                   [PCC::class,'getPrice']);
 Route::post('/check/user',              [AuthController::class,'checkUser']);
 Route::post('/contact',                 [ContactController::class,'sumbitContact']);
+Route::post('/passwordReset',           [UserController::class,'getcode']);
+Route::post('/sendPassVerify',          [UserController::class,'sendPassVerify']);
+Route::post('/changepassword',          [UserController::class,'changepassword']);
+Route::post('/resendVerification',      [UserController::class,'resentVerification']);
 
 
 Route::prefix('modal')->group(function () {

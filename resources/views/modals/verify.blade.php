@@ -17,14 +17,16 @@
                   </p> 
                   <label class="code_field">
                           <input type="text" maxlength="4" id="verifyCode" name="verifyCode" required="required"> 
-                          <input type="hidden" id="emailVerify" name="emailVerify" required="required"> 
+                          <input type="hidden" class="resend_Email_code" id="emailVerify" name="emailVerify" required="required"> 
                           <span style="top: 44% !important;">••••</span>
                   </label>
                   <button type="submit" class="button-primary-full">Verify Email Address</button>
                   <p><span class="high_text" id="return_text"></span></p>
                   <div class="foot_note">
                       <p>Didn’t receive email? Please check your Spam folder or<br>
-                          <a href="javascript:;" class="high_text">resend email verification</a>.
+                        <p class="count_text">
+                          <a href="javascript:void(0);" class="high_text reset_code reset_text">resend email verification</a>.
+                        </p>
                       </p>
                   </div>
               </div>

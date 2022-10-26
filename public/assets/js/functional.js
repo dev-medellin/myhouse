@@ -251,6 +251,33 @@ $(document).ready(function(){
             },
       });
    });
+   $(document).on('click','#resetPassword',function(e){
+      e.preventDefault();
+      $('#loginModal').modal('hide');
+      $('#resetpassModal').modal('show');
+   });
+   $('#resetEmailPass').on('submit',function(e){
+      e.preventDefault();
+      var emailLogreset = $('#resetlPassmail').val();
+      var   pathUrl         = base_url+"/passwordReset",
+      method            	 = "POST",
+      dtype 	             = "json",
+      rdata 	             = $(this).serialize(); 
+
+      $.ajax({
+         type: method,  
+         url: pathUrl,
+         dataType: dtype,
+         data: rdata, 
+         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+         success: function(response){ 
+            $('#resetpassModal').modal('hide');
+            $('#passwordModal').modal('show');
+            $('#email_text_pass').html(emailLogreset)
+            $('#emailVerifyReset').val(emailLogreset)
+          }
+      });
+   });
    $(document).on('click','#pass_btn',function(e){
       e.preventDefault();
       document.getElementById("changepass").innerHTML = "Sending to you email......";
@@ -288,6 +315,7 @@ $(document).ready(function(){
    });
 
 });
+
 $("#searchForm").on('submit',function() {
    $(this).find(":input").filter(function(){ return !this.value; }).attr("disabled", "disabled");
    return true; // ensure form still submits
@@ -307,28 +335,30 @@ $("#searchBtn").on('click',function(){
       localStorage.setItem('price_min', price_min);
       localStorage.setItem('price_max', price_max);
       localStorage.setItem('sq_area', sq_area);
+      localStorage.setItem('searchStats', true);
 });
 
-$('#clearSearch').on('click', function(e){
-   e.preventDefault();
-   localStorage.removeItem('bed_room');
-   localStorage.removeItem('bath_room');
-   localStorage.removeItem('stories');
-   localStorage.removeItem('price_min');
-   localStorage.removeItem('price_max');
-   localStorage.removeItem('sq_area');
+// $('#clearSearch').on('click', function(e){
+//    e.preventDefault();
+//    localStorage.removeItem('bed_room');
+//    localStorage.removeItem('bath_room');
+//    localStorage.removeItem('stories');
+//    localStorage.removeItem('price_min');
+//    localStorage.removeItem('price_max');
+//    localStorage.removeItem('sq_area');
+//    localStorage.removeItem('searchStats');
 
-   $('#bed_room').val("");
-   $('#bath_room').val("");
-   $('#stories').val("");
-   $('#sq_area').val("");
+//    $('#bed_room').val("");
+//    $('#bath_room').val("");
+//    $('#stories').val("");
+//    $('#sq_area').val("");
 
-   var check_url = window.location.href;
+//    var check_url = window.location.href;
 
-   if(check_url == base_url+"/projects"){
-      window.location.href = base_url+"/projects";
-   }
-});
+//    if(check_url == base_url+"/projects"){
+//       window.location.href = base_url+"/projects";
+//    }
+// });
 
 
 
@@ -336,7 +366,7 @@ var base_url = $('#url').val();
 $('#verifyPassForm').on('submit', function(event){
    event.preventDefault();
 
-var   pathUrl               = base_url+"/users/sendPassVerify",
+var   pathUrl               = base_url+"/sendPassVerify",
       method            	 = "POST",
       dtype 	             = "json",
       rdata 	             = $(this).serialize(); 
@@ -353,6 +383,7 @@ var   pathUrl               = base_url+"/users/sendPassVerify",
                $('#passwordModal').modal('hide');
                $('#passwordchangeModal').modal('show');
                $('#email_text_changepass').html(response.data.email)
+               $('#changePassEmails').val(response.data.email)
                setTimeout(() => {
                   $(document.body).addClass('modal-open');
                }, 1000)
@@ -363,6 +394,46 @@ var   pathUrl               = base_url+"/users/sendPassVerify",
    });
 });
 
+$('.reset_code').on('click',function(e){
+   e.preventDefault()
+
+   var get_email = $('.resend_Email_code').val();
+   $('.reset_text').html('Sending verification code please wait .....');
+   $('.reset_text').remove();
+   $('.count_text').append('<p class="reset_texts"></p>');
+   var   pathUrl               = base_url+"/resendVerification",
+   method            	 = "POST",
+   dtype 	             = "json",
+   rdata 	             = {get_email:get_email}; 
+
+   $.ajax({
+      type: method,  
+      url: pathUrl,
+      dataType: dtype,
+      data: rdata,
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+      success: function(response){  
+            if(response.status == "SUCCESS"){
+               var timeleft = 59;
+               var downloadTimer = setInterval(function(){
+               if(timeleft <= 0){
+                  clearInterval(downloadTimer);
+                  // $('.reset_text').html('resend email verification');
+                  $('.count_text').append('<a href="javascript:void(0);" class="high_text reset_code reset_text">resend email verification</a>.');
+               } else {
+                  $('.reset_texts').html("Resend after "+timeleft + " seconds remaining");
+               }
+               timeleft -= 1;
+               }, 1500);
+            }else{
+               alert(response.message);
+               $('.reset_code').html('resend email verification');
+            }
+         },
+   });
+
+})
+
 $('#changePassForm').on('submit', function(event){
       event.preventDefault();
       var password         = $('#new_password').val(),
@@ -370,7 +441,7 @@ $('#changePassForm').on('submit', function(event){
       if(password != confirm_password){
          alert('Password not match!');
       }else{
-         var   pathUrl               = base_url+"/users/changepassword",
+         var   pathUrl               = base_url+"/changepassword",
          method            	 = "POST",
          dtype 	             = "json",
          rdata 	             = $(this).serialize(); 

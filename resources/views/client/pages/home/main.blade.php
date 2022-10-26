@@ -72,7 +72,10 @@
 <!-- /RENEWAL AREA END -->
 
 <!-- ROOM FEATURE AREA START -->
-<section class="room-feature">
+<section class="room-feature" style="
+    min-height: 670px;
+    max-height: 670px;
+">
     <div class="bg-img-over-effect"></div>
     <div class="container">	
         <div class="section-heading if-bg-colorful">
@@ -94,103 +97,59 @@
                     </div> <!-- /.feature-content -->
                 </div> <!-- /.col- -->
                 <!-- Room Slider Begin -->
+                <?php if(!empty($data['project'])): ?>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div id="room-slider" class="carousel slide room-slider wow fadeInRight" data-ride="carousel" data-interval="3000">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
-                            <li data-target="#room-slider" data-slide-to="0" class="active"></li>
-                            <li data-target="#room-slider" data-slide-to="1"></li>
-                            <li data-target="#room-slider" data-slide-to="2"></li>
+                            @foreach ($data['project'] as $proj => $value)
+                                <li data-target="#room-slider" data-slide-to="{{$proj}}" class="<?php echo ($proj != 1 ? 'active' :'') ?>"></li>
+                            @endforeach
                         </ol>
                         <!-- Wrapper for slides (Vertical) -->
                         <div class="carousel-inner vertical" role="listbox">
-                            <div class="item active item-bg-1">
-                                <div class="bg-img-over-effect"></div>
-                                <div class="slider-in-room">
-                                    <div class="content">
-                                        <h3>Deluxe Suite</h3>
-                                        <p>Claritas est etiam processus dynamic us, qui sequitur mutationem.</p>
-                                    </div>
-                                    <div class="slider-meta">
-                                        <div class="info">
-                                            <span class="building">
-                                                <img src="assets/images/icons/building.png" alt="icon">
-                                                <a href="#">60m</a>
-                                            </span>
-                                            <span class="technology">                                            
-                                                <img src="assets/images/icons/technology.png" alt="icon">
-                                                <a href="#">4</a>
-                                            </span>
-                                            <span class="bath"> 
-                                                <img src="assets/images/icons/bath.png" alt="icon">
-                                                <a href="#">2</a>
-                                            </span>
+                            @foreach ($data['project'] as $proj => $value)
+                                <div class="item <?php echo ($proj != 1 ? 'active' :'') ?> item-bg-{{$proj+1}}" style='background-image: url({{url("thumbnail/$value->thumbnail")}});'>
+                                    <div class="bg-img-over-effect"></div>
+                                    <div class="slider-in-room">
+                                        <div class="content">
+                                            <h3>{{$value->proj_name}}</h3>
+                                            <p>{{substr($value->proj_description,0,100).'...'}}</p>
                                         </div>
-                                        <div class="price">
-                                            <a href="#" class="price-btn">$2000</a>
-                                        </div>
-                                    </div> <!-- /.slider-meta -->
-                                </div> <!-- /.slider-in-room -->
-                            </div> <!-- /.item -->
-                            <div class="item item-bg-2">
-                                <div class="bg-img-over-effect"></div>
-                                <div class="slider-in-room">
-                                    <div class="content">
-                                        <h3>Deluxe Suite</h3>
-                                        <p>Claritas est etiam processus dynamic us, qui sequitur mutationem.</p>
-                                    </div>
-                                    <div class="slider-meta">
-                                        <div class="info">
-                                            <span class="building">
-                                                <img src="assets/images/icons/building.png" alt="Iocn">
-                                                <a href="#">60m</a>
-                                            </span>
-                                            <span class="technology">                                            
-                                                <img src="assets/images/icons/technology.png" alt="Iocn">
-                                                <a href="#">4</a>
-                                            </span>
-                                            <span class="bath"> 
-                                                <img src="assets/images/icons/bath.png" alt="Iocn">
-                                                <a href="#">2</a>
-                                            </span>
-                                        </div>
-                                        <div class="price">
-                                            <a href="#" class="price-btn">$2000</a>
-                                        </div>
-                                    </div> <!-- /.slider-meta -->
-                                </div> <!-- /.slider-in-room -->
-                            </div> <!-- /.item -->
-                            <div class="item item-bg-3">
-                                <div class="slider-in-room">
-                                <div class="bg-img-over-effect"></div>
-                                    <div class="content">
-                                        <h3>Deluxe Suite</h3>
-                                        <p>Claritas est etiam processus dynamic us, qui sequitur mutationem.</p>
-                                    </div>
-                                    <div class="slider-meta">
-                                        <div class="info">
-                                            <span class="building">
-                                                <img src="assets/images/icons/building.png" alt="Iocn">
-                                                <a href="#">60m</a>
-                                            </span>
-                                            <span class="technology">                                            
-                                                <img src="assets/images/icons/technology.png" alt="Iocn">
-                                                <a href="#">4</a>
-                                            </span>
-                                            <span class="bath"> 
-                                                <img src="assets/images/icons/bath.png" alt="Iocn">
-                                                <a href="#">2</a>
-                                            </span>
-                                        </div>
-                                        <div class="price">
-                                            <a href="#" class="price-btn">$2000</a>
-                                        </div>
-                                    </div> <!-- /.slider-meta -->
-                                </div> <!-- /.slider-in-room -->
-                            </div> <!-- /.item -->
+                                        <div class="slider-meta">
+                                            <div class="info">
+                                                <span class="building">
+                                                    <img src="assets/images/icons/building.png" alt="icon">
+                                                    <a href="#">60m</a>
+                                                </span>
+                                                <span class="technology">                                            
+                                                    <img src="assets/images/icons/technology.png" alt="icon">
+                                                    <a href="#">4</a>
+                                                </span>
+                                                <span class="technology">                                            
+                                                    <img src="assets/images/icons/technology.png" alt="icon">
+                                                    <a href="#">4</a>
+                                                </span>
+                                                <span class="technology">                                            
+                                                    <img src="assets/images/icons/technology.png" alt="icon">
+                                                    <a href="#">4</a>
+                                                </span>
+                                                <span class="bath"> 
+                                                    <img src="assets/images/icons/bath.png" alt="icon">
+                                                    <a href="#">2</a>
+                                                </span>
+                                            </div>
+                                            <div class="price">
+                                                <a href="#" class="price-btn">$2000</a>
+                                            </div>
+                                        </div> <!-- /.slider-meta -->
+                                    </div> <!-- /.slider-in-room -->
+                                </div> <!-- /.item -->
+                            @endforeach
                         </div> <!-- /.carousel-inner -->
                     </div> <!-- /#room-slider -->
                 </div> <!-- /.col- -->
+                <?php endif;?>
             </div> <!-- /.row -->  
         </div> <!-- /.room-feature-all -->
     </div> <!-- /.container -->
@@ -210,45 +169,19 @@
         <div id="showcase-main-thumb-slider-section">
             <!-- Showcase Slider Main -->
             <div id="showcase-main-area-slider">
+            @foreach ($data['project'] as $proj => $value)
                 <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/1.jpg"></div>
+                    <div class="img-pot" data-bg-img="{{url('thumbnail/'.$value->thumbnail.'')}}"></div>
                 </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/2.jpg"></div>
-                </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/3.jpg"></div>
-                </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/4.jpg"></div>
-                </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/5.jpg"></div>
-                </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/6.jpg"></div>
-                </div>
+            @endforeach
             </div> <!-- /#showcase-main-area-slider -->
             <!-- Showcase Slider Thumbnail -->
             <div id="showcase-thumb-slider">
+            @foreach ($data['project'] as $proj => $value)
                 <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/1.jpg"></div>
+                    <div class="img-pot" data-bg-img="{{url('thumbnail/'.$value->thumbnail.'')}}"></div>
                 </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/2.jpg"></div>
-                </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/3.jpg"></div>
-                </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/4.jpg"></div>
-                </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/5.jpg"></div>
-                </div>
-                <div class="items">
-                    <div class="img-pot" data-bg-img="assets/images/slider/showcase/6.jpg"></div>
-                </div>
+            @endforeach
             </div> <!-- /#showcase-thumb-slider -->
         </div> <!-- /#showcase-main-thumb-slider-section --> 
     </div> <!-- /.container -->
