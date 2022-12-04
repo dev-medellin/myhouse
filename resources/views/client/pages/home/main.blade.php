@@ -99,7 +99,7 @@
                 <!-- Room Slider Begin -->
                 <?php if(!empty($data['project'])): ?>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <div id="room-slider" class="carousel slide room-slider wow fadeInRight" data-ride="carousel" data-interval="3000">
+                    <div id="room-slider" class="carousel slide room-slider wow fadeInRight" data-ride="carousel" data-interval="3000" style="display: none !important;">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
                             @foreach ($data['project'] as $proj => $value)
@@ -170,17 +170,21 @@
             <!-- Showcase Slider Main -->
             <div id="showcase-main-area-slider">
             @foreach ($data['project'] as $proj => $value)
-                <div class="items">
-                    <div class="img-pot" data-bg-img="{{url('thumbnail/'.$value->thumbnail.'')}}"></div>
-                </div>
+                @if($value->thumbnail != "")
+                    <div class="items">
+                        <div class="img-pot" data-bg-img="{{url('thumbnail/'.$value->thumbnail.'')}}"></div>
+                    </div>
+                @endif
             @endforeach
             </div> <!-- /#showcase-main-area-slider -->
             <!-- Showcase Slider Thumbnail -->
             <div id="showcase-thumb-slider">
             @foreach ($data['project'] as $proj => $value)
-                <div class="items">
-                    <div class="img-pot" data-bg-img="{{url('thumbnail/'.$value->thumbnail.'')}}"></div>
-                </div>
+                @if($value->thumbnail != "")
+                    <div class="items">
+                        <div class="img-pot" data-bg-img="{{url('thumbnail/'.$value->thumbnail.'')}}"></div>
+                    </div>
+                @endif
             @endforeach
             </div> <!-- /#showcase-thumb-slider -->
         </div> <!-- /#showcase-main-thumb-slider-section --> 
@@ -227,112 +231,49 @@
             </div>
         </div> <!-- /.section-heading -->
         <div class="row">
-            <div class="blog-list">
+            <div class="blog-list" style="display:flex;flex-wrap:wrap">
+            @foreach ($data['project'] as $proj => $value)
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                     <!-- post begin -->
                     <article class="post-item border-right shadow-bottom-items">
                         <div class="post-media">
-                            <img src="assets/images/featured/our-blog/1.jpg" alt="Featured">
+                            <img src="{{url('thumbnail/'.$value->thumbnail.'')}}" alt="Featured" style="max-height:360px;max-width:400px;width:100%;height:100%;min-height: 260px;">
                         </div>
                         <div class="post-inner border-around">
                             <div class="post-metadata">
-                                <span class="user">
-                                    <i class="flaticon-people-1"></i>
-                                    <a href="#">Mr Dan</a>
-                                </span>
-                                <span class="date">
-                                    <i class="flaticon-calendar-weekly"></i>
-                                    <a href="#">Feb 19, 2016</a>
-                                </span>
-                                <span class="tag"> 
-                                    <i class="flaticon-shop"></i>
-                                    <a href="#">Real State</a>
-                                </span>    
+                            <span class="total-place">
+                                <i class="flaticon-ten-commandment"></i>
+                                <a href="#">{{$value->proj_area}} Sq Meter</a>
+                            </span>
+                            <span class="bedroom">
+                                <i class="flaticon-bed"></i>
+                                <a href="#">{{$value->bed_room}} bedrooms</a>
+                            </span>
+                            <span class="bathroom"> 
+                                <i class="flaticon-bathtub"></i>
+                                <a href="#">{{$value->bath_room}} Bathrooms</a>
+                            </span>   
+                            <span class="bathroom"> 
+                                <i class="flaticon-house"></i>
+                                <a href="#">{{$value->stories}} Stories</a>
+                            </span>  
                             </div> <!-- /.post-metadata -->
                             <div class="post-content border-top">
                                 <div class="post-title">
-                                    <h5><a href="blog-single.html">Best Renovation</a></h5>
+                                    
+                                    <h5><a href="{{url('/projects/'.$value->proj_slug)}}">{{$value->proj_name}}</a></h5>
                                 </div>
                                 <div class="post-entry">
-                                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem..</p>
+                                    <p>{{substr($value->proj_description,0,100).'...'}}</p>
                                 </div>
                                 <div class="post-about border-top">
-                                    <a href="single.html" class="read-more">Read More</a>
+                                    <a href="{{url('/projects/'.$value->proj_slug)}}" class="read-more">Read More</a>
                                 </div>
                             </div> <!-- /.post-content -->
                         </div> <!-- /.post-inner -->
                     </article> <!-- /.post-item -->
                 </div> <!-- /.col- -->
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                    <!-- post begin -->
-                    <article class="post-item border-right shadow-bottom-items">
-                        <div class="post-media">
-                            <img src="assets/images/featured/our-blog/2.jpg" alt="Featured">
-                        </div>
-                        <div class="post-inner border-around">
-                            <div class="post-metadata">
-                                <span class="user">
-                                    <i class="flaticon-people-1"></i>
-                                    <a href="#">Mr Dan</a>
-                                </span>
-                                <span class="date">
-                                    <i class="flaticon-calendar-weekly"></i>
-                                    <a href="#">Feb 19, 2016</a>
-                                </span>
-                                <span class="tag"> 
-                                    <i class="flaticon-shop"></i>
-                                    <a href="#">Real State</a>
-                                </span>    
-                            </div> <!-- /.post-metadata -->
-                            <div class="post-content border-top">
-                                <div class="post-title">
-                                    <h5><a href="blog-single.html">Best Renovation</a></h5>
-                                </div>
-                                <div class="post-entry">
-                                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem..</p>
-                                </div>
-                                <div class="post-about border-top">
-                                    <a href="single.html" class="read-more">Read More</a>
-                                </div>
-                            </div> <!-- /.post-content -->
-                        </div> <!-- /.post-inner -->
-                    </article> <!-- /.post-item -->
-                </div> <!-- /.col- -->
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                    <!-- post begin -->
-                    <article class="post-item border-right shadow-bottom-items">
-                        <div class="post-media">
-                            <img src="assets/images/featured/our-blog/3.jpg" alt="Featured">
-                        </div>
-                        <div class="post-inner border-around">
-                            <div class="post-metadata">
-                                <span class="user">
-                                    <i class="flaticon-people-1"></i>
-                                    <a href="#">Mr Dan</a>
-                                </span>
-                                <span class="date">
-                                    <i class="flaticon-calendar-weekly"></i>
-                                    <a href="#">Feb 19, 2016</a>
-                                </span>
-                                <span class="tag"> 
-                                    <i class="flaticon-shop"></i>
-                                    <a href="#">Real State</a>
-                                </span>    
-                            </div> <!-- /.post-metadata -->
-                            <div class="post-content border-top">
-                                <div class="post-title">
-                                    <h5><a href="blog-single.html">Best Renovation</a></h5>
-                                </div>
-                                <div class="post-entry">
-                                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem..</p>
-                                </div>
-                                <div class="post-about border-top">
-                                    <a href="single.html" class="read-more">Read More</a>
-                                </div>
-                            </div> <!-- /.post-content -->
-                        </div> <!-- /.post-inner -->
-                    </article> <!-- /.post-item -->
-                </div> <!-- /.col- -->
+            @endforeach
             </div> <!-- /.blog-list -->
         </div> <!-- /.row -->  
     </div> <!-- /.container -->

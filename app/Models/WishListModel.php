@@ -14,4 +14,11 @@ class WishListModel extends Model
         'proj_id',
         'user_id',
     ];
+
+    public function getWishlist(){
+        return self::select('users.*','user_wishlist.user_id as wishUID','user_wishlist.id as wishID','user_wishlist.proj_id as projID','projects.*','projects.created_at as projCreated')
+        ->leftJoin('users', 'users.id', '=', 'user_wishlist.user_id')
+        ->leftJoin('projects', 'projects.id', '=', 'user_wishlist.proj_id')
+        ->get();
+    }
 }

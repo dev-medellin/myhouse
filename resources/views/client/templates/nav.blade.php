@@ -67,7 +67,7 @@
             <div class="close-nav"></div> <!-- Close the menu for mobile -->				
             <ul class="main-nav">
                 <li <?php echo $data['page'] == 'home' ? 'class="active"' : '';?> ><a href="{{url('/')}}">Home</a></li>
-                <li><a href="{{url('/about')}}" style="color:red">About</a></li>
+                <li <?php echo $data['page'] == 'about' ? 'class="active"' : '';?>><a href="{{url('/about')}}">About</a></li>
                 <li <?php echo $data['page'] == 'project' ? 'class="active"' : '';?> ><a href="{{url('/projects')}}">Projects</a></li>
                 <!-- <li><a href="#" style="color:red">Pages</a>
                     <ul class="sub-nav">

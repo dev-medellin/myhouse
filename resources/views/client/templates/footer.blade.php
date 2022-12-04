@@ -1,5 +1,5 @@
-    	<footer class="footer" id="footer">
-			<div class="footer-widget-area">
+    	<footer class="footer" id="footer" <?php echo ($data['page'] == 'about') ? "style='margin-top:0 !important'" :'';?> >
+		<div class="footer-widget-area">
 				<div class="container">	
 					<div class="footer-widgets">
 	

@@ -316,6 +316,11 @@ $(document).ready(function(){
 
 });
 
+   setTimeout(() => {
+      $('#room-slider').css('display','block');
+   console.log('test')
+   }, 2000);
+
 $("#searchForm").on('submit',function() {
    $(this).find(":input").filter(function(){ return !this.value; }).attr("disabled", "disabled");
    return true; // ensure form still submits

@@ -5,7 +5,10 @@ use App\Http\Controllers\Common\Admin\DashboardController;
 use App\Http\Controllers\Common\Admin\ProjectController;
 use App\Http\Controllers\Common\Client\ProjectController as PCC;
 use App\Http\Controllers\CaptchaValidationController;
+use App\Http\Controllers\Common\Admin\TestimonyController;
 use App\Http\Controllers\Common\Admin\UsersInfoController;
+use App\Http\Controllers\Common\Admin\WishlistController;
+use App\Http\Controllers\Common\Client\AboutController;
 use App\Http\Controllers\Common\Client\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\Client\HomeController;
@@ -48,6 +51,9 @@ Route::prefix('users')->middleware('client')->group(function() {
 Route::prefix('admin')->middleware('admin')->group(function() {
     Route::get('/dashboard',  [DashboardController::class,'index']);
     Route::get('/projects',   [ProjectController::class,'index']);
+    Route::get('/testimony',  [TestimonyController::class,'index']);
+    Route::get('/wishlist',   [WishlistController::class,'index']);
+    Route::post('/testimony/status',[TestimonyController::class,'updateTestStatus']);
     Route::get('/users',      [UsersInfoController::class,'index']);
     Route::post('/chart',     [DashboardController::class,'get_chart']);
 
@@ -86,6 +92,7 @@ Route::prefix('admin')->middleware('admin')->group(function() {
 
 Route::get('/', [HomeController::class,'index'])->name('/');
 Route::get('/projects',                 [PCC::class,'index']);
+Route::get('/about',                    [AboutController::class,'index']);
 Route::get('/projects/{slug}',          [PCC::class,'selected']);
 Route::get('/contact',                  [ContactController::class,'index']);
 Route::post('/price',                   [PCC::class,'getPrice']);

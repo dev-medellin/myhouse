@@ -310,6 +310,27 @@ $('#editInfoProj').on('submit', function(e){
 
 })
 
+$('.logoutBtn').on('click', function(e){
+    e.preventDefault();
+    var pathUrl              = base_url+"/auth/logout",
+    method            	 = "GET",
+    dtype 	             = "json";
+    $.ajax({
+       type: method,  
+       url: pathUrl,
+       dataType: dtype,
+       success: function(response){
+          if(response.status == "SUCCESS"){
+             alert(response.message);
+             localStorage.removeItem('text_contact');
+             setTimeout(function(){// wait for 5 secs(2)
+                location.reload(); // then reload the page.(3)
+          }, 2000); 
+          }
+       }
+       });
+})
+
 var btn_status = $('#edit_cancel').data('status');
 $('#edit_cancel').on('click', function(e){
       e.preventDefault();
@@ -330,6 +351,46 @@ $('#edit_cancel').on('click', function(e){
          return btn_status = 'edit'
       }
 });
+
+var btn_approved = $('#approveBtn').data('id');
+$('#approveBtn').on('click', function(e){
+    e.preventDefault();
+    const myJSON = JSON.stringify(btn_approved);
+    const myObj = JSON.parse(myJSON);
+    $('#approve_name').html(`${myObj.fname +' ' + myObj.lname} Testimonial`);
+    $('#approve_message').html(`${myObj.message}`);
+    $('#approved_testi').modal('show');
+});
+
+$('.approveBtn').on('click', function(e){
+    e.preventDefault();
+    postStatusTeti('approved');
+})
+
+function postStatusTeti(status){
+    const myJSON = JSON.stringify(btn_approved);
+    const myObj = JSON.parse(myJSON);
+    var pathUrl              = base_url+"/admin/testimony/status",
+    method            	 = "POST",
+    dtype 	             = "json",
+    rdata 	             = {status:status,tesID:myObj.id}; 
+    $.ajax({
+       type: method,  
+       url: pathUrl,
+       dataType: dtype,
+       data : rdata,
+       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+       success: function(response){
+          if(response.status == "SUCCESS"){
+             alert(response.message);
+             localStorage.removeItem('text_contact');
+             setTimeout(function(){// wait for 5 secs(2)
+                location.reload(); // then reload the page.(3)
+          }, 2000); 
+          }
+       }
+       });
+}
 
 $('#save_btn').on('click',function(){
     $("#forms-edit input").each(function(){

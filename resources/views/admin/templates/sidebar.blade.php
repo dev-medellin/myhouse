@@ -191,5 +191,17 @@
         </ul>
         </div>
     </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="{{url('/admin/wishlist')}}">
+        <i class="ti-star menu-icon"></i>
+        <span class="menu-title">Wishlist</span>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="{{url('/admin/testimony')}}">
+        <i class="ti-clipboard menu-icon"></i>
+        <span class="menu-title">Testimony</span>
+        </a>
+    </li>
     </ul>
 </nav>

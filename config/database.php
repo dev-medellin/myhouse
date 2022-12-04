@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Str;
-
+$db_user = 'root';
+$db_pass = '01232105123';
+$db_name = 'myhouse';
+$db_host = 'localhost';
+$db_port = 3306;
 return [
 
     /*
@@ -44,13 +48,13 @@ return [
         ],
 
         'mysql' => [
-            'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'driver'    => 'mysql',
+            'url'       => env('DATABASE_URL'),
+            'host'      => $db_host,
+            'port'      => $db_port,
+            'database'  => $db_name,
+            'username'  => $db_user,
+            'password'  => $db_pass,
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

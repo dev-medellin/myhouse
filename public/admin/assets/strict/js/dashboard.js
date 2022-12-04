@@ -33,6 +33,8 @@
 
         $('.project_text').html(response.data.total_proj);
         $('.client_text').html(response.data.total_count_user);
+        $('.wishlist_text').html(response.data.total_count_wish);
+        $('.testimony_text').html(response.data.total_testimony)
         
             //  if(response.status == "SUCCESS"){
             //     priceMin =  response.data.priceMin 

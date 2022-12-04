@@ -5,7 +5,7 @@
                       <div class="row">
                         <div class="col-12 col-xl-5 mb-4 mb-xl-0">
                           <h4 class="font-weight-bold">Hi, Welcomeback!</h4>
-                          <h4 class="font-weight-normal mb-0">JustDo Dashboard,</h4>
+                          <h4 class="font-weight-normal mb-0">MyHome Dashboard,</h4>
                         </div>
                         <div class="col-12 col-xl-7">
                           <div class="d-flex align-items-center justify-content-between flex-wrap">
@@ -18,7 +18,7 @@
                             <div class="pr-3 mb-3 mb-xl-0">
                             </div>
                             <div class="mb-3 mb-xl-0">
-                              <button class="btn btn-warning rounded-0 text-white">Downloads</button>
+                              <button class="btn btn-warning rounded-0 text-white"><i class="fa fa-print"></i> Print</button>
                             </div>
                           </div>
                         </div>
@@ -51,9 +51,9 @@
                     <div class="col-md-3 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-body">
-                          <p class="card-title text-md-center text-xl-left">Today’s Bookings</p>
+                          <p class="card-title text-md-center text-xl-left">Wishlist Number</p>
                           <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">40016</h3>
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><span class="wishlist_text"></span></h3>
                             <i class="ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
                           </div>  
                         </div>
@@ -62,9 +62,9 @@
                     <div class="col-md-3 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-body">
-                          <p class="card-title text-md-center text-xl-left">Total Items Bookings</p>
+                          <p class="card-title text-md-center text-xl-left">Summited Testimonial</p>
                           <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">61344</h3>
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><span class="testimony_text"></span></h3>
                             <i class="ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
                           </div>  
                         </div>
