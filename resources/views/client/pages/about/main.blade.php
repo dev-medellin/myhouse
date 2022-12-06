@@ -7,7 +7,8 @@
             <h5>Know More About Us</h5>
             <div class="main-title">
                 <h2><span>My</span> Home</h2>
-				<h5>Build your dream house with us</h5>
+				<h5>You deserve a unique house design that fits your budget. We make it easy and affordable.
+                </h5>
                 <strong></strong> <!-- Use for heading after effect -->
             </div>
         </div> <!-- /.section-heading -->
@@ -27,7 +28,7 @@
                 </div>
                 <div class="feature-things">
                     <span><a href="#"><i class="flaticon-command"></i></a></span>
-                    <span>Good <strong>Neighbour</strong></span>
+                    <span>Skilled <strong>Workers</strong></span>
                 </div>
                 <!-- <div class="border-circle"></div> -->
                 <div class="feature-main-img">

@@ -21,9 +21,9 @@
 									</div> <!-- /.contact-img -->
 									<div class="contact-content">
 										<div class="title">
-											<h3>Charis Powel (CEO)</h3>
+											<h3>MyHouse</h3>
 										</div>
-										<p>I like the geometric visual, bold typo, easy grid and the well balan ced whitespace. Gallery PhotoCreative Corporate, CommunityCompany Profile, Agency and other. I like the geometric visual,</p>
+										<p>We are more than happy to hear your thoughts, we are waiting for your ideas and suggestions! Let’s help each other to develop the best version of My Home <3 </p>
 										<div class="mail-phone">
 											<span>
 												<i class="fa fa-envelope-o"></i>

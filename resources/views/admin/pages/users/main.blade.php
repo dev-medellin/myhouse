@@ -30,7 +30,7 @@
                                 <td>{{$user->fname.' '.$user->lname}}</td>
                                 <td><?php echo ($user->wishlist > 0 ? $user->wishlist : 'No Wishlist') ?> </td>
                                 <td><label class="badge <?php echo ($user->email_status == 'verified' ? 'badge-success' : 'badge-danger');?>">{{ucfirst($user->email_status)}}</label></td>
-                                <td>$1500</td>
+                                <td>₱600K</td>
                                 <td>
                                   <label class="badge <?php echo ($user->status == 'active' ? 'badge-success' : 'badge-danger');?>">{{ucfirst($user->status)}}</label>
                                 </td>

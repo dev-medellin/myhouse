@@ -96,7 +96,7 @@
 									<ul>
 										<li>
 											<span>Total area</span>
-											<span>{{$data['project']->proj_area}}m</span>
+											<span>{{$data['project']->proj_area}}sqm</span>
 										</li>
 										<!-- <li>
 											<span>Total rooms</span>

@@ -8,14 +8,14 @@
                         <i class="flaticon-house"></i>
                     </div>
                     <div class="title">
-                        <h3><a href="#">Best renovation</a></h3>
+                        <h3><a href="#">BEST HOME</a></h3>
                     </div>
                     <div class="content">
-                        <p>Claritas etiam processus dynamicus, qui sequitur mutationem.</p>
+                        <p>My home will be your best home and it is for everyone, it exist to help the modest contractors and foreman to share their talent with you. My home will be the way for you to find your best home!</p>
                     </div>
-                    <div class="renewal-btn">
+                 <!--    <div class="renewal-btn">
                         <a href="#" class="fresh-btn">Read more</a>
-                    </div>
+                    </div> -->
                 </div> <!-- /.renewal-items -->
             </div> <!-- /.col- -->
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -24,14 +24,14 @@
                         <i class="flaticon-burj-al-arab-1"></i>
                     </div>
                     <div class="title">
-                        <h3><a href="#">Best renovation</a></h3>
+                        <h3><a href="#">BEST PEOPLE</a></h3>
                     </div>
                     <div class="content">
-                        <p>Claritas etiam processus dynamicus, qui sequitur mutationem.</p>
+                        <p>My home contractors and foreman are skilled even though they’re called modest, they have the best talent and we invite people who can testify how trustful and skillful our people, they rate them the best!</p>
                     </div>
-                    <div class="renewal-btn">
+               <!--      <div class="renewal-btn">
                         <a href="#" class="fresh-btn">Read more</a>
-                    </div>
+                    </div> -->
                 </div> <!-- /.renewal-items -->
             </div> <!-- /.col- -->
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -40,14 +40,14 @@
                         <i class="flaticon-mansion"></i>
                     </div>
                     <div class="title">
-                        <h3><a href="#">Best renovation</a></h3>
+                        <h3><a href="#">BEST CHOICE</a></h3>
                     </div>
                     <div class="content">
-                        <p>Claritas etiam processus dynamicus, qui sequitur mutationem.</p>
+                        <p>My home is giving everyone the best choice, you can save whatever home projects you love and you can also freely used it even without contacting our contractors. My Home is here to help everyone have the best choice and comfortable home.</p>
                     </div>
-                    <div class="renewal-btn">
+            <!--         <div class="renewal-btn">
                         <a href="#" class="fresh-btn">Read more</a>
-                    </div>
+                    </div> -->
                 </div> <!-- /.renewal-items -->
             </div> <!-- /.col- -->
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -56,14 +56,14 @@
                         <i class="flaticon-cityscape"></i>
                     </div>
                     <div class="title">
-                        <h3><a href="#">Best renovation</a></h3>
+                        <h3><a href="#">BEST PLAN</a></h3>
                     </div>
                     <div class="content">
-                        <p>Claritas etiam processus dynamicus, qui sequitur mutationem.</p>
+                        <p>My home have the best plan where you can see the 2D and 3D version of every floor plan, you can see the feature of the home project such as the number of bedrooms, bathrooms and we are also giving you home floor plans with 2 stories <3</p>
                     </div>
-                    <div class="renewal-btn">
+               <!--      <div class="renewal-btn">
                         <a href="#" class="fresh-btn">Read more</a>
-                    </div>
+                    </div> -->
                 </div> <!-- /.renewal-items -->
             </div> <!-- /.col- -->
         </div> <!-- /.row -->  
@@ -90,10 +90,10 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div class="feature-content wow fadeInLeft">
                         <h3>Our Awesome Feature</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nstrud exercitation ullamco</p>
-                        <div class="room-feature-btn">
+                        <p>Are you having a hard time thinking how you will going to build your new home? Find your dream home today by exploring variety of beautiful home designs and find the best fit for you.</p>
+                  <!--       <div class="room-feature-btn">
                             <a href="#" class="dream-btn">Explore</a>
-                        </div>
+                        </div> -->
                     </div> <!-- /.feature-content -->
                 </div> <!-- /.col- -->
                 <!-- Room Slider Begin -->
@@ -120,7 +120,7 @@
                                             <div class="info">
                                                 <span class="building">
                                                     <img src="assets/images/icons/building.png" alt="icon">
-                                                    <a href="#">60m</a>
+                                                    <a href="#">50sqm</a>
                                                 </span>
                                                 <span class="technology">                                            
                                                     <img src="assets/images/icons/technology.png" alt="icon">
@@ -140,7 +140,7 @@
                                                 </span>
                                             </div>
                                             <div class="price">
-                                                <a href="#" class="price-btn">$2000</a>
+                                                <a href="#" class="price-btn">₱600K-₱1.6M</a>
                                             </div>
                                         </div> <!-- /.slider-meta -->
                                     </div> <!-- /.slider-in-room -->
@@ -212,7 +212,7 @@
                 </li>
                 <li class="wow fadeInRight">
                     <a href="#"><i class="flaticon-command"></i></a>
-                    <h5>Dood Neighbour</h5>
+                    <h5>Skilled Workers</h5>
                 </li>
             </ul>
         </div> <!-- /.features-items -->
