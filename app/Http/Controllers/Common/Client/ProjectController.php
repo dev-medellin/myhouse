@@ -53,6 +53,9 @@ class ProjectController extends Controller
                                     $query->where('stories', $request->stories);
                                    }
                             })
+                            ->when($request->has('sq_area'), function ($query) use ($request){
+                                $query->where('proj_area','=',$request->sq_area);
+                            })
                             ->when($request->has('price_min') && $request->has('price_max'), function ($query) use ($request) {
                                 $price_min = str_replace(str_split(',₱'), '',$request->price_min);
                                 $price_max = str_replace(str_split(',₱'), '',$request->price_max);
