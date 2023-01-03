@@ -285,7 +285,7 @@ ul, li {
 }
 /*General Buttom*/
 .gen-btn {
-    background-color: #fe931f;
+    background-color: #0089e9;
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     color: #fff;
@@ -754,7 +754,7 @@ ul, li {
 }
 .main-menu .main-nav .sub-nav li .sub-nav li:hover .sub-nav li a,
 .main-menu .main-nav .sub-nav li:hover .sub-nav li a {
-    background: #0089e9;
+    background: #ffffff;
 }
 .main-menu .main-nav .sub-nav li:hover .sub-nav li:hover .sub-nav li:hover a,
 .main-menu .main-nav .sub-nav li:hover .sub-nav li:hover a,
@@ -3478,12 +3478,12 @@ max-height: 500px;
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border: 1px solid #fe931f;
-    color: #fe931f;
+    /* border: 1px solid #fe931f;
+    color: #fe931f; */
     box-shadow: none;
 }
 .comment-form input:focus::-webkit-input-placeholder {
-    color: #fe931f;
+    /* color: #fe931f; */
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -3491,7 +3491,7 @@ max-height: 500px;
     transition: all 0.5s ease;  
 }
 .comment-form input:focus::-moz-placeholder {
-    color: #fe931f;
+    /* color: #fe931f; */
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -3499,7 +3499,7 @@ max-height: 500px;
     transition: all 0.5s ease; 
 }
 .comment-form input:focus:-ms-input-placeholder {
-    color: #fe931f;
+    /* color: #fe931f; */
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -3507,7 +3507,7 @@ max-height: 500px;
     transition: all 0.5s ease;  
 } 
 .comment-form input:focus:-moz-placeholder {
-    color: #fe931f;
+    /* color: #fe931f; */
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -3515,7 +3515,7 @@ max-height: 500px;
     transition: all 0.5s ease;  
 }
 .comment-form textarea:focus::-webkit-input-placeholder {
-    color: #fe931f;
+    /* color: #fe931f; */
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -3523,7 +3523,7 @@ max-height: 500px;
     transition: all 0.5s ease;  
 }
 .comment-form textarea:focus::-moz-placeholder {
-    color: #fe931f;
+    /* color: #fe931f; */
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -3531,7 +3531,7 @@ max-height: 500px;
     transition: all 0.5s ease; 
 }
 .comment-form textarea:focus:-ms-input-placeholder {
-    color: #fe931f;
+    /* color: #fe931f; */
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -3539,7 +3539,7 @@ max-height: 500px;
     transition: all 0.5s ease;  
 } 
 .comment-form textarea:focus:-moz-placeholder {
-    color: #fe931f;
+    /* color: #fe931f; */
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -3895,7 +3895,7 @@ max-height: 500px;
 .contact-form input,
 .contact-form textarea {
     font-size: 16px;
-    color: #fe931f;
+    /* color: #fe931f; */
     height: 45px;
     padding-right: 30px;
     padding-left: 0;
@@ -3914,12 +3914,12 @@ max-height: 500px;
     padding-left: 30px;
     padding-top: 20px;
 }
-.contact-form input:focus {
+/* .contact-form input:focus {
     border-bottom: 1px solid #fe931f;
 }
 .contact-form textarea:focus {
     border: 1px solid #fe931f;
-}
+} */
 .contact-form .form-control {
     border-radius: 0;
     box-shadow: none;
@@ -3947,9 +3947,9 @@ max-height: 500px;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-.contact-form .form-control:focus + .input-icon i {
+/* .contact-form .form-control:focus + .input-icon i {
     color: #fe931f;
-}
+} */
 .contact-form .form-btn {
     text-align: center;
 }

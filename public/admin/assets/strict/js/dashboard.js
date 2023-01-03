@@ -4,6 +4,10 @@
     var month_list = null,
         month_name = null,
         user_name = null,
+        month_list_count_new=[],
+        month_list_new =[],
+        user_list_count_new=[],
+        user_list_new =[],
         res = 0,
         total_count = 0,
         total_count_users = 0,
@@ -44,15 +48,54 @@
             //  }
           },
     });
-    Object.values(res).forEach(val => {
-        record.push(val.month_name);
-        month_data = month_list.map(i => record.includes(i) ? val.total : 0)
+
+    var MonthListCount = res.filter(function (el)
+    {
+        return el.total
+    }
+    );
+    MonthListCount.forEach(val => {
+        month_list_count_new.push(val.total);
     });
 
-    Object.values(user_name).forEach(val => {
-        user_record.push(val.month_name);
-        user_data = month_list.map(i => user_record.includes(i) ? val.total : 0)
+    var MonthList = res.filter(function (el)
+    {
+        return el.month_name
+    }
+    );
+    MonthList.forEach(val => {
+        month_list_new.push(val.month_name);
     });
+
+    //
+    var UserListCount = user_name.filter(function (el)
+    {
+        return el.total
+    }
+    );
+    UserListCount.forEach(val => {
+        user_list_count_new.push(val.total);
+    });
+
+    var UserList = user_name.filter(function (el)
+    {
+        return el.month_name
+    }
+    );
+    UserList.forEach(val => {
+        user_list_new.push(val.month_name);
+    });
+
+
+    // Object.values(res).forEach(val => {
+    //     record.push(val.month_name);
+    //     month_data = month_list.map(i => record.includes(i) ? val.total : 0)
+    // });
+
+    // Object.values(user_name).forEach(val => {
+    //     user_record.push(val.month_name);
+    //     user_data = month_list.map(i => user_record.includes(i) ? val.total : 0)
+    // });
     
     $(function() {
         if ($("#sales-chart").length) {
@@ -62,11 +105,11 @@
             var SalesChart = new Chart(SalesChartCanvas, {
                 type: "bar",
                 data: {
-                    labels: month_list,
+                    labels: month_list_new,
                     datasets: [
                         {
                             label: "Total Project",
-                            data: month_data,
+                            data: month_list_count_new,
                             backgroundColor: "#ffc100"
                         },
                         // {
@@ -139,11 +182,11 @@
             var SalesChart = new Chart(SalesChartCanvas, {
                 type: "bar",
                 data: {
-                    labels: month_list,
+                    labels: user_list_new,
                     datasets: [
                         {
                             label: "User Registered",
-                            data: user_data,
+                            data: user_list_count_new,
                             backgroundColor: "#03FB56"
                         },
                         // {

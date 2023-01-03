@@ -80,11 +80,17 @@
                         <li class="active"><a href="index.html">Home</a></li>
                     </ul>
                 </li> -->
-                <li <?php echo $data['page'] == 'contact' ? 'class="active"' : '';?>><a href="{{url('/contact')}}" >Contact</a></li>
+                <!-- <li <?php echo $data['page'] == 'contact' ? 'class="active"' : '';?>><a href="{{url('/contact')}}" >Contact</a></li> -->
                 @if(Auth::check())
+                <li <?php echo $data['page'] == 'be_contructor' ? 'class="active"' : '';?>><a href="{{url('users/contructor/register')}}" >Be Our Contructor</a></li>
                 <li><a href="#">Welcome, {{Auth::user()->fname}}</a>
                     <ul class="sub-nav" id="myNav">
-                        <li><a href="{{url('users/mypage')}}" >My Page</a></li>
+                        <li><a href="javascript:void(0);" >My Page</a>
+                            <ul class="sub-nav" id="myNav">
+                                <li><a href="{{url('users/mypage')}}">My User Page</a></li>
+                                <li><a href="{{url('contructor/dashboard')}}">Contructor Panel</a></li>
+                            </ul>
+                        </li>
                         @if(Auth::user()->role == 1)
                         <li><a href="{{url('admin/dashboard')}}" >Admin Panel</a></li>
                         @endif

@@ -25,6 +25,7 @@ class ContactController extends Controller
             $data = [
                 'user_id'   => Auth::user()->id,
                 'email'   => Auth::user()->email,
+                'message_to'   =>$request->cont_email,
                 'full_name' => Auth::user()->fname.' '.Auth::user()->lname,
                 'message'   => $request->message,
                 'phone_no'  =>  Auth::user()->contact,
@@ -36,7 +37,7 @@ class ContactController extends Controller
             $template = 'contact_message';
             $full_name = Auth::user()->fname.' '.Auth::user()->lname;
             if($created_contact){
-                $test = new Mail($template, "realstate.myhouse@gmail.com", [
+                $test = new Mail($template, $request->cont_email, [
                     'subject'   => $full_name." Made A Contact Message",
                     'title'     => $full_name." Made A Contact Message",
                     'client'     => $full_name,

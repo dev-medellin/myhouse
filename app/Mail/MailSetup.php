@@ -57,10 +57,10 @@ class MailSetup extends Mailable
         }
 
         $sender     = (isset($this->details['sender']) ? $this->details['sender'] : '');
-        $reply_to   = ($this->receiver == "realstate.myhouse@gmail.com" ? $this->details['sender'] : noReplyEmail($this->receiver, $sender));
+        $reply_to   = ($this->receiver == "noreply@gmail.com" ? $this->details['sender'] : noReplyEmail($this->receiver, $sender));
         return $this
             ->view($page)
-             ->from($reply_to,'MYHouse')
+             ->from($reply_to,'MyHomeCustomer')
                 ->replyTo($reply_to)
                     ->subject($this->details['subject']);
     }

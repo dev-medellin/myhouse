@@ -11,6 +11,7 @@ class ProjectModel extends Model
     protected $table        = 'projects';
     protected $primaryKey   = 'id';
     protected $fillable = [
+        'post_by',
         'proj_name',
         'proj_area',
         'proj_type',

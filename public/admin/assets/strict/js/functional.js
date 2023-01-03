@@ -1,13 +1,27 @@
 $(document).ready(function(){
 
+    var base_url = $('#url').val();
+
     $('.insertProject').on('click', function(e){
         e.preventDefault();
+        var modals = $(this).data('modal');
 
-        $('#insertProdMod').modal('show');
+
+        console.log(modals)
+        switch(modals){
+
+            case "contructor":
+                window.location.href = `${base_url}/admin/contructor/create` 
+            break;
+
+            case "projects":
+                $('#insertProdMod').modal('show'); 
+            break;
+            
+        }
     })
+    
 });
-
-var base_url = $('#url').val();
 
 $('#projInserForm').on('submit', function(event){
     event.preventDefault();
@@ -337,7 +351,7 @@ $('#edit_cancel').on('click', function(e){
       console.log(btn_status)
       if(btn_status == 'edit'){
          $(':input').removeAttr('readonly');
-         $(this).html('Cancel');
+         $(this).html('<i class="fas fa-xmark"></i> Cancel');
          $(this).attr("data-status","cancel");
          $('#save_btn').append('<button class="btn btn-success" type="submit" id="saveBtn" style="outline: none;"><i class="fa fa-check"></i> Save</button>');
         return btn_status = 'cancel'

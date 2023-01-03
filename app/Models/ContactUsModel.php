@@ -13,6 +13,7 @@ class ContactUsModel extends Model
     protected $fillable = [
         'user_id',
         'email',
+        'message_to',
         'full_name',
         'message',
         'phone_no',

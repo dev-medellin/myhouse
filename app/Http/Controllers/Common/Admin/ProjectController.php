@@ -106,14 +106,11 @@ class ProjectController extends Controller
 
     public function imageDelete(Request $request){
 
-        if(Storage::disk('public')->exists($request->filename)){
-            if(Storage::disk('public')->delete($request->filename)) {
-                $deleted = PIM::destroy($request->imgID);
-                if($deleted){
-                    return responseSuccess('Status Deleted');
-                }else{
-                    return responseFail('Data not found!');
-                }
+        if (File::exists(public_path('uploads/images/'.$request->filename))) {
+            if(File::delete(public_path('uploads/images/'.$request->filename))) {
+                return responseSuccess('Status Deleted');
+            }else{
+                return responseFail('Data not found!');
             }
         }
 

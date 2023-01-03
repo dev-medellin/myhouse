@@ -180,13 +180,16 @@
     <li class="nav-item ">
         <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="false" aria-controls="basic-ui">
         <i class="ti-palette menu-icon"></i>
-        <span class="menu-title">Users Components</span>
+        <span class="menu-title">Clients Components</span>
         <i class="menu-arrow"></i>
         </a>
         <div class="collapse " id="basic-ui">
         <ul class="nav flex-column sub-menu">
             <li class="nav-item ">
              <a class="nav-link" href="{{url('/admin/users')}}">Users List</a>
+            </li>
+            <li class="nav-item ">
+             <a class="nav-link" href="{{url('/admin/contructor')}}">Contructor List</a>
             </li>
         </ul>
         </div>

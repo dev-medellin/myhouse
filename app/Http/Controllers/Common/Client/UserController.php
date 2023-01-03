@@ -7,11 +7,13 @@ use App\Helpers\Mail\SenderHelper as Mail;
 use Illuminate\Http\Request;
 use App\Models\UsersModel;
 use App\Models\WishListModel;
+use App\Models\ContructorModel;
 use App\Models\EmailVerifyModel as Verify;
 use App\Models\PasswordVerifyModel as PassVerify;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Libraries\MailSender;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -25,7 +27,10 @@ class UserController extends Controller
     }
 
     public function mypage(){
+
+
         $user_id = Auth::user()->id;
+
         $favorite = WishListModel::select('user_wishlist.*','projects.*')
                                    ->leftJoin('projects','projects.id','user_wishlist.proj_id')
                                    ->where('user_wishlist.user_id',$user_id)

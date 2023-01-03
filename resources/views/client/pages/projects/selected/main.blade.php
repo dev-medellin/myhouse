@@ -121,6 +121,9 @@
 					</div> <!-- /.row -->  
                     <div class="mt-5 " id="display_materials">
                         @isset($data['materials']->materials_desc)
+							<div class="awesome-btn" style="float: right !important;">
+								<a href="{{url('users/generate-pdf/'.$data['project']->id)}}" style="background-color:#0089e9 !important" class="dream-btn">PDF Download</a>
+							</div>
 							{!!$data['materials']->materials_desc!!}
 						@endisset
                     </div>

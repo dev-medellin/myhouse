@@ -216,6 +216,31 @@ $(document).ready(function(){
      });
    })
 
+   $('#contructorForm').on('submit', function(e){
+      e.preventDefault();
+
+      var   pathUrl               = base_url+"/users/contructor/applied",
+      method            	 = "POST",
+      dtype 	             = "json",
+      rdata 	             = $(this).serialize(); 
+
+      $.ajax({
+         type: method,  
+         url: pathUrl,
+         dataType: dtype,
+         data: rdata, 
+         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+         success: function(response){  
+               if(response.status == "SUCCESS"){
+                  window.location.href = base_url+"/users/contructor/message";
+               }else{
+                  alert(response.message);
+               }
+            },
+      });
+   })
+
+
    $('#forms-edit').on('submit',function(e){
       e.preventDefault();
 
@@ -562,9 +587,7 @@ $('#contactForm').on('submit',function(e){
       },
    });
 });
-
 function getContact(){
-   
    var   pathUrl               = base_url+"/contact",
    method            	       = "POST",
    dtype 	                   = "json",
@@ -581,6 +604,7 @@ function getContact(){
    success: function(response){  
          if(response.status == "SUCCESS"){
             $('#message').val("");
+
          }else{
             
          }
