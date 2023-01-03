@@ -8,7 +8,7 @@ use App\Http\Controllers\Common\Contructor\ProfileController as CPFC;
 use App\Http\Controllers\Common\Client\ProjectController as PCC;
 use App\Http\Controllers\Common\Client\PDFController;
 use App\Http\Controllers\CaptchaValidationController;
-use App\Http\Controllers\Common\Admin\TestimonyController;
+use App\Http\Controllers\Common\Admin\ContructorController as ACC;
 use App\Http\Controllers\Common\Admin\UsersInfoController;
 use App\Http\Controllers\Common\Admin\WishlistController;
 use App\Http\Controllers\Common\Client\AboutController;
@@ -63,37 +63,37 @@ Route::prefix('users')->middleware('client')->group(function() {
 // Admins Route
 Route::prefix('admin')->middleware('admin')->group(function() {
     Route::get('/dashboard',  [DashboardController::class,'index']);
-    Route::get('/projects',   [ProjectController::class,'index']);
-    Route::get('/testimony',  [TestimonyController::class,'index']);
+    // Route::get('/projects',   [ProjectController::class,'index']);
+    Route::get('/contructors',  [ACC::class,'index']);
     Route::get('/wishlist',   [WishlistController::class,'index']);
-    Route::post('/testimony/status',[TestimonyController::class,'updateTestStatus']);
+    Route::post('/contructors/status',[ACC::class,'updateTestStatus']);
     Route::get('/users',      [UsersInfoController::class,'index']);
     Route::post('/chart',     [DashboardController::class,'get_chart']);
 
     //Projects
-    Route::group(['prefix' => 'projects'], function(){
-        Route::get('edit/{slug}',                   [ProjectController::class,'editSlug']);
-        Route::post('getmaterials',                  [ProjectController::class,'getMaterials']);
-        Route::post('create',                       [ProjectController::class,'insertProj']);
-        Route::post('edit',                         [ProjectController::class,'editProj']);
-        Route::post('update',                       [ProjectController::class,'updateProj']);
-        Route::post('status',                       [ProjectController::class,'updateStatus']);
-        Route::post('delete/image',                 [ProjectController::class,'imageDelete']);
-        Route::post('update/image',                 [ProjectController::class,'imageUpdate']);
-        Route::post('search',                       [ProjectController::class,'searchProj']);
-        Route::post('update/info',                  [ProjectController::class,'updateInfo']);
+    // Route::group(['prefix' => 'projects'], function(){
+    //     Route::get('edit/{slug}',                   [ProjectController::class,'editSlug']);
+    //     Route::post('getmaterials',                  [ProjectController::class,'getMaterials']);
+    //     Route::post('create',                       [ProjectController::class,'insertProj']);
+    //     Route::post('edit',                         [ProjectController::class,'editProj']);
+    //     Route::post('update',                       [ProjectController::class,'updateProj']);
+    //     Route::post('status',                       [ProjectController::class,'updateStatus']);
+    //     Route::post('delete/image',                 [ProjectController::class,'imageDelete']);
+    //     Route::post('update/image',                 [ProjectController::class,'imageUpdate']);
+    //     Route::post('search',                       [ProjectController::class,'searchProj']);
+    //     Route::post('update/info',                  [ProjectController::class,'updateInfo']);
         
 
 
-        Route::group(['prefix' => 'update'], function(){
-            Route::post('project',                      [ProjectController::class,'imageupload']);
-        });
+    //     Route::group(['prefix' => 'update'], function(){
+    //         Route::post('project',                      [ProjectController::class,'imageupload']);
+    //     });
 
 
-        Route::group(['prefix' => 'images'], function(){
-            Route::post('upload',                      [ProjectController::class,'imageupload']);
-        });
-    });
+    //     Route::group(['prefix' => 'images'], function(){
+    //         Route::post('upload',                      [ProjectController::class,'imageupload']);
+    //     });
+    // });
 
     Route::group(['prefix' => 'users'], function(){
         Route::get('edit/{id}',                         [UsersInfoController::class,'editUsers']);

@@ -171,12 +171,12 @@
         <span class="menu-title">Dashboard</span>
         </a>
     </li>
-    <li class="nav-item ">
+    <!-- <li class="nav-item ">
         <a class="nav-link" href="{{url('/admin/projects')}}">
         <i class="ti-clipboard menu-icon"></i>
         <span class="menu-title">Project</span>
         </a>
-    </li>
+    </li> -->
     <li class="nav-item ">
         <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="false" aria-controls="basic-ui">
         <i class="ti-palette menu-icon"></i>
@@ -188,9 +188,9 @@
             <li class="nav-item ">
              <a class="nav-link" href="{{url('/admin/users')}}">Users List</a>
             </li>
-            <li class="nav-item ">
+            <!-- <li class="nav-item ">
              <a class="nav-link" href="{{url('/admin/contructor')}}">Contructor List</a>
-            </li>
+            </li> -->
         </ul>
         </div>
     </li>
@@ -201,9 +201,9 @@
         </a>
     </li>
     <li class="nav-item ">
-        <a class="nav-link" href="{{url('/admin/testimony')}}">
-        <i class="ti-clipboard menu-icon"></i>
-        <span class="menu-title">Testimony</span>
+        <a class="nav-link" href="{{url('/admin/contructors')}}">
+        <i class="ti-paint-roller menu-icon"></i>
+        <span class="menu-title">Contructors</span>
         </a>
     </li>
     </ul>

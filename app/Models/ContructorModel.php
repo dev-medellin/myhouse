@@ -42,4 +42,24 @@ class ContructorModel extends Model
         $query = self::where('comp_slug', $slug)->where('status','approved')->first();
         return  $query;
     }
+
+    public function getContructors(){
+
+        $pending = self::where('status','pending')
+                    ->orderBy('id', 'DESC')
+                    ->get();
+        
+        $approved = self::where('status','approved')
+                    ->orderBy('id', 'DESC')
+                    ->get();
+        $declined = self::where('status','declined')
+                    ->orderBy('id', 'DESC')
+                    ->get();
+
+        return [
+            'pending'         => $pending,
+            'approved'      => $approved,
+            'declined'      => $declined
+        ];
+    }
 }

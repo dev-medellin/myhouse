@@ -371,8 +371,9 @@ $('#approveBtn').on('click', function(e){
     e.preventDefault();
     const myJSON = JSON.stringify(btn_approved);
     const myObj = JSON.parse(myJSON);
-    $('#approve_name').html(`${myObj.fname +' ' + myObj.lname} Testimonial`);
-    $('#approve_message').html(`${myObj.message}`);
+    $('#approve_name').html(`Company Name : <br>${myObj.comp_name}`);
+    $('#approve_message').html(`Email: <br>${myObj.comp_email}`);
+    $('#approve_contact').html(`ContactNumber: <br>${myObj.comp_contact}`);
     $('#approved_testi').modal('show');
 });
 
@@ -384,10 +385,10 @@ $('.approveBtn').on('click', function(e){
 function postStatusTeti(status){
     const myJSON = JSON.stringify(btn_approved);
     const myObj = JSON.parse(myJSON);
-    var pathUrl              = base_url+"/admin/testimony/status",
+    var pathUrl              = base_url+"/admin/contructors/status",
     method            	 = "POST",
     dtype 	             = "json",
-    rdata 	             = {status:status,tesID:myObj.id}; 
+    rdata 	             = {status:status,tesID:myObj.id,uid:myObj.comp_uid}; 
     $.ajax({
        type: method,  
        url: pathUrl,
@@ -396,7 +397,14 @@ function postStatusTeti(status){
        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
        success: function(response){
           if(response.status == "SUCCESS"){
-             alert(response.message);
+            $.toast({
+                heading: 'Project Updated',
+                text: `${response.message}`,
+                position: "bottom-right",
+                icon: 'success',
+                stack: false,
+                loaderBg: '#27B200'
+              })
              localStorage.removeItem('text_contact');
              setTimeout(function(){// wait for 5 secs(2)
                 location.reload(); // then reload the page.(3)

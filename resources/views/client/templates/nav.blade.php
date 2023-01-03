@@ -69,6 +69,7 @@
                 <li <?php echo $data['page'] == 'home' ? 'class="active"' : '';?> ><a href="{{url('/')}}">Home</a></li>
                 <li <?php echo $data['page'] == 'about' ? 'class="active"' : '';?>><a href="{{url('/about')}}">About</a></li>
                 <li <?php echo $data['page'] == 'project' ? 'class="active"' : '';?> ><a href="{{url('/projects')}}">Projects</a></li>
+                <li <?php echo $data['page'] == 'list' ? 'class="active"' : '';?> ><a href="{{url('/contructor/list')}}">Contructor List</a></li>
                 <!-- <li><a href="#" style="color:red">Pages</a>
                     <ul class="sub-nav">
                         <li><a href="overview.html">Overview</a></li>
@@ -82,7 +83,9 @@
                 </li> -->
                 <!-- <li <?php echo $data['page'] == 'contact' ? 'class="active"' : '';?>><a href="{{url('/contact')}}" >Contact</a></li> -->
                 @if(Auth::check())
+                @if(Auth::user()->role != "2")
                 <li <?php echo $data['page'] == 'be_contructor' ? 'class="active"' : '';?>><a href="{{url('users/contructor/register')}}" >Be Our Contructor</a></li>
+                @endif;
                 <li><a href="#">Welcome, {{Auth::user()->fname}}</a>
                     <ul class="sub-nav" id="myNav">
                         <li><a href="javascript:void(0);" >My Page</a>

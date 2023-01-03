@@ -3,29 +3,46 @@
 namespace App\Http\Controllers\Common\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\TestimonyModel;
+use App\Models\ContructorModel;
+use App\Models\UsersModel;
 use Illuminate\Http\Request;
 
-class TestimonyController extends Controller
+class ContructorController extends Controller
 {
     //
 
     public function index(){
         $data['page'] = "main";
 
-        $testi = new TestimonyModel;
+        $testi = new ContructorModel;
 
-        $data['testimonial'] =$testi->getTestimonial();
+        $data['contructors'] =$testi->getContructors();
         
         $data['js']         =  $this->js_file();
         $data['css']        =  $this->css_file();
 
-         return view('admin.pages.testimonial.index')->with('data' ,$data);
+         return view('admin.pages.contructors.index')->with('data' ,$data);
 
     }
 
     public function updateTestStatus(Request $request){
-        $query = TestimonyModel::where('id',$request->tesID)->update(['status' => $request->status]);
+        $query = ContructorModel::where('id',$request->tesID)->update(['status' => $request->status]);
+        if($query &&  $request->status == "approved"){
+            UsersModel::where('id',$request->uid)->update(['role' => 2]);
+        }
+        if($query &&  $request->status == "pending" || $query &&  $request->status == "declined"){
+            UsersModel::where('id',$request->uid)->update(['role' => 0]);
+        }
+
+        if($query){
+         return responseSuccess('Application Successfully Updated');
+        }else{
+         return responseFail('Data not found!');
+        }
+    }
+
+    public function UpdateDeclined(){
+        ContructorModel::where('status','declined')->delete();
     }
 
 
