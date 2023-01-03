@@ -36,7 +36,7 @@
                                         <div class="post-content">
                                             <div class="post-title">
                                                 <h5>
-                                                    <a href="single.html">{{$contructor->comp_name}}</a>
+                                                    <a href="{{url('/contructor/'.$contructor->comp_slug)}}">{{$contructor->comp_name}}</a>
                                                 </h5>
                                             </div>
                                             <div class="post-metadata">

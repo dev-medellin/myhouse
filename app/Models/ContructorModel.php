@@ -62,4 +62,5 @@ class ContructorModel extends Model
             'declined'      => $declined
         ];
     }
+    
 }

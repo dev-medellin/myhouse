@@ -71,3 +71,65 @@
     </div> <!-- /.container -->
 </div> <!-- /.single -->
 <!-- /SINGLE AREA END -->
+<!-- BLOG AREA START -->
+<section class="blog">
+    <div class="container">	
+        <div class="section-heading">
+            <h5>Some of</h5>
+            <div class="main-title">
+                <h2><span>{{$data['contructor']['comp_name']}}</span> Projects</h2>
+                <strong></strong> <!-- Use for heading after effect -->
+            </div>
+        </div> <!-- /.section-heading -->
+        <div class="row">
+            <div class="blog-list" style="display:flex;flex-wrap:wrap">
+            @foreach ($data['projects'] as $proj => $value)
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <!-- post begin -->
+                    <article class="post-item border-right shadow-bottom-items">
+                        <div class="post-media">
+                            <img src="{{url('thumbnail/'.$value->thumbnail.'')}}" alt="Featured" style="max-height:360px;max-width:400px;width:100%;height:100%;min-height: 260px;">
+                        </div>
+                        <div class="post-inner border-around">
+                            <div class="post-metadata">
+                            <span class="total-place">
+                                <i class="flaticon-ten-commandment"></i>
+                                <a href="#">{{$value->proj_area}} Sq Meter</a>
+                            </span>
+                            <span class="bedroom">
+                                <i class="flaticon-bed"></i>
+                                <a href="#">{{$value->bed_room}} bedrooms</a>
+                            </span>
+                            <span class="bathroom"> 
+                                <i class="flaticon-bathtub"></i>
+                                <a href="#">{{$value->bath_room}} Bathrooms</a>
+                            </span>   
+                            <span class="bathroom"> 
+                                <i class="flaticon-house"></i>
+                                <a href="#">{{$value->stories}} Stories</a>
+                            </span>  
+                            </div> <!-- /.post-metadata -->
+                            <div class="post-content border-top">
+                                <div class="post-title">
+                                    
+                                    <h5><a href="{{url('/projects/'.$value->proj_slug)}}">{{$value->proj_name}}</a></h5>
+                                </div>
+                                <div class="post-entry">
+                                    <p style="inline-size: 178px;overflow-wrap: break-word;width: 100%;">{{substr($value->proj_description,0,100).'...'}}</p>
+                                </div>
+                                <div class="post-about border-top">
+                                    <a href="{{url('/projects/'.$value->proj_slug)}}" class="read-more">Read More</a>
+                                </div>
+                            </div> <!-- /.post-content -->
+                        </div> <!-- /.post-inner -->
+                    </article> <!-- /.post-item -->
+                </div> <!-- /.col- -->
+            @endforeach
+            </div> <!-- /.blog-list -->
+        </div> <!-- /.row -->  
+    </div> <!-- /.container -->
+</section> <!-- /.blog -->
+<!-- /BLOG AREA END -->
+<!-- PAGINATION AREA START -->
+{{ $data['projects']->links('vendor.pagination.default')}}
+<!-- /PAGINATION AREA END -->

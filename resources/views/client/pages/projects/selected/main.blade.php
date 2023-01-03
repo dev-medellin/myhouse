@@ -78,14 +78,18 @@
 							<article class="awesome-content">
 								<div class="awesome-header stylist-bottom-right">
 									<h3>{{$data['project']->proj_name}} <?php echo ($data['wish'] != false ? '<i class="fa fa-star"></i>' : '')?></h3>
-									<!-- <p><i class="fa fa-map-marker"></i> 530, Khan A Sabur Road, Khulna, Bangladesh</p> -->
+									<a href="{{url('/contructor/'.$data['project']->comp_slug)}}">
+										<p><i class="fa fa-building"></i> Project By : {{$data['project']->comp_name}}</p>
+									</a>
 								</div>
 								<div class="awesome-footer">
-									<p>{{$data['project']->proj_description}}</p>
+									<p style="inline-size: 178px;overflow-wrap: break-word;width: 100%;">{{$data['project']->proj_description}}</p>
+									@if(!$data['wish'])
 									<div class="awesome-btn">
 										<input type="hidden" value="{{$data['project']->id}}" id="projectID" name="projectID">
 										<a href="javascrtipt:void(0);" id="wishList" class="dream-btn">Add to Wishlist</a>
 									</div>
+									@endif
 								</div>
 							</article> <!-- /.awesome-content -->
 						</div> <!-- /.col- -->
@@ -119,7 +123,7 @@
 							</div> <!-- /.total-package -->
 						</div> <!-- /.col -->
 					</div> <!-- /.row -->  
-                    <div class="mt-5 " id="display_materials">
+                    <div class="mt-5" id="display_materials">
                         @isset($data['materials']->materials_desc)
 							<div class="awesome-btn" style="float: right !important;">
 								<a href="{{url('users/generate-pdf/'.$data['project']->id)}}" style="background-color:#0089e9 !important" class="dream-btn">PDF Download</a>

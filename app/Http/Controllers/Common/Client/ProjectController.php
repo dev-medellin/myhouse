@@ -9,6 +9,7 @@ use App\Models\WishListModel;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\{
+    ContructorModel,
     MaterialModel                   as MM,
     ProjectImageModel               as PIM,
     ProjectModel                    as Project,
@@ -96,7 +97,14 @@ class ProjectController extends Controller
     }
 
     public function selected($slug){
-        $queryProj = Project::where('proj_slug',$slug)->first();
+        $checkPosted = Project::where('proj_slug',$slug)->first();
+        $queryProj = Project::select('*')
+                    ->where('proj_slug',$slug)
+                    ->when($checkPosted, function($query) use($checkPosted){
+                    //   $checking = ContructorModel::where('comp_uid', $checkPosted->post_by)->first();
+                      $query->leftJoin('contructor_list','contructor_list.comp_uid','=','projects.post_by');
+                    })
+                    ->first();
         $user_id   = Auth::check() != null ? Auth::user()->id : '';
         $wish = Auth::check() ? WishListModel::where('user_id', $user_id) : null;
         if(Auth::check()){

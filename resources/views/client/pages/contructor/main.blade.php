@@ -17,11 +17,11 @@
 							<div class="col-md-12">
 								<div class="contact-info">
 									<div class="contact-img">
-										<img src="../../assets/images/contact/1.jpg" alt="CEO">
+										<img src="{{ asset('assets/images/logo/logo2.png') }}" alt="CEO">
 									</div> <!-- /.contact-img -->
 									<div class="contact-content">
 										<div class="title">
-											<h3>MyHouse</h3>
+											<h3>MyHome</h3>
 										</div>
 										<p>We are more than happy to hear your thoughts, we are waiting for your ideas and suggestions! Let’s help each other to develop the best version of My Home ♥ </p>
 										<div class="mail-phone">

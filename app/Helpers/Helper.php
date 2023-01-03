@@ -6,12 +6,12 @@ use Illuminate\Support\Facades\Http;
 if (!function_exists('noReplyEmail')) {
     function noReplyEmail ($email, $sender) {
         if(UsersModel::where('email',$email)->where('status','active')->first()) {
-            return "no-reply@myhouse.com";
+            return "no-reply@myhome.com";
         } else { 
             if($sender){
                 return $sender;
             } else {
-                return "myhouse@gmail.com";
+                return "myhome@gmail.com";
             }
         }
     }

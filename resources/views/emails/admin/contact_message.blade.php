@@ -77,7 +77,7 @@
   <table role="presentation" cellpadding="0" cellspacing="0" style="max-width: 720px; width: 100%; margin: 15px auto 20px; text-align: center; border-top: 1px solid #f2f2f2;">
     <tr>
       <td>
-        <p style="color: #b3b3b3; font-size: 14px; font-weight: 300;">Copyright © 2006- <?php echo date('Y');?> MyHouse. All Rights Reserved.</p>
+        <p style="color: #b3b3b3; font-size: 14px; font-weight: 300;">Copyright © 2006- <?php echo date('Y');?> MyHome. All Rights Reserved.</p>
         <p style="color: #b3b3b3; font-size: 14px; font-weight: 300;"><a href="localhost/">Unsubscribe Here</a></p>
       </td>
     </tr>

@@ -9,7 +9,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Str;
 use App\Models\{
-    ContructorModel
+    ContructorModel,
+    ProjectModel
 };
 use Illuminate\Support\Facades\Redirect;
 
@@ -66,10 +67,14 @@ class ContructorController extends Controller
         $check = $cont->getSelected($slug);
 
         if($check){
+
+            $proj = $this->selectedProjects($check);
+
             $data['page']       =  "selected";
             $data['js']         =  $this->js_file();
             $data['css']        =  $this->css_file();
             $data['contructor'] =  $check;
+            $data['projects']   =  $proj;
     
             return view('client.pages.contructor.index')->with('data', $data);
         }else{
@@ -77,6 +82,22 @@ class ContructorController extends Controller
         }
 
 
+    }
+
+    public function selectedProjects($check){
+        $query = ProjectModel::where('post_by', $check->comp_uid)->where('status','active')->get();
+
+        $totalGroup = count($query);
+        $perPage = 6;
+        $page = Paginator::resolveCurrentPage('page');
+    
+        $query = new LengthAwarePaginator($query->forPage($page, $perPage), $totalGroup, $perPage, $page, [
+            'path' => Paginator::resolveCurrentPath(),
+            'pageName' => 'page',
+            'project_count' => count($query)
+        ]);
+
+        return $query;
     }
 
     public function message(){

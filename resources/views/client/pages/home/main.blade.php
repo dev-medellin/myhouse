@@ -226,7 +226,7 @@
         <div class="section-heading">
             <h5>Some of</h5>
             <div class="main-title">
-                <h2><span>Our</span> Blog</h2>
+                <h2><span>Our</span> Categories</h2>
                 <strong></strong> <!-- Use for heading after effect -->
             </div>
         </div> <!-- /.section-heading -->
