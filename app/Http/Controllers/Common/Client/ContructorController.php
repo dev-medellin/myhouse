@@ -25,7 +25,7 @@ class ContructorController extends Controller
 
         if(count($found) == 0):
 
-        $data['page']       =  "be_contructor";
+        $data['page']       =  "main";
         $data['js']         =  $this->js_file();
         $data['css']        =  $this->css_file();
 
