@@ -93,7 +93,7 @@
     
     // Dream Type Style
      $(".typed-from-js").typed({
-        strings: ["Dream", "Edifice", "Nest"],
+        strings: ["Avenue"],
         cursorChar: " ",
         typeSpeed: 100,
         loop: true,

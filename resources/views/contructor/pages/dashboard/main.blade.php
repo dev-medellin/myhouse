@@ -37,7 +37,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3 grid-margin stretch-card">
+<!--                     <div class="col-md-3 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-body">
                           <p class="card-title text-md-center text-xl-left">Number of Clients</p>
@@ -47,7 +47,7 @@
                           </div>  
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <!-- <div class="col-md-3 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-body">
@@ -88,7 +88,7 @@
                                   <div class="col-md-12 col-xl-9">
                                     <div class="row">
                                       <div class="col-md-6">
-                                        <div class="table-responsive mb-3 mb-md-0">
+                                 <!--        <div class="table-responsive mb-3 mb-md-0">
                                           <h3>Top 5 Projects</h3>
                                           <table class="table table-borderless report-table">
                                             <tr>
@@ -146,7 +146,7 @@
                                               <td><h5 class="font-weight-bold mb-0">793</h5></td>
                                             </tr>
                                           </table>
-                                        </div>
+                                        </div> -->
                                       </div>
                                       <div class="col-md-6 mt-3">
                                         <canvas id="north-america-chart"></canvas>

@@ -98,7 +98,7 @@ class ProjectController extends Controller
 
     public function selected($slug){
         $checkPosted = Project::where('proj_slug',$slug)->first();
-        $queryProj = Project::select('*')
+        $queryProj = Project::selectRaw('projects.*, projects.id as project_id,contructor_list.*')
                     ->where('proj_slug',$slug)
                     ->when($checkPosted, function($query) use($checkPosted){
                     //   $checking = ContructorModel::where('comp_uid', $checkPosted->post_by)->first();
@@ -111,7 +111,7 @@ class ProjectController extends Controller
             $wish = WishListModel::where('proj_id',$queryProj->id)->where('user_id',$user_id)->first();
         }
         if($queryProj){
-            $data['materials']  = MM::where('proj_id',$queryProj->id)->first();
+            $data['materials']  = MM::where('proj_id',$queryProj->project_id)->first();
             $data['project']    = $queryProj;
             $data['wish']       = $wish != null ? true : false;
             $data['image']      = PIM::where('proj_id',$queryProj->id)->get();

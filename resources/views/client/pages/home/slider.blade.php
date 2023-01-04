@@ -14,9 +14,9 @@
 											</div>
 										</div>
 										<div class="mian-heading">
-											<h2>Find Your <span class="typed-from-js"></span></h2>
+											<h2>Builders <span class="typed-from-js"></span></h2>
 											<div class="main-title">
-												<h3>With Us</h3>
+												<h3>Contractors Portal</h3>
 												<strong></strong> <!-- Use for heading after effect -->
 											</div>
 										</div>
@@ -36,9 +36,9 @@
 											</div>
 										</div>
 										<div class="mian-heading">
-											<h2>Find Your <span class="typed-from-js"></span></h2>
+											<h2>Builder <span class="typed-from-js"></span></h2>
 											<div class="main-title">
-												<h3>With Us</h3>
+												<h3>Contractors Portal</h3>
 												<strong></strong> <!-- Use for heading after effect -->
 											</div>
 										</div>
@@ -58,9 +58,9 @@
 											</div>
 										</div>
 										<div class="mian-heading">
-											<h2>Find Your <span class="typed-from-js"></span></h2>
+											<h2>Builders <span class="typed-from-js"></span></h2>
 											<div class="main-title">
-												<h3>With Us</h3>
+												<h3>Contractors Portal</h3>
 												<strong></strong> <!-- Use for heading after effect -->
 											</div>
 										</div>

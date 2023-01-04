@@ -23,13 +23,17 @@ class DashboardController extends Controller
     }
 
     public function get_chart(){
-        $query = WishListModel::selectRaw("COUNT(*) as total,DATE_FORMAT(created_at,'%b') as month_name,DATE_FORMAT(created_at,'%m') as month,YEAR(created_at) as year")
-                                ->whereYear("created_at","2022")
+
+        $year = date('Y');
+
+        $query = ProjectModel::selectRaw("COUNT(*) as total,DATE_FORMAT(created_at,'%b') as month_name,DATE_FORMAT(created_at,'%m') as month,YEAR(created_at) as year")
+                                ->where('post_by', '=', Auth::user()->id)
+                                ->whereYear("created_at","2023")
                                 ->groupBy("month")
                                 ->get();
 
         $query_user = User::selectRaw("COUNT(*) as total,DATE_FORMAT(created_at,'%b') as month_name,DATE_FORMAT(created_at,'%m') as month,YEAR(created_at) as year")
-                                ->whereYear("created_at","2022")
+                                ->whereYear("created_at","2023")
                                 ->groupBy("month")
                                 ->get();
         

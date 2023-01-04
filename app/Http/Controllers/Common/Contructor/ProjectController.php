@@ -95,7 +95,7 @@ class ProjectController extends Controller
     public function updateStatus(Request $request){
        $check = Project::where('id',$request->projID)->where('thumbnail','!=',null)->where('proj_est_price','=','0')->first();
 
-       if($check->thumbnail == ""){
+       if(isset($check) && $check->thumbnail == ""){
             $updated = Project::where('id',$request->projID)->update(['status' => 'inactive']);
                 return responseFail('Please upload image Thumbnail to allow display of the project!');
        }else{

@@ -72,6 +72,7 @@
 </div> <!-- /.single -->
 <!-- /SINGLE AREA END -->
 <!-- BLOG AREA START -->
+@if(count($data['projects']) != 0)
 <section class="blog">
     <div class="container">	
         <div class="section-heading">
@@ -133,3 +134,4 @@
 <!-- PAGINATION AREA START -->
 {{ $data['projects']->links('vendor.pagination.default')}}
 <!-- /PAGINATION AREA END -->
+@endif

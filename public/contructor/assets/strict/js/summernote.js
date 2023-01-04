@@ -12,7 +12,7 @@
 
 $(document).ready(function(){
     var projID = $('#projID').val();
-    var   pathUrl            = base_url+"/admin/projects/getmaterials",
+    var   pathUrl            = base_url+"/contructor/projects/getmaterials",
       method            	 = "POST",
       dtype 	             = "json";
 
