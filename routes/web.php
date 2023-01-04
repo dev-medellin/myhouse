@@ -53,7 +53,7 @@ Route::prefix('users')->middleware('client')->group(function() {
     Route::get('/contructor/register',                  [ContructorController::class,'index']);
     Route::get('/generate-pdf/{id}',                   [PDFController::class, 'generatePDF']);
 
-    Route::prefix('contructor')->group(function (){
+    Route::prefix('contractor')->group(function (){
         Route::get('/register',                          [ContructorController::class,'index']);
         Route::get('/message',                           [ContructorController::class,'message']);
         Route::post('/applied',                          [ContructorController::class,'applied']);
@@ -147,6 +147,7 @@ Route::prefix('contructor')->middleware('contructor')->group(function() {
 
 
 
+
 Route::get('/', [HomeController::class,'index'])->name('/');
 Route::get('/projects',                 [PCC::class,'index']);
 Route::get('/about',                    [AboutController::class,'index']);
@@ -159,8 +160,8 @@ Route::post('/passwordReset',           [UserController::class,'getcode']);
 Route::post('/sendPassVerify',          [UserController::class,'sendPassVerify']);
 Route::post('/changepassword',          [UserController::class,'changepassword']);
 Route::post('/resendVerification',      [UserController::class,'resentVerification']);
-Route::get('/contructor/list',                              [ContructorController::class,'listContructor']);
-Route::get('/contructor/{slug}',                            [ContructorController::class,'selected']);
+Route::get('/contractor/list',                              [ContructorController::class,'listContructor']);
+Route::get('/contractor/{slug}',                            [ContructorController::class,'selected']);
 
 
 Route::prefix('modal')->group(function () {

@@ -4,7 +4,7 @@
         <div class="section-heading">
             <h5>Check Out</h5>
             <div class="main-title">
-                <h2><span>Our</span> Contructors</h2>
+                <h2><span>Our</span> Contractors</h2>
                 <strong></strong> <!-- Use for heading after effect -->
             </div>
         </div> <!-- /.section-heading -->
@@ -25,7 +25,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
                                     <div class="shadow-bottom-items">
                                         <div class="post-media" style="max-height: 300px !important; max-width: 430px !important">
-                                        <a href="{{url('/contructor/'.$contructor->comp_slug)}}">
+                                        <a href="{{url('/contractor/'.$contructor->comp_slug)}}">
                                             <img src="{{url('/uploads/profiles/'.$contructor->comp_profile.'')}}" alt="Featured" style="max-height:360px;max-width:430px;width:100%;height:100%">
                                         </a>
                                         </div>
@@ -36,7 +36,7 @@
                                         <div class="post-content">
                                             <div class="post-title">
                                                 <h5>
-                                                    <a href="{{url('/contructor/'.$contructor->comp_slug)}}">{{$contructor->comp_name}}</a>
+                                                    <a href="{{url('/contractor/'.$contructor->comp_slug)}}">{{$contructor->comp_name}}</a>
                                                 </h5>
                                             </div>
                                             <div class="post-metadata">
@@ -53,7 +53,7 @@
                                                 <p style="inline-size: 178px;overflow-wrap: break-word;width: 100%;">{{substr($contructor->comp_desc,0,300).'...'}}</p>
                                             </div>
                                             <div class="post-about">
-                                                <a href="{{url('/contructor/'.$contructor->comp_slug)}}" class="post-btn">Read More</a>
+                                                <a href="{{url('/contractor/'.$contructor->comp_slug)}}" class="post-btn">Read More</a>
                                             </div>
                                         </div> <!-- /.post-content -->
                                     </div> <!-- /.post-inner -->

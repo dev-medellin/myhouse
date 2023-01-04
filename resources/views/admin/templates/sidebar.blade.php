@@ -203,7 +203,7 @@
     <li class="nav-item ">
         <a class="nav-link" href="{{url('/admin/contructors')}}">
         <i class="ti-paint-roller menu-icon"></i>
-        <span class="menu-title">Contructors</span>
+        <span class="menu-title">Contractors</span>
         </a>
     </li>
     </ul>

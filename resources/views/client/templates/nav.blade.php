@@ -69,7 +69,7 @@
                 <li <?php echo $data['page'] == 'home' ? 'class="active"' : '';?> ><a href="{{url('/')}}">Home</a></li>
                 <li <?php echo $data['page'] == 'about' ? 'class="active"' : '';?>><a href="{{url('/about')}}">About</a></li>
                 <li <?php echo $data['page'] == 'project' ? 'class="active"' : '';?> ><a href="{{url('/projects')}}">Projects</a></li>
-                <li <?php echo $data['page'] == 'list' ? 'class="active"' : '';?> ><a href="{{url('/contructor/list')}}">Contructor List</a></li>
+                <li <?php echo $data['page'] == 'list' ? 'class="active"' : '';?> ><a href="{{url('/contractor/list')}}">Contractor List</a></li>
                 <!-- <li><a href="#" style="color:red">Pages</a>
                     <ul class="sub-nav">
                         <li><a href="overview.html">Overview</a></li>
@@ -84,14 +84,14 @@
                 <!-- <li <?php echo $data['page'] == 'contact' ? 'class="active"' : '';?>><a href="{{url('/contact')}}" >Contact</a></li> -->
                 @if(Auth::check())
                 @if(Auth::user()->role != "2")
-                <li <?php echo $data['page'] == 'be_contructor' ? 'class="active"' : '';?>><a href="{{url('users/contructor/register')}}" >Be Our Contructor</a></li>
+                <li <?php echo $data['page'] == 'be_contructor' ? 'class="active"' : '';?>><a href="{{url('users/contractor/register')}}" >Be Our Contractor</a></li>
                 @endif;
                 <li><a href="#">Welcome, {{Auth::user()->fname}}</a>
                     <ul class="sub-nav" id="myNav">
                         <li><a href="javascript:void(0);" >My Page</a>
                             <ul class="sub-nav" id="myNav">
                                 <li><a href="{{url('users/mypage')}}">My User Page</a></li>
-                                <li><a href="{{url('contructor/dashboard')}}">Contructor Panel</a></li>
+                                <li><a href="{{url('contructor/dashboard')}}">Contractor Panel</a></li>
                             </ul>
                         </li>
                         @if(Auth::user()->role == 1)

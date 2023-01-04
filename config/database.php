@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Str;
 $db_user = 'root';
-$db_pass = '';
+$db_pass = '01232105123';
 $db_name = 'myhouse';
 $db_host = 'localhost';
 $db_port = 3306;

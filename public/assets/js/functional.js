@@ -219,7 +219,7 @@ $(document).ready(function(){
    $('#contructorForm').on('submit', function(e){
       e.preventDefault();
 
-      var   pathUrl               = base_url+"/users/contructor/applied",
+      var   pathUrl               = base_url+"/users/contractor/applied",
       method            	 = "POST",
       dtype 	             = "json",
       rdata 	             = $(this).serialize(); 
@@ -232,7 +232,7 @@ $(document).ready(function(){
          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
          success: function(response){  
                if(response.status == "SUCCESS"){
-                  window.location.href = base_url+"/users/contructor/message";
+                  window.location.href = base_url+"/users/contractor/message";
                }else{
                   alert(response.message);
                }

@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <div class="card">
         <div class="card-header">
-          <h5>Customers Contructor Applications</h5>
+          <h5>Customers Contractor Applications</h5>
         </div>
         <div style="padding: 15px 30px 10px 10px;">
         </div>

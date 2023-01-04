@@ -78,7 +78,7 @@
 							<article class="awesome-content">
 								<div class="awesome-header stylist-bottom-right">
 									<h3>{{$data['project']->proj_name}} <?php echo ($data['wish'] != false ? '<i class="fa fa-star"></i>' : '')?></h3>
-									<a href="{{url('/contructor/'.$data['project']->comp_slug)}}">
+									<a href="{{url('/contractor/'.$data['project']->comp_slug)}}">
 										<p><i class="fa fa-building"></i> Project By : {{$data['project']->comp_name}}</p>
 									</a>
 								</div>

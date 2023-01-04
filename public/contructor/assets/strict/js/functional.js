@@ -6,8 +6,6 @@ $(document).ready(function(){
         e.preventDefault();
         var modals = $(this).data('modal');
 
-
-        console.log(modals)
         switch(modals){
 
             case "contructor":

@@ -14,7 +14,7 @@
 								<div class="contact-info">
 									<div class="contact-content">
 										<div class="title">
-                                            <h4>You already applied as our contructor, please wait the approval of our administrator.</h4>
+                                            <h4>You already applied as our contractor, please wait the approval of our administrator.</h4>
 											<h3 style="color :green">Application still in process ....</h3>
 										</div>
 										<p>We are more than happy to hear your thoughts, we are waiting for your ideas and suggestions! Let’s help each other to develop the best version of My Home ♥ </p>
