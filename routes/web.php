@@ -7,6 +7,7 @@ use App\Http\Controllers\Common\Contructor\ProjectController as CPC;
 use App\Http\Controllers\Common\Contructor\ProfileController as CPFC;
 use App\Http\Controllers\Common\Client\ProjectController as PCC;
 use App\Http\Controllers\Common\Client\PDFController;
+use App\Http\Controllers\Common\Admin\PDFController as APDF;
 use App\Http\Controllers\CaptchaValidationController;
 use App\Http\Controllers\Common\Admin\ContructorController as ACC;
 use App\Http\Controllers\Common\Admin\UsersInfoController;
@@ -69,6 +70,7 @@ Route::prefix('admin')->middleware('admin')->group(function() {
     Route::post('/contructors/status',[ACC::class,'updateTestStatus']);
     Route::get('/users',      [UsersInfoController::class,'index']);
     Route::post('/chart',     [DashboardController::class,'get_chart']);
+    Route::get('/print-dashboard',              [APDF::class, 'generatePDF']);
 
     //Projects
     // Route::group(['prefix' => 'projects'], function(){

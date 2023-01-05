@@ -23,6 +23,11 @@ $(document).ready(function(){
     
 });
 
+$('#print_btn').on('click', function(e){
+  e.preventDefault();
+  alert('Print is working after the owner decide the template of printed paper!');
+})
+
 $('#projInserForm').on('submit', function(event){
     event.preventDefault();
 

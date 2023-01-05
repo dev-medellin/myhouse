@@ -28,15 +28,15 @@ class DashboardController extends Controller
 
         $query = ProjectModel::selectRaw("COUNT(*) as total,DATE_FORMAT(created_at,'%b') as month_name,DATE_FORMAT(created_at,'%m') as month,YEAR(created_at) as year")
                                 ->where('post_by', '=', Auth::user()->id)
-                                ->whereYear("created_at","2023")
+                                ->whereYear("created_at","=",$year)
                                 ->groupBy("month")
                                 ->get();
 
         $query_user = User::selectRaw("COUNT(*) as total,DATE_FORMAT(created_at,'%b') as month_name,DATE_FORMAT(created_at,'%m') as month,YEAR(created_at) as year")
-                                ->whereYear("created_at","2023")
+                                ->whereYear("created_at","=",$year)
                                 ->groupBy("month")
                                 ->get();
-        
+        $month_name = null;
         $count = WishListModel::get();
         $count_user = User::get();
         $totaltestimony = TestimonyModel::get();

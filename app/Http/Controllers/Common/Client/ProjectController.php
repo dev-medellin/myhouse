@@ -114,7 +114,7 @@ class ProjectController extends Controller
             $data['materials']  = MM::where('proj_id',$queryProj->project_id)->first();
             $data['project']    = $queryProj;
             $data['wish']       = $wish != null ? true : false;
-            $data['image']      = PIM::where('proj_id',$queryProj->id)->get();
+            $data['image']      = PIM::where('proj_id',$queryProj->project_id)->get();
             $data['page']       = "project";
             $data['slugs']      =  $queryProj->project_slug;
             $data['js']         =  $this->js_file();

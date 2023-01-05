@@ -18,7 +18,7 @@
                             <div class="pr-3 mb-3 mb-xl-0">
                             </div>
                             <div class="mb-3 mb-xl-0">
-                              <button class="btn btn-warning rounded-0 text-white"><i class="fa fa-print"></i> Print</button>
+                              <a href="{{url('/admin/print-dashboard')}}" target="_blank" class="btn btn-warning rounded-0 text-white" ><i class="fa fa-print"></i> Print</a>
                             </div>
                           </div>
                         </div>
@@ -59,7 +59,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3 grid-margin stretch-card">
+<!--                     <div class="col-md-3 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-body">
                           <p class="card-title text-md-center text-xl-left">Summited Testimonial</p>
@@ -69,7 +69,7 @@
                           </div>  
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="row">
                     <div class="col-md-6 grid-margin stretch-card">
