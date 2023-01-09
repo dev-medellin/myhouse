@@ -72,6 +72,7 @@
                     </div> -->
                   </div>
                   <div class="row">
+                    @if('<span class="wishlist_text">' != 0)  
                     <div class="col-md-6 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-body">
@@ -97,6 +98,7 @@
                           </div> --}}
                       </div>
                     </div>
+                    @endif
                     <div class="col-md-6 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-body">

@@ -3,7 +3,7 @@
 		<div class="section-heading">
 			<h5>Learn more and be with us</h5>
 			<div class="main-title">
-				<h2><span>Contructor</span> Registration</h2>
+				<h2><span>Contractor</span> Registration</h2>
 				<strong></strong> <!-- Use for heading after effect -->
 			</div>
 		</div> <!-- /.section-heading -->
