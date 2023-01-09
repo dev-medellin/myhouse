@@ -528,6 +528,7 @@
 	    -ms-transform: translateY(23%);
 	    -o-transform: translateY(23%);
 	    transform: translateY(23%);
+		top: 2%;
 	}
 	.properties .property-search-area .property-search-form .advanced-search-sec {
 	    margin: 0 15px;
@@ -1082,6 +1083,7 @@
 	    -ms-transform: translateY(25%);
 	    -o-transform: translateY(25%);
 	    transform: translateY(25%);
+		top:2%;
 	}
 	/*16.0 - PAGINATION AREA*/
 	.pagination a,
@@ -1680,6 +1682,7 @@
 	    -ms-transform: translateY(25%);
 	    -o-transform: translateY(25%);
 	    transform: translateY(25%);
+		top:2%;
 	}
 	/*16.0 - PAGINATION AREA*/
 	.pagination a,

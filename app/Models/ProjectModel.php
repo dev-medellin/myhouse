@@ -18,6 +18,8 @@ class ProjectModel extends Model
         'bed_room',
         'bath_room',
         'story',
+        'fence',
+        'roof',
         'proj_slug',
         'proj_est_price',
         'status',

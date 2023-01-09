@@ -358,6 +358,8 @@ $("#searchBtn").on('click',function(){
       var price_min    = $('.price_min').val();
       var price_max    = $('.price_max').val();
       var sq_area    = $('#sq_area').val();
+      var fence    = $('#fence').val();
+      var roof    = $('#roof').val();
 
       localStorage.setItem('bed_room', bed_room);
       localStorage.setItem('bath_room', bath_room);
@@ -365,6 +367,8 @@ $("#searchBtn").on('click',function(){
       localStorage.setItem('price_min', price_min);
       localStorage.setItem('price_max', price_max);
       localStorage.setItem('sq_area', sq_area);
+      localStorage.setItem('fence', fence);
+      localStorage.setItem('roof', roof);
       localStorage.setItem('searchStats', true);
 });
 

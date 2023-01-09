@@ -38,6 +38,28 @@
                         <input type="text" class="form-control" id="story" name="story" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                     </div>
                 </div>
+                <div class="form-group row">
+                <div class="col-lg-4 col-md-4">
+                        <label for="property-bathroom">Fence</label>
+                        <select id="fence" name="fence" class="form-control">
+                            <option value="">Choose</option>
+                            <option value="wood_fence">Wood Fence</option>
+                            <option value="steel_fence">Steel Fence</option>
+                            <option value="concrete_wall_fence">Concrete Wall Fence</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <label for="property-bathroom">Roof</label>
+                            <select id="roof" name="roof" class="form-control">
+                                <option value="">Choose</option>
+                                <option value="gable_roof">Gable Roof</option>
+                                <option value="hip_roof">Hip Roof</option>
+                                <option value="pyramid_roof">Pyramid Roof</option>
+                                <option value="skillion_roof">Skillion Roof</option>
+                                <option value="flat_roof">Flat Roof</option>
+                            </select>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="message-text" class="col-form-label">Description:</label>
                     <textarea class="form-control" id="proj_desc" name="proj_desc"></textarea>

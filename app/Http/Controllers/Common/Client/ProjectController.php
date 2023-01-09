@@ -22,16 +22,6 @@ class ProjectController extends Controller
     public $data = [];
 
     public function index(Request $request){
-            // if ($request->has('bed_room') || $request->has('bath_room') || $request->has('stories') || $request->has('price_min') || $request->has('price_max')) {
-            //     $projects           = Project::paginate(6);
-            //     $links = Project::orderBy('created_at', 'desc')->simplePaginate(6);
-            //     $data['links'] = $links;
-            //     $projects->appends($request->except('page'));
-            // }else{
-            //     $projects           = Project::paginate(6);
-            //     $links = Project::orderBy('created_at', 'desc')->simplePaginate(6);
-            //     $data['links'] = $links;
-            // }
             $projects  = Project::select("*")
                             ->when($request->has('bed_room'), function ($query) use ($request) {
                                if($request->bed_room >= 6){
@@ -56,6 +46,22 @@ class ProjectController extends Controller
                             })
                             ->when($request->has('sq_area'), function ($query) use ($request){
                                 $query->where('proj_area','=',$request->sq_area);
+                            })
+                            ->when($request->has('fence'), function ($query) use ($request){
+                                $roof  = ['gable_roof','hip_roof','pyramid_roof','skillion_roof','flat_roof'];
+                                if($request->fence != 'show_all_fence'){
+                                    $query->where('fence',$request->fence);
+                                }else{
+                                    $query->whereNotNull('fence');
+                                }
+                            })
+                            ->when($request->has('roof'), function ($query) use ($request){
+                                $fence = ['wood_fence','steel_fence','concrete_wall_fence'];
+                                if($request->roof != 'show_all_roof'){
+                                    $query->where('roof', $request->roof);
+                                }else{
+                                    $query->whereNotNull('roof');
+                                }
                             })
                             ->when($request->has('price_min') && $request->has('price_max'), function ($query) use ($request) {
                                 $price_min = str_replace(str_split(',₱'), '',$request->price_min);

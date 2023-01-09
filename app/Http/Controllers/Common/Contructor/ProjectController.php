@@ -39,6 +39,7 @@ class ProjectController extends Controller
     }
 
     public function insertProj(Request $request){
+
         $data = [
             'post_by'               => Auth::user()->id,
             'proj_name'             => $request->proj_name,
@@ -46,7 +47,9 @@ class ProjectController extends Controller
             'proj_type'             => $request->proj_type,
             'bed_room'              => $request->bed_room,
             'bath_room'             => $request->bath_room,
-            'stories'                 => $request->story,
+            'stories'               => $request->story,
+            'fence'                 => $request->fence,
+            'roof'                  => $request->roof,
             'proj_slug'             => Str::slug($request->proj_name,"-"),
             'proj_est_price'        => '0',
             'status'                => 'inactive',
@@ -232,6 +235,8 @@ class ProjectController extends Controller
                 'thumbnail'             => $fileName,
                 'bed_room'              => $request->proj_bed_room,
                 'bath_room'             => $request->proj_bath_room,
+                'fence'                 => $request->fence,
+                'roof'                  => $request->roof,
                 'stories'                 => $request->proj_stories,
                 'proj_slug'             => Str::slug($request->proj_name,"-"),
                 'proj_est_price'        => $request->proj_est_price,
@@ -248,6 +253,8 @@ class ProjectController extends Controller
                     'proj_type'             => $request->proj_type,
                     'bed_room'              => $request->proj_bed_room,
                     'bath_room'             => $request->proj_bath_room,
+                    'fence'                 => $request->fence,
+                    'roof'                  => $request->roof,
                     'stories'                 => $request->proj_stories,
                     'proj_slug'             => Str::slug($request->proj_name,"-"),
                     'proj_est_price'        => $request->proj_est_price,

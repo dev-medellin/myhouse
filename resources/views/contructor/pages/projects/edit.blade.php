@@ -23,21 +23,21 @@
                 <div class="tab-pane fade show active" id="pills-information" role="tabpanel" aria-labelledby="pills-information-tab">
                     <div class="media">
                         <div class="media-body">
-                            @include('admin.pages.projects.forms.information')
+                            @include('contructor.pages.projects.forms.information')
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade show" id="pills-materials" role="tabpanel" aria-labelledby="pills-materials-tab">
                     <div class="media">
                         <div class="media-body">
-                            @include('admin.pages.projects.forms.form_materials')
+                            @include('contructor.pages.projects.forms.form_materials')
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
                     <div class="media">
                     <div class="media-body">
-                        @include('admin.pages.projects.forms.image_upload')
+                        @include('contructor.pages.projects.forms.image_upload')
                     </div>
                     </div>
                 </div>

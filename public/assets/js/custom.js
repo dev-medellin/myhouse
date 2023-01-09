@@ -7,6 +7,8 @@
     var price_min = localStorage.getItem('price_min');
     var price_max = localStorage.getItem('price_max');
     var sq_area = localStorage.getItem('sq_area');
+    var fence = localStorage.getItem('fence');
+    var roof = localStorage.getItem('roof');
     var searchStats = localStorage.getItem('searchStats');
     //Begin Loading Handler=
     $(window).load(function() {
@@ -21,6 +23,9 @@
         $('#bath_room').val(bath_room);
         $('#stories').val(stories);
         $('#sq_area').val(sq_area);
+        $('#fence').val(fence);
+        $('#roof').val(roof);
+        $('#roof').val(sq_area);
         if(price_min != null && price_max != null){
             $('.price_min').val(price_min);
             $('.price_max').val(price_max);
@@ -35,7 +40,9 @@
            var  bath_room_text = bath_room > 1  && bath_room != "" ? ( bath_room == 6 ?  "+5 bathrooms," :  bath_room+" bathrooms,") : (bath_room != "" ? bath_room+" bathroom," : '');
            var  stories_text = stories > 1 && stories != "" ? ( stories == 6 ?  "+5 stories," :  stories+" stories,") : (stories != "" ? stories+" story," : '');
            var  sq_area_text = sq_area > 1 && sq_area != "" ? ( sq_area == 6 ?  "+5 Sq. Meters," :  sq_area+" Sq. Meters,") : (sq_area != "" ? sq_area+" Sq. Meter," : '');
-            $( ".search_text_area" ).append('<span class="text_results">Result of '+bed_room_text+' '+bath_room_text+' '+stories_text+' '+sq_area_text+' &nbsp;<a href="javascript:void(0);" id="clearSearch" style="text-decoration: underline;color:blue">Remove Search</a></span>');
+           var  fence_text = fence > 1 && fence != "" ? ( fence == "show_all_fence" ?  "ALL Fence`s," :  " Fence`s,") : (fence != "" ? " Fence," : ''); 
+           var  roof_text = roof > 1 && roof != "" ? ( roof == "show_all_roof" ?  "ALL Roof`s," :  " Roof`s,") : (roof != "" ? " Roof," : ''); 
+           $( ".search_text_area" ).append('<span class="text_results">Result of '+bed_room_text+' '+bath_room_text+' '+stories_text+' '+sq_area_text+' '+fence_text+' '+roof_text+' &nbsp;<a href="javascript:void(0);" id="clearSearch" style="text-decoration: underline;color:blue">Remove Search</a></span>');
         }
         var check_url = window.location.href;
         $('.search_text_area').on('click','#clearSearch',function(e){
@@ -50,9 +57,13 @@
             localStorage.removeItem('price_min');
             localStorage.removeItem('price_max');
             localStorage.removeItem('sq_area');
+            localStorage.removeItem('fence');
+            localStorage.removeItem('root');
             localStorage.removeItem('searchStats');
          
             $('#bed_room').val("");
+            $('#fence').val("");
+            $('#root').val("");
             $('#bath_room').val("");
             $('#stories').val("");
             $('#sq_area').val("");

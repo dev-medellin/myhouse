@@ -5,7 +5,7 @@
         <div class="section-heading">
             <h5>Check Out</h5>
             <div class="main-title">
-                <h2><span>Our</span> Properties</h2>
+                <h2><span>Our</span> Projects</h2>
                 <strong></strong> <!-- Use for heading after effect -->
             </div>
         </div> <!-- /.section-heading -->

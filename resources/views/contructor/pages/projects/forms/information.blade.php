@@ -30,8 +30,46 @@
                 <input type="text" class="form-control" id="proj_bath_room" name="proj_bath_room" placeholder="square ft." value="<?php echo isset($data['info']['bath_room']) ? $data['info']['bath_room'] :''; ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
             </div>
             <div class="col-lg-3 col-md-3 mt-4">
-                <label for="exampleInputEmail3">Project Stories</label>
+                <label for="exampleInputEmail3">Project Storiessss</label>
                 <input type="text" class="form-control" id="proj_stories" name="proj_stories" placeholder="square ft." value="<?php echo isset($data['info']['stories']) ? $data['info']['stories'] :''; ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+            </div>
+            <div class="col-lg-3 col-md-3 mt-4">
+                <label for="property-bathroom">Fence</label>
+                    <select id="fence" name="fence" class="form-control">
+                        @if($data['info']['fence'] != NULL)
+                            <option  value="">Choose</option>
+                            <option  <?php echo $data['info']['fence'] == "wood_fence" ? 'selected' : '' ?> value="wood_fence">Wood Fence</option>
+                            <option  <?php echo $data['info']['fence'] == "steel_fence" ? 'selected' : '' ?> value="steel_fence">Steel Fence</option>
+                            <option  <?php echo $data['info']['fence'] == "concrete_wall_fence" ? 'selected' : '' ?> value="concrete_wall_fence">Concrete Wall Fence</option>
+                        @else
+                            <option  value="">Choose</option>
+                            <option  value="wood_fence">Wood Fence</option>
+                            <option  value="steel_fence">Steel Fence</option>
+                            <option  value="concrete_wall_fence">Concrete Wall Fence</option>
+                        @endif
+                    </select>
+            </div>
+            <div class="col-lg-3 col-md-3 mt-4">
+                <label for="property-bathroom">Roof</label>
+                    <select id="roof" name="roof" class="form-control">
+                        @if($data['info']['roof'] != NULL)
+                            <option  value="">Choose</option>
+                            <option value="">Choose</option>
+                                <option <?php echo $data['info']['roof'] == "gable_roof" ? 'selected' : '' ?> value="gable_roof">Gable Roof</option>
+                                <option <?php echo $data['info']['roof'] == "hip_roof" ? 'selected' : '' ?> value="hip_roof">Hip Roof</option>
+                                <option <?php echo $data['info']['roof'] == "pyramid_roof" ? 'selected' : '' ?> value="pyramid_roof">Pyramid Roof</option>
+                                <option <?php echo $data['info']['roof'] == "skillion_roof" ? 'selected' : '' ?> value="skillion_roof">Skillion Roof</option>
+                                <option <?php echo $data['info']['roof'] == "flat_roof" ? 'selected' : '' ?> value="flat_roof">Flat Roof</option>
+                        @else
+                            <option  value="">Choose</option>
+                                <option value="">Choose</option>
+                                <option value="gable_roof">Gable Roof</option>
+                                <option value="hip_roof">Hip Roof</option>
+                                <option value="pyramid_roof">Pyramid Roof</option>
+                                <option value="skillion_roof">Skillion Roof</option>
+                                <option value="flat_roof">Flat Roof</option>
+                        @endif
+                    </select>
             </div>
             <div class="col-lg-6 col-md-6 mt-4">
                 <label>Thumbnail upload</label>
