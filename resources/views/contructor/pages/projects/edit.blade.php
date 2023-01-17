@@ -16,6 +16,9 @@
                     <a class="nav-link" id="pills-materials-tab" data-toggle="pill" href="#pills-materials" role="tab" aria-controls="pills-materials" aria-selected="true">Materials</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" id="pills-new_materials-tab" data-toggle="pill" href="#pills-new_materials" role="tab" aria-controls="pills-new_materials" aria-selected="true">Materials</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" id="pills-image-tab" data-toggle="pill" href="#pills-image" role="tab" aria-controls="pills-image" aria-selected="false">Upload Image</a>
                 </li>
             </ul>
@@ -31,6 +34,13 @@
                     <div class="media">
                         <div class="media-body">
                             @include('contructor.pages.projects.forms.form_materials')
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="pills-new_materials" role="tabpanel" aria-labelledby="pills-new_materials-tab">
+                    <div class="media">
+                        <div class="media-body">
+                            @include('contructor.pages.projects.forms.new_materials')
                         </div>
                     </div>
                 </div>

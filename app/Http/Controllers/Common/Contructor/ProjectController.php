@@ -294,7 +294,8 @@ class ProjectController extends Controller
             'js/functional.js',
             'js/summernote.js',
             'js/dropzone.js',
-            'js/file-upload.js'
+            'js/file-upload.js',
+            'js/materials.js'
         ];
 
         return $data;
