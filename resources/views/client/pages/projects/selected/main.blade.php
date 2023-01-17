@@ -106,18 +106,46 @@
 											<span>Total rooms</span>
 											<span>{{$data['project']->bed_room}}</span>
 										</li> -->
+										@if($data['project']->bed_room != NULL)
 										<li>
 											<span>Bed rooms</span>
 											<span>{{$data['project']->bed_room}}</span>
 										</li>
+										@endif
+
+										@if($data['project']->bath_room != NULL)
 										<li>
 											<span>Bath room</span>
 											<span>{{$data['project']->bath_room}}</span>
 										</li>
+										@endif
+
+										@if($data['project']->stories != NULL)
 										<li>
 											<span>Stories</span>
 											<span>{{$data['project']->stories}}</span>
 										</li>
+										@endif
+
+										@if($data['project']->fence != NULL)
+										<?php
+                                             $fence = str_replace('_', ' ', $data['project']->fence)
+                                             ?>
+										<li>
+											<span>Fence</span>
+											<span>{{ucwords($fence)}}</span>
+										</li>
+										@endif
+
+										@if($data['project']->roof != NULL)
+										<?php
+                                             $roof = str_replace('_', ' ', $data['project']->roof)
+                                             ?>
+										<li>
+											<span>Roof</span>
+											<span>{{ucwords($roof)}}</span>
+										</li>
+										@endif
 									</ul>
 								</div>
 							</div> <!-- /.total-package -->
@@ -126,7 +154,7 @@
                     <div class="mt-5" id="display_materials">
                         @isset($data['materials']->materials_desc)
 							<div class="awesome-btn" style="float: right !important;">
-								<a href="{{url('users/generate-pdf/'.$data['project']->id)}}" style="background-color:#0089e9 !important" class="dream-btn">PDF Download</a>
+								<a href="{{url('users/generate-pdf/'.$data['project']->project_id)}}" style="background-color:#0089e9 !important" class="dream-btn">PDF Download</a>
 							</div>
 							{!!$data['materials']->materials_desc!!}
 						@endisset

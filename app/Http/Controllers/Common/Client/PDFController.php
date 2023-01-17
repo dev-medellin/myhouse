@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Common\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MaterialModel as MM;
+use App\Models\ProjectModel;
 use PDF;
 
 class PDFController extends Controller
@@ -13,8 +14,7 @@ class PDFController extends Controller
     public function generatePDF($id)
 
     {
-
-
+        $select_proj = ProjectModel::select('proj_name')->where('id', $id)->first();
         $query = MM::where('proj_id','=', $id)->first();
 
         $data = [
@@ -52,8 +52,9 @@ class PDFController extends Controller
 
         55, array(0,0,0),2,2,-30);
 
+        $name = str_replace(' ', '_', $select_proj->proj_name);
 
-        return $pdf->download('materials.pdf');
+        return $pdf->download($name.'.pdf');
 
     }
 }

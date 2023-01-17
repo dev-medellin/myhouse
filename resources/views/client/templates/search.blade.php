@@ -27,7 +27,7 @@
                         </select>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-me-13 col-lg-me-13 search-field" style="width: 120px;">
-                        <label for="property-bathroom">Stories</label>
+                        <label for="property-bathroom">Storey</label>
                         <select id="stories" name="stories">
                             <option value="">Choose</option>
                             <option value="1">1</option>

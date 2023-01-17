@@ -35,22 +35,53 @@
                                 </div>
                                 <div class="post-inner border-around">
                                     <div class="post-metadata">
+                                        @if($proj->proj_area != NULL)
                                         <span class="total-place">
                                             <i class="flaticon-ten-commandment"></i>
                                             <a href="#">{{$proj->proj_area}} Sq Meter</a>
                                         </span>
+                                        @endif
+
+                                        @if($proj->bed_room != NULL)
                                         <span class="bedroom">
                                             <i class="flaticon-bed"></i>
                                             <a href="#">{{$proj->bed_room}} bedrooms</a>
                                         </span>
+                                        @endif
+
+                                        @if($proj->bath_room != NULL)
                                         <span class="bathroom"> 
                                             <i class="flaticon-bathtub"></i>
                                             <a href="#">{{$proj->bath_room}} Bathrooms</a>
                                         </span>   
+                                        @endif
+
+                                        @if($proj->stories != NULL)
                                         <span class="bathroom"> 
                                             <i class="flaticon-house"></i>
                                             <a href="#">{{$proj->stories}} Stories</a>
                                         </span>  
+                                        @endif
+
+                                        @if($proj->fence != NULL)
+                                        <span class="bathroom"> 
+                                             <i class="fa-regular fa-fence"></i>
+                                             <?php
+                                             $fence = str_replace('_', ' ', $proj->fence)
+                                             ?>
+                                            <a href="#"> {{ucwords($fence)}}</a>
+                                        </span>
+                                        @endif
+
+                                        @if($proj->roof != NULL)
+                                        <span class="bathroom"> 
+                                             <i class="fa fa-fence"></i>
+                                             <?php
+                                             $roof = str_replace('_', ' ', $proj->roof)
+                                             ?>
+                                            <a href="#"> {{ucwords($roof)}}</a>
+                                        </span>
+                                        @endif
                                     </div> <!-- /.post-metadata -->
                                     <div class="post-content border-top">
                                         <div class="post-title">

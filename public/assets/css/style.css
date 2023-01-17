@@ -728,7 +728,8 @@ ul, li {
 }
 .main-menu .main-nav .sub-nav .sub-nav {
     top: 0;
-    left: 100%
+    /*left: 100%*/
+    right:100%;
 }
 .main-menu .main-nav li.active .sub-nav li a {
     background: 0 0;

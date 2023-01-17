@@ -44,6 +44,7 @@ $('#projInserForm').on('submit', function(event){
                 )
                 setTimeout(() => {
                     $('#insertProdMod').modal('hide'); 
+                    location.reload();
                 }, 1000)
                 // alert(response.message);
                 // $('#passwordModal').modal('hide');

@@ -2,15 +2,15 @@
 <form class="forms-sample" id="editInfoProj">
         <div class="form-group row">
             <div class="col-lg-4 col-md-4 mt-4">
-                <label for="exampleInputName1">Project Names</label>
+                <label for="exampleInputName1">Project Name</label>
                 <input type="hidden" name="proj_id" id="proj_id" value="<?php echo $data['info']['id'] ?>">
                 <input type="text" class="form-control" id="proj_name" name="proj_name" placeholder="Name" value="<?php echo isset($data['info']['proj_name']) ? $data['info']['proj_name'] :''; ?>">
             </div>
             <div class="col-lg-4 col-md-4 mt-4">
                 <label for="exampleSelectGender">Type</label>
                 <select class="form-control" id="proj_type" name="proj_type" style="color:black;">
-                    <option value="1" <?php echo isset($data['info']['proj_type']) && $data['info']['proj_type'] == 1 ? "selected" :''; ?> >Single Stories</option>
-                    <option value="2" <?php echo isset($data['info']['proj_type']) && $data['info']['proj_type'] == 2 ? "selected" :''; ?> >Two Stories</option>
+                    <option value="1" <?php echo isset($data['info']['proj_type']) && $data['info']['proj_type'] == 1 ? "selected" :''; ?> >Single Storey</option>
+                    <option value="2" <?php echo isset($data['info']['proj_type']) && $data['info']['proj_type'] == 2 ? "selected" :''; ?> >Two Storey</option>
                 </select>
             </div>
             <div class="col-lg-4 col-md-4 mt-4">
@@ -30,7 +30,7 @@
                 <input type="text" class="form-control" id="proj_bath_room" name="proj_bath_room" placeholder="square ft." value="<?php echo isset($data['info']['bath_room']) ? $data['info']['bath_room'] :''; ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
             </div>
             <div class="col-lg-3 col-md-3 mt-4">
-                <label for="exampleInputEmail3">Project Storiessss</label>
+                <label for="exampleInputEmail3">Project Storey</label>
                 <input type="text" class="form-control" id="proj_stories" name="proj_stories" placeholder="square ft." value="<?php echo isset($data['info']['stories']) ? $data['info']['stories'] :''; ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
             </div>
             <div class="col-lg-3 col-md-3 mt-4">

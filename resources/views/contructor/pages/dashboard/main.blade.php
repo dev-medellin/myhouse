@@ -17,9 +17,9 @@
                             </div>
                             <div class="pr-3 mb-3 mb-xl-0">
                             </div>
-                            <div class="mb-3 mb-xl-0">
+                     <!--        <div class="mb-3 mb-xl-0">
                               <button class="btn btn-warning rounded-0 text-white"><i class="fa fa-print"></i> Print</button>
-                            </div>
+                            </div> -->
                           </div>
                         </div>
                       </div>
