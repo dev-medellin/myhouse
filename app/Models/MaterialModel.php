@@ -13,5 +13,6 @@ class MaterialModel extends Model
     protected $fillable = [
         'proj_id',
         'materials_desc',
+        'new_mat_desc'
     ];
 }

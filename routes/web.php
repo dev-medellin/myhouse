@@ -131,6 +131,8 @@ Route::prefix('contructor')->middleware('contructor')->group(function() {
         Route::post('update/image',                 [CPC::class,'imageUpdate']);
         Route::post('search',                       [CPC::class,'searchProj']);
         Route::post('update/info',                  [CPC::class,'updateInfo']);
+        Route::post('send_materials',               [CPC::class,'send_materials']);
+        Route::post('new_materials',               [CPC::class,'new_materials']);
         
         
 

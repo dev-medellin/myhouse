@@ -75,6 +75,8 @@ class ProjectController extends Controller
         // $series = str_replace('-', ' ', $slug); 
         $queryProj = Project::where('proj_slug',$slug)->first();
         if($queryProj){
+            $fetch_mat = MM::selectRaw('new_mat_desc')->where('proj_id',$queryProj->id)->first();
+            $data['materials']  = json_decode($fetch_mat->new_mat_desc, TRUE);
             $images = PIM::where('proj_id', $queryProj->id)->get();
             $data['page'] = 'edit';
             $data['info'] =$queryProj;
@@ -267,6 +269,38 @@ class ProjectController extends Controller
         }
     }
 
+
+    public function send_materials(Request $request){
+        $submit = MM::updateOrCreate(['proj_id' => $request->projID],['new_mat_desc' => $request->data]);
+        return $submit;
+    }
+
+    public function new_materials(Request $request){
+        $countMaterials = 0;
+        $countMaterialsAttr = 0;
+        $ArrMaterials = [];
+        $ArrMaterialsAttr = [];
+        $FetchAttr =[];
+        $submit = MM::selectRaw('new_mat_desc')->where('proj_id', $request->projID)->first();
+        $fetch = json_decode($submit->new_mat_desc, TRUE);
+
+        foreach ($fetch as $key => $value) {
+            
+            $countMaterials = count($fetch);
+            $countMaterialsAttr += count($value['attributes_materials']);
+            $ArrMaterials[] = [
+                'id' => $fetch[$key]['id'],
+                'title' => $fetch[$key]['title']
+            ];
+            $ArrMaterialsAttr[] = $value['attributes_materials'];
+        }
+
+        foreach($ArrMaterialsAttr as $Attr){
+            $FetchAttr[] = $Attr;
+        }
+
+        return responseSuccess('Image Uploaded!',['input_count' => $countMaterials,'attr_count' => $countMaterialsAttr,'materials' => $ArrMaterials,'attrs' => $FetchAttr]);
+    }
 
 
 

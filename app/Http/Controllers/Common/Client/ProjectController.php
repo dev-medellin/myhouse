@@ -117,7 +117,8 @@ class ProjectController extends Controller
             $wish = WishListModel::where('proj_id',$queryProj->id)->where('user_id',$user_id)->first();
         }
         if($queryProj){
-            $data['materials']  = MM::where('proj_id',$queryProj->project_id)->first();
+            $fetch_mat = MM::selectRaw('new_mat_desc')->where('proj_id',$queryProj->project_id)->first();
+            $data['materials']  = json_decode($fetch_mat->new_mat_desc, TRUE);
             $data['project']    = $queryProj;
             $data['wish']       = $wish != null ? true : false;
             $data['image']      = PIM::where('proj_id',$queryProj->project_id)->get();

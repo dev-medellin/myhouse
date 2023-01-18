@@ -152,11 +152,12 @@
 						</div> <!-- /.col -->
 					</div> <!-- /.row -->  
                     <div class="mt-5" id="display_materials">
-                        @isset($data['materials']->materials_desc)
+                        @isset($data['materials'])
 							<div class="awesome-btn" style="float: right !important;">
 								<a href="{{url('users/generate-pdf/'.$data['project']->project_id)}}" style="background-color:#0089e9 !important" class="dream-btn">PDF Download</a>
 							</div>
-							{!!$data['materials']->materials_desc!!}
+
+							@include('client.pages.projects.selected.table')
 						@endisset
                     </div>
 				</div> <!-- /.awesome-items -->
