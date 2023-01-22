@@ -76,6 +76,7 @@ class ProjectController extends Controller
         $queryProj = Project::where('proj_slug',$slug)->first();
         if($queryProj){
             $fetch_mat = MM::selectRaw('new_mat_desc')->where('proj_id',$queryProj->id)->first();
+
             $data['materials']  = json_decode($fetch_mat->new_mat_desc, TRUE);
             $images = PIM::where('proj_id', $queryProj->id)->get();
             $data['page'] = 'edit';
@@ -278,25 +279,26 @@ class ProjectController extends Controller
     public function new_materials(Request $request){
         $countMaterials = 0;
         $countMaterialsAttr = 0;
-        $ArrMaterials = [];
+        $ArrMaterials = null;
         $ArrMaterialsAttr = [];
         $FetchAttr =[];
         $submit = MM::selectRaw('new_mat_desc')->where('proj_id', $request->projID)->first();
         $fetch = json_decode($submit->new_mat_desc, TRUE);
 
-        foreach ($fetch as $key => $value) {
+        if($fetch){
+            foreach ($fetch as $key => $value) {
             
-            $countMaterials = count($fetch);
-            $countMaterialsAttr += count($value['attributes_materials']);
-            $ArrMaterials[] = [
-                'id' => $fetch[$key]['id'],
-                'title' => $fetch[$key]['title']
-            ];
-            $ArrMaterialsAttr[] = $value['attributes_materials'];
-        }
+                $countMaterials = count($fetch);
+                $countMaterialsAttr += count($fetch[$key]['attributes_materials']);
+                $ArrMaterials[] = [
+                    'id' => $fetch[$key]['id'],
+                    'title' => $fetch[$key]['title']
+                ];
+                array_push($FetchAttr,(object)$fetch[$key]['attributes_materials']);
+                // $FetchAttr = $fetch[$key]['attributes_materials'];
+            }
 
-        foreach($ArrMaterialsAttr as $Attr){
-            $FetchAttr[] = $Attr;
+
         }
 
         return responseSuccess('Image Uploaded!',['input_count' => $countMaterials,'attr_count' => $countMaterialsAttr,'materials' => $ArrMaterials,'attrs' => $FetchAttr]);

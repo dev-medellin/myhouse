@@ -6,6 +6,7 @@ var     projID = $('#projID').val(),
 var input_count = 0,
     attr_count = 0,
     material_fetch = null;
+    attrs_fetch = null;
     var   pathUrl            = base_url+"/contructor/projects/new_materials",
       method            	 = "POST",
       dtype 	             = "json",
@@ -23,6 +24,7 @@ var input_count = 0,
             input_count = response.data.input_count;
             attr_count = response.data.attr_count;
             material_fetch = response.data.materials
+            attrs_fetch = response.data.attrs
 
             // response.forEach(function callback(value, index){
 
@@ -50,20 +52,17 @@ var input_count = 0,
             // }
             },
     });
-var input = input_count;
-var attrs = attr_count;
+var input = (input_count ? input_count : 0);
+var attrs = (attr_count ? attr_count : 0);
 let mat = (material_fetch ? material_fetch : []),
-    mattr = (attr_count ? material_fetch : []),;
-
-    console.log(mat)
-    console.log(mattr)
+    mattr = (attrs_fetch ? attrs_fetch : []);
 
 $('.insertMaterialRow').on('click',function(e){
     e.preventDefault()
 
     input++;
     var objval = document.getElementById('materials_input').value;
-    var new_title = titleCase(objval);
+    var new_title = $.fn.titleCase(objval);
     if(mat){
         var elementPos = mat.map(function(x) {return x.title; }).indexOf(new_title);
         if(elementPos != -1){
@@ -90,16 +89,16 @@ $('.insertMaterialRow').on('click',function(e){
         var divtest = document.createElement("div");
         divtest.setAttribute("class", " mb-3 form-group");
         divtest.setAttribute("id","removeclass"+input);
-        divtest.innerHTML = '<h4 class="card-title">'+new_title+'  <span><a href="javascript:void(0);" class="text-danger font-weight-bold">[Remove Material]</a></span><div class="float-right"><span><a href="javascript:void(0);" class="text-success font-weight-bold" onclick="insert_attr('+input+');">[Insert Attribute]</a></span></div></h4>';
+        divtest.innerHTML = '<h4 class="card-title">'+new_title+'  <span><a href="javascript:void(0);" class="text-danger font-weight-bold">[Remove Material]</a></span><div class="float-right"><span><a href="javascript:void(0);" class="text-success font-weight-bold" onclick="$.fn.insert_attr('+input+');">[Insert Attribute]</a></span></div></h4>';
         objTo.appendChild(divtest)
-        insert_attr(input);
+        $.fn.insert_attr(input);
         // btntest.innerHTML = '<button type="submit" class="btn btn-primary mr-2">Submit</button><button class="btn btn-light">Cancel</button>';
         // btndisplay.appendChild(btntest)
 
 });
 
 
-function titleCase(str) {
+$.fn.titleCase = function titleCase(str) {
     var splitStr = str.toLowerCase().split(' ');
     for (var i = 0; i < splitStr.length; i++) {
         // You do not need to check if i is larger than splitStr length, as your for does that for you
@@ -110,11 +109,16 @@ function titleCase(str) {
     return splitStr.join(' '); 
 }
 
-function insert_attr(ruid){
+$.fn.insert_attr  = function insert_attr(ruid){
     attrs++;
     var objval = document.getElementById('materials_input').value;
-    var new_title = titleCase(objval);
-    mattr.push({id : attrs, marterial_id : ruid, material_kind : '', price : '', quantity : ''});
+    var new_title = $.fn.titleCase(objval);
+    // let text = ruid.toString();
+    let text2 = attrs.toString();
+    mattr.push({id : text2, marterial_id : ruid, material_kind : '', price : '', quantity : ''});
+    // mattr.push({id : attrs, marterial_id : ruid, material_kind : '', price : '', quantity : ''});
+    // console.log(mattr)
+    // console.log("mattr")
     // var index = mat.findIndex(x => x.title == new_title);
         // for (var i = 0; i < 1; i++) {
         //     // You do not need to check if i is larger than splitStr length, as your for does that for you
@@ -125,7 +129,8 @@ function insert_attr(ruid){
         //       });
         //     index != -1 ? mat.push([{title_:"tests1",price_:'wasas',quantity_ : 'okas'}]) : console.log("object already exists")
         // }
-
+    console.log(mattr)
+    console.log("mattr")
     // mattr.push({matertials : new_title,price : '',quantity : ''});
     var ojtest = document.getElementById('removeclass'+ruid);
     var ojdivtest = document.createElement("div");
@@ -134,7 +139,6 @@ function insert_attr(ruid){
     ojdivtest.innerHTML = '<br> <div class="form-group row"><div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Price</label><input class="form-control materials_price featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Quantity</label><input class="form-control materials_quantity featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /><span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="remove_data_fields('+ attrs +');">[Remove Attribute]</a></span></div></div> ';
     // <label for="exampleInputEmail1" class="form-label">Attribute No'+attrs+'</label><div class="col-4"><input type="text" class="form-control" name="'+slugifys+'_price" aria-describedby="emailHelp"></div><div class="col-4"><input type="text" class="form-control" name="'+slugifys+'_quant" aria-describedby="emailHelp"></div><button class="btn btn-danger" type="button" onclick="remove_data_fields('+ attrs +');">-</button>
     ojtest.appendChild(ojdivtest);
-    console.log(mat)
 
 }
 
@@ -169,70 +173,96 @@ $('#materials_form').on('submit', function(e){
     var result = new Map(mattr.map(i => [i.id, i.marterial_id, i.material_kind, i.price, i.quantity]));
     // var foundIndex = mattr.findIndex(x => x.id == item.id);
     //     items[foundIndex] = item;
-    console.log(mattr)
-    mattr.forEach(function callback(value, index) {
-
-        var ThisInput = $(".featurematerials");
-        var data_mat = ThisInput.data('mat');
-        var materials_val = $('.materials_title[data-id="'+value.id +'"]').val();//.replace(/,/g, "");
-        var prince_val = $('.materials_price[data-id="'+value.id +'"]').val();//.replace(/,/g, "");        
-        var quantity_val = $('.materials_quantity[data-id="'+value.id+'"]').val();
-            if(value === undefined) {
-                mattr.push({id : value.id, marterial_id : data_mat, material_kind : materials_val, price : prince_val, quantity : quantity_val});
+    
+    if(mattr.length > 0){
+        for(var i = 0; i < mattr.length; i++) {
+            var ThisInput = $(".featurematerials");
+            var data_mat = ThisInput.data('mat');
+            var data_ids = ThisInput.data('id');
+            var materials_val = $('.materials_title[data-id="'+ mattr[i].id +'"]').val();//.replace(/,/g, "");
+            var prince_val = $('.materials_price[data-id="'+ mattr[i].id +'"]').val();//.replace(/,/g, "");        
+            var quantity_val = $('.materials_quantity[data-id="'+ mattr[i].id+'"]').val();
+            console.log(materials_val, prince_val, quantity_val,data_mat+' id' , mattr[i].id)
+            console.log("data")
+            if(mattr[i].id == data_ids && mattr[i].material_id == data_mat){
+                mattr[i].material_kind = materials_val;
+                mattr[i].price = prince_val;
+                mattr[i].quantity = quantity_val;
             }else{
-                value.material_kind = materials_val;
-                value.price = prince_val;
-                value.quantity = quantity_val;
+                mattr.push({id : data_ids, marterial_id : data_mat, material_kind : materials_val, price : prince_val, quantity : quantity_val});
+                break;
             }
-      });
-
-    var projID = $('#projID').val(),
-        projType = $('#projType').val();
-
-    const composed = mat.map(d => {
-        return {
-          ...d,
-          attributes_materials: mattr.filter(({marterial_id}) => d.id === marterial_id)
         }
-      })
+    }
 
-      var   pathUrl            = base_url+"/contructor/projects/send_materials",
-      method            	 = "POST",
-      dtype 	             = "json",
-      rdata 	             = {data:composed, projID:projID, projType:projType}; 
+    console.log(mattr);
+    // mattr.forEach(function callback(value, index) {
 
-    $.ajax({
-        type: method,  
-        url: pathUrl,
-        dataType: dtype,
-        data: rdata,
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
-        success: function(response){  
-            if(response.status == "SUCCESS"){
-                swal(
-                    'Great!',
-                    'Project Added Successfully!.',
-                    'success'
-                )
-                // setTimeout(() => {
-                //     $('#insertProdMod').modal('hide'); 
-                //     location.reload();
-                // }, 1000)
-                // alert(response.message);
-                // $('#passwordModal').modal('hide');
-                // $('#passwordchangeModal').modal('show');
-                // $('#email_text_changepass').html(response.data.email)
-                // setTimeout(() => {
-                //     $(document.body).addClass('modal-open');
-                // }, 1000)
-            }else{
-                // alert(response.message);
-            }
-            },
-    });
+    //     var ThisInput = $(".featurematerials");
+    //     var data_mat = ThisInput.data('mat');
+    //     var materials_val = $('.materials_title[data-id="'+value.id +'"]').val();//.replace(/,/g, "");
+    //     var prince_val = $('.materials_price[data-id="'+value.id +'"]').val();//.replace(/,/g, "");        
+    //     var quantity_val = $('.materials_quantity[data-id="'+value.id+'"]').val();
+    //         // if(value === undefined) {
+    //     mattr.push({id : value.id, marterial_id : data_mat, material_kind : materials_val, price : prince_val, quantity : quantity_val});
+    //     console.log(mattr)
+    //     console.log("mattr")
+    //         // }else{
+    //         //     if(value.id = value.marterial_id){
+    //         //         value.material_kind = materials_val;
+    //         //         value.price = prince_val;
+    //         //         value.quantity = quantity_val;
+    //         //     }
+    //         // }
+    //   });
+      
+    // var projID = $('#projID').val(),
+    //     projType = $('#projType').val();
 
+    // const composed = mat.map(d => {
+    //     return {
+    //       ...d,
+    //       attributes_materials: mattr.filter(({marterial_id}) => d.id === marterial_id)
+    //     }
+    //   })
 
-      console.log(composed)
+    //   console.log(composed)
+
+    //   var   pathUrl            = base_url+"/contructor/projects/send_materials",
+    //   method            	 = "POST",
+    //   dtype 	             = "json",
+    //   rdata 	             = {data:composed, projID:projID, projType:projType}; 
+
+    // $.ajax({
+    //     type: method,  
+    //     url: pathUrl,
+    //     dataType: dtype,
+    //     data: rdata,
+    //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+    //     success: function(response){  
+    //         if(response.status == "SUCCESS"){
+    //             swal(
+    //                 'Great!',
+    //                 'Project Added Successfully!.',
+    //                 'success'
+    //             )
+    //             // setTimeout(() => {
+    //             //     $('#insertProdMod').modal('hide'); 
+    //             //     location.reload();
+    //             // }, 1000)
+    //             // alert(response.message);
+    //             // $('#passwordModal').modal('hide');
+    //             // $('#passwordchangeModal').modal('show');
+    //             // $('#email_text_changepass').html(response.data.email)
+    //             // setTimeout(() => {
+    //             //     $(document.body).addClass('modal-open');
+    //             // }, 1000)
+    //         }else{
+    //             // alert(response.message);
+    //         }
+    //         },
+    // });
+
 
 });
 
