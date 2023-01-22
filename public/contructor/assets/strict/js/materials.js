@@ -26,6 +26,8 @@ var input_count = 0,
             material_fetch = response.data.materials
             attrs_fetch = response.data.attrs
 
+            console.log(response.data.attrs)
+
             // response.forEach(function callback(value, index){
 
             // })
@@ -113,9 +115,13 @@ $.fn.insert_attr  = function insert_attr(ruid){
     attrs++;
     var objval = document.getElementById('materials_input').value;
     var new_title = $.fn.titleCase(objval);
-    // let text = ruid.toString();
-    let text2 = attrs.toString();
-    mattr.push({id : text2, marterial_id : ruid, material_kind : '', price : '', quantity : ''});
+    if(attrs_fetch){
+        let text = ruid.toString();
+        let text2 = attrs.toString();
+        mattr.push({id : text2, material_id : text, material_kind : '', price : '', quantity : ''});
+    }else{
+        mattr.push({id : attrs, material_id : ruid, material_kind : '', price : '', quantity : ''});
+    }
     // mattr.push({id : attrs, marterial_id : ruid, material_kind : '', price : '', quantity : ''});
     // console.log(mattr)
     // console.log("mattr")
@@ -136,14 +142,14 @@ $.fn.insert_attr  = function insert_attr(ruid){
     var ojdivtest = document.createElement("div");
     var slugifys = slugify(objval);
     ojdivtest.setAttribute("class", " mb-3 form-group removeData"+attrs);
-    ojdivtest.innerHTML = '<br> <div class="form-group row"><div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Price</label><input class="form-control materials_price featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Quantity</label><input class="form-control materials_quantity featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /><span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="remove_data_fields('+ attrs +');">[Remove Attribute]</a></span></div></div> ';
+    ojdivtest.innerHTML = '<br> <div class="form-group row"><div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Price</label><input type="number" class="form-control materials_price featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Quantity</label><input type="number" class="form-control materials_quantity featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /><span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="$.fn.remove_data_fields('+ attrs +');">[Remove Attribute]</a></span></div></div> ';
     // <label for="exampleInputEmail1" class="form-label">Attribute No'+attrs+'</label><div class="col-4"><input type="text" class="form-control" name="'+slugifys+'_price" aria-describedby="emailHelp"></div><div class="col-4"><input type="text" class="form-control" name="'+slugifys+'_quant" aria-describedby="emailHelp"></div><button class="btn btn-danger" type="button" onclick="remove_data_fields('+ attrs +');">-</button>
     ojtest.appendChild(ojdivtest);
 
 }
 
 
-function remove_education_fields(rid) {
+$.fn.remove_education_fields  = function remove_education_fields(rid) {
     $('.removeclass'+rid).remove();
     --input;
 
@@ -154,15 +160,14 @@ function remove_education_fields(rid) {
     ojtest.appendChild(ojdivtest);
 }
 
-function remove_data_fields(rid) {
+$.fn.remove_data_fields = function remove_data_fields(rid) {
+    console.log(rid)
     $('.removeData'+rid).remove();
     --attrs;
-
-    var btndisplay = document.getElementById('BtnDisplay')
-    btntest.innerHTML = '';
-    btndisplay.appendChild(btntest)
-
-    ojtest.appendChild(ojdivtest);
+    $('.error_message').html('Data removed, click submit to save changes!');
+    setTimeout(() => {
+        $('.error_message').html('');  
+    },3000)
 }
 
 
@@ -170,7 +175,7 @@ $('#materials_form').on('submit', function(e){
     e.preventDefault();
 
     // let result = [...mattr].map(([id, marterial_id, material_kind, price, quantity]) => ({ id, marterial_id, material_kind, price, quantity}))
-    var result = new Map(mattr.map(i => [i.id, i.marterial_id, i.material_kind, i.price, i.quantity]));
+    var result = new Map(mattr.map(i => [i.id, i.material_id, i.material_kind, i.price, i.quantity]));
     // var foundIndex = mattr.findIndex(x => x.id == item.id);
     //     items[foundIndex] = item;
     
@@ -184,14 +189,9 @@ $('#materials_form').on('submit', function(e){
             var quantity_val = $('.materials_quantity[data-id="'+ mattr[i].id+'"]').val();
             console.log(materials_val, prince_val, quantity_val,data_mat+' id' , mattr[i].id)
             console.log("data")
-            if(mattr[i].id == data_ids && mattr[i].material_id == data_mat){
                 mattr[i].material_kind = materials_val;
                 mattr[i].price = prince_val;
                 mattr[i].quantity = quantity_val;
-            }else{
-                mattr.push({id : data_ids, marterial_id : data_mat, material_kind : materials_val, price : prince_val, quantity : quantity_val});
-                break;
-            }
         }
     }
 
@@ -216,52 +216,52 @@ $('#materials_form').on('submit', function(e){
     //         // }
     //   });
       
-    // var projID = $('#projID').val(),
-    //     projType = $('#projType').val();
+    var projID = $('#projID').val(),
+        projType = $('#projType').val();
 
-    // const composed = mat.map(d => {
-    //     return {
-    //       ...d,
-    //       attributes_materials: mattr.filter(({marterial_id}) => d.id === marterial_id)
-    //     }
-    //   })
+    const composed = mat.map(d => {
+        return {
+          ...d,
+          attributes_materials: mattr.filter(({material_id}) => d.id === material_id)
+        }
+      })
 
-    //   console.log(composed)
+      console.log(composed)
 
-    //   var   pathUrl            = base_url+"/contructor/projects/send_materials",
-    //   method            	 = "POST",
-    //   dtype 	             = "json",
-    //   rdata 	             = {data:composed, projID:projID, projType:projType}; 
+      var   pathUrl            = base_url+"/contructor/projects/send_materials",
+      method            	 = "POST",
+      dtype 	             = "json",
+      rdata 	             = {data:composed, projID:projID, projType:projType}; 
 
-    // $.ajax({
-    //     type: method,  
-    //     url: pathUrl,
-    //     dataType: dtype,
-    //     data: rdata,
-    //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
-    //     success: function(response){  
-    //         if(response.status == "SUCCESS"){
-    //             swal(
-    //                 'Great!',
-    //                 'Project Added Successfully!.',
-    //                 'success'
-    //             )
-    //             // setTimeout(() => {
-    //             //     $('#insertProdMod').modal('hide'); 
-    //             //     location.reload();
-    //             // }, 1000)
-    //             // alert(response.message);
-    //             // $('#passwordModal').modal('hide');
-    //             // $('#passwordchangeModal').modal('show');
-    //             // $('#email_text_changepass').html(response.data.email)
-    //             // setTimeout(() => {
-    //             //     $(document.body).addClass('modal-open');
-    //             // }, 1000)
-    //         }else{
-    //             // alert(response.message);
-    //         }
-    //         },
-    // });
+    $.ajax({
+        type: method,  
+        url: pathUrl,
+        dataType: dtype,
+        data: rdata,
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, 
+        success: function(response){  
+            if(response.status == "SUCCESS"){
+                swal(
+                    'Great!',
+                    'Project Added Successfully!.',
+                    'success'
+                )
+                // setTimeout(() => {
+                //     $('#insertProdMod').modal('hide'); 
+                //     location.reload();
+                // }, 1000)
+                // alert(response.message);
+                // $('#passwordModal').modal('hide');
+                // $('#passwordchangeModal').modal('show');
+                // $('#email_text_changepass').html(response.data.email)
+                // setTimeout(() => {
+                //     $(document.body).addClass('modal-open');
+                // }, 1000)
+            }else{
+                // alert(response.message);
+            }
+            },
+    });
 
 
 });

@@ -294,14 +294,16 @@ class ProjectController extends Controller
                     'id' => $fetch[$key]['id'],
                     'title' => $fetch[$key]['title']
                 ];
-                array_push($FetchAttr,(object)$fetch[$key]['attributes_materials']);
+               $FetchAttr[] = $fetch[$key]['attributes_materials'];
                 // $FetchAttr = $fetch[$key]['attributes_materials'];
             }
 
-
+            foreach($FetchAttr as $key => $val){
+                array_push($ArrMaterialsAttr, ["id" => $val[$key]['id'], "material_id" => $val[$key]['material_id'],"material_kind" => $val[$key]['material_kind'], "price" => $val[$key]['price'],"quantity" => $val[$key]['quantity']]);
+            }
         }
 
-        return responseSuccess('Image Uploaded!',['input_count' => $countMaterials,'attr_count' => $countMaterialsAttr,'materials' => $ArrMaterials,'attrs' => $FetchAttr]);
+        return responseSuccess('Image Uploaded!',['input_count' => $countMaterials,'attr_count' => $countMaterialsAttr,'materials' => $ArrMaterials,'attrs' => $ArrMaterialsAttr]);
     }
 
 

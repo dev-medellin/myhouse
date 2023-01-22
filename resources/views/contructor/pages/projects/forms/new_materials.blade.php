@@ -26,19 +26,19 @@
                                             <span><a href="javascript:void(0);" class="text-success font-weight-bold" onclick="$.fn.insert_attr(<?php echo $data['materials'][$key]['id']?>);">[Insert Attribute]</a></span>
                                         </div>
                                     </h4>
-                                    <div class="mb-3 form-group removeData6">
+                                    @foreach($value['attributes_materials'] as $key_attr => $val_attr)
+                                    <div class="mb-3 form-group <?php echo 'removeData'.$value['attributes_materials'][$key_attr]['id']?> ">
                                         <br />
-                                        @foreach($value['attributes_materials'] as $key_attr => $val_attr)
-                                        <div class="form-group row">
-                                            <div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['marterial_id']}}" value="{{$value['attributes_materials'][$key_attr]['material_kind']}}" required /></div>
-                                            <div class="col-4"><label>Price</label><input class="form-control materials_price featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['marterial_id']}}" value="{{$value['attributes_materials'][$key_attr]['price']}}" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" /></div>
+                                        <div class="form-group row ">
+                                            <div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['material_kind']}}" required /></div>
+                                            <div class="col-4"><label>Price</label><input class="form-control materials_price featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['price']}}" type="number" required  /></div>
                                             <div class="col-4">
-                                                <label>Quantity</label><input class="form-control materials_quantity featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['marterial_id']}}" value="{{$value['attributes_materials'][$key_attr]['quantity']}}" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
-                                                <span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="remove_data_fields(6);">[Remove Attribute]</a></span>
+                                                <label>Quantity</label><input class="form-control materials_quantity featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['quantity']}}" type="number" required  />
+                                                <span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="$.fn.remove_data_fields(<?php echo $value['attributes_materials'][$key_attr]['id']?>);">[Remove Attribute]</a></span>
                                             </div>
                                         </div>
-                                        @endforeach
                                     </div>
+                                    @endforeach
                                 </div>
                             @endisset
                         @endforeach
