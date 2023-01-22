@@ -84,7 +84,14 @@ $('.insertMaterialRow').on('click',function(e){
         console.log('empty')
         return;
     }
+
+    if(material_fetch != null){
+        let text = input.toString();
+        mat.push({id : text, title : new_title})
+    }else{
         mat.push({id : input, title : new_title})
+    }
+
         var objTo = document.getElementById('material_list')
         // var btndisplay = document.getElementById('BtnDisplay')
         // var btntest = document.createElement("div");
