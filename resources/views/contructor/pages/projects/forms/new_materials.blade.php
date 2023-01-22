@@ -21,7 +21,7 @@
                             @isset($value['attributes_materials'])
                                 <div class="mb-3 form-group" id="<?php echo 'removeclass'.$data['materials'][$key]['id']?>">
                                     <h4 class="card-title">
-                                    {{$data['materials'][$key]['title']}} <span><a href="javascript:void(0);" class="text-danger font-weight-bold">[Remove Material]</a></span>
+                                    {{$data['materials'][$key]['title']}} <span><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="$.fn.remove_education_fields(<?php echo $data['materials'][$key]['id']?>);">[Remove Material]</a></span>
                                         <div class="float-right">
                                             <span><a href="javascript:void(0);" class="text-success font-weight-bold" onclick="$.fn.insert_attr(<?php echo $data['materials'][$key]['id']?>);">[Insert Attribute]</a></span>
                                         </div>
@@ -31,6 +31,7 @@
                                         <br />
                                         <div class="form-group row ">
                                             <div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['material_kind']}}" required /></div>
+                                            <div class="col-4"><label>Price</label><input class="form-control materials_by featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['material_by']}}" type="text" required  /></div>
                                             <div class="col-4"><label>Price</label><input class="form-control materials_price featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['price']}}" type="number" required  /></div>
                                             <div class="col-4">
                                                 <label>Quantity</label><input class="form-control materials_quantity featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['quantity']}}" type="number" required  />

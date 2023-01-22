@@ -15,14 +15,11 @@ class PDFController extends Controller
 
     {
         $select_proj = ProjectModel::select('proj_name')->where('id', $id)->first();
-        $query = MM::where('proj_id','=', $id)->first();
+        $fetch_mat = MM::selectRaw('new_mat_desc')->where('proj_id','=', $id)->first();
 
         $data = [
-
-            'body' => $query->materials_desc,
-
+            'materials' => json_decode($fetch_mat->new_mat_desc, TRUE),
             'dates' => date('m/d/Y')
-
         ];
 
           

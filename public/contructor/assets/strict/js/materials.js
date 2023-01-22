@@ -91,7 +91,7 @@ $('.insertMaterialRow').on('click',function(e){
         var divtest = document.createElement("div");
         divtest.setAttribute("class", " mb-3 form-group");
         divtest.setAttribute("id","removeclass"+input);
-        divtest.innerHTML = '<h4 class="card-title">'+new_title+'  <span><a href="javascript:void(0);" class="text-danger font-weight-bold">[Remove Material]</a></span><div class="float-right"><span><a href="javascript:void(0);" class="text-success font-weight-bold" onclick="$.fn.insert_attr('+input+');">[Insert Attribute]</a></span></div></h4>';
+        divtest.innerHTML = '<h4 class="card-title">'+new_title+'  <span><a href="javascript:void(0);" class="text-danger font-weight-bold" onlick="$.fn.remove_education_fields('+input+');">[Remove Material]</a></span><div class="float-right"><span><a href="javascript:void(0);" class="text-success font-weight-bold" onclick="$.fn.insert_attr('+input+');">[Insert Attribute]</a></span></div></h4>';
         objTo.appendChild(divtest)
         $.fn.insert_attr(input);
         // btntest.innerHTML = '<button type="submit" class="btn btn-primary mr-2">Submit</button><button class="btn btn-light">Cancel</button>';
@@ -115,12 +115,14 @@ $.fn.insert_attr  = function insert_attr(ruid){
     attrs++;
     var objval = document.getElementById('materials_input').value;
     var new_title = $.fn.titleCase(objval);
-    if(attrs_fetch){
+    if(attrs_fetch.length > 0){
+        console.log(attrs_fetch + ' noooo')
         let text = ruid.toString();
         let text2 = attrs.toString();
-        mattr.push({id : text2, material_id : text, material_kind : '', price : '', quantity : ''});
+        mattr.push({id : text2, material_id : text, material_kind : '',material_by: '', price : '', quantity : ''});
     }else{
-        mattr.push({id : attrs, material_id : ruid, material_kind : '', price : '', quantity : ''});
+        console.log(attrs_fetch + ' yes')
+        mattr.push({id : attrs, material_id : ruid, material_kind : '', material_by: '', price : '', quantity : ''});
     }
     // mattr.push({id : attrs, marterial_id : ruid, material_kind : '', price : '', quantity : ''});
     // console.log(mattr)
@@ -142,7 +144,7 @@ $.fn.insert_attr  = function insert_attr(ruid){
     var ojdivtest = document.createElement("div");
     var slugifys = slugify(objval);
     ojdivtest.setAttribute("class", " mb-3 form-group removeData"+attrs);
-    ojdivtest.innerHTML = '<br> <div class="form-group row"><div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Price</label><input type="number" class="form-control materials_price featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Quantity</label><input type="number" class="form-control materials_quantity featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /><span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="$.fn.remove_data_fields('+ attrs +');">[Remove Attribute]</a></span></div></div> ';
+    ojdivtest.innerHTML = '<br> <div class="form-group row"><div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Material By</label><input type="text" class="form-control materials_by featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Price</label><input type="number" class="form-control materials_price featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Quantity</label><input type="number" class="form-control materials_quantity featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /><span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="$.fn.remove_data_fields('+ attrs +');">[Remove Attribute]</a></span></div></div> ';
     // <label for="exampleInputEmail1" class="form-label">Attribute No'+attrs+'</label><div class="col-4"><input type="text" class="form-control" name="'+slugifys+'_price" aria-describedby="emailHelp"></div><div class="col-4"><input type="text" class="form-control" name="'+slugifys+'_quant" aria-describedby="emailHelp"></div><button class="btn btn-danger" type="button" onclick="remove_data_fields('+ attrs +');">-</button>
     ojtest.appendChild(ojdivtest);
 
@@ -150,14 +152,14 @@ $.fn.insert_attr  = function insert_attr(ruid){
 
 
 $.fn.remove_education_fields  = function remove_education_fields(rid) {
-    $('.removeclass'+rid).remove();
+    console.log(rid)
+    $('#removeclass'+rid).remove();
     --input;
+    $('.error_message').html('Data removed, click submit to save changes!');
+    setTimeout(() => {
+        $('.error_message').html('');  
+    },3000)
 
-    var btndisplay = document.getElementById('BtnDisplay')
-    btntest.innerHTML = '';
-    btndisplay.appendChild(btntest)
-
-    ojtest.appendChild(ojdivtest);
 }
 
 $.fn.remove_data_fields = function remove_data_fields(rid) {
@@ -185,12 +187,14 @@ $('#materials_form').on('submit', function(e){
             var data_mat = ThisInput.data('mat');
             var data_ids = ThisInput.data('id');
             var materials_val = $('.materials_title[data-id="'+ mattr[i].id +'"]').val();//.replace(/,/g, "");
-            var prince_val = $('.materials_price[data-id="'+ mattr[i].id +'"]').val();//.replace(/,/g, "");        
+            var prince_val = $('.materials_price[data-id="'+ mattr[i].id +'"]').val();//.replace(/,/g, ""); 
+            var by_val = $('.materials_by[data-id="'+ mattr[i].id +'"]').val();//.replace(/,/g, "");       
             var quantity_val = $('.materials_quantity[data-id="'+ mattr[i].id+'"]').val();
             console.log(materials_val, prince_val, quantity_val,data_mat+' id' , mattr[i].id)
             console.log("data")
                 mattr[i].material_kind = materials_val;
                 mattr[i].price = prince_val;
+                mattr[i].material_by = by_val
                 mattr[i].quantity = quantity_val;
         }
     }
