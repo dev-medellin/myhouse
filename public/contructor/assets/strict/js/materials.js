@@ -52,10 +52,11 @@ var input_count = 0,
     });
 var input = input_count;
 var attrs = attr_count;
-let mat = material_fetch,
-    mattr = [];
+let mat = (material_fetch ? material_fetch : []),
+    mattr = (attr_count ? material_fetch : []),;
 
     console.log(mat)
+    console.log(mattr)
 
 $('.insertMaterialRow').on('click',function(e){
     e.preventDefault()
@@ -63,14 +64,22 @@ $('.insertMaterialRow').on('click',function(e){
     input++;
     var objval = document.getElementById('materials_input').value;
     var new_title = titleCase(objval);
-
-    var elementPos = mat.map(function(x) {return x.title; }).indexOf(new_title);
-    if(elementPos != -1){
-        console.log('Already Exist')
-        return;
+    if(mat){
+        var elementPos = mat.map(function(x) {return x.title; }).indexOf(new_title);
+        if(elementPos != -1){
+            $('.error_message').html('Materials Already Exist!!');
+            setTimeout(() => {
+                $('.error_message').html('');  
+            },3000)
+            return;
+        }
     }
 
     if(objval === ''){
+        $('.error_message').html('Input some materials first!!');
+        setTimeout(() => {
+            $('.error_message').html('');  
+        },3000)
         console.log('empty')
         return;
     }
@@ -160,6 +169,7 @@ $('#materials_form').on('submit', function(e){
     var result = new Map(mattr.map(i => [i.id, i.marterial_id, i.material_kind, i.price, i.quantity]));
     // var foundIndex = mattr.findIndex(x => x.id == item.id);
     //     items[foundIndex] = item;
+    console.log(mattr)
     mattr.forEach(function callback(value, index) {
 
         var ThisInput = $(".featurematerials");
