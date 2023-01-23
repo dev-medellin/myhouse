@@ -294,7 +294,7 @@ class ProjectController extends Controller
                     'id' => $fetch[$key]['id'],
                     'title' => $fetch[$key]['title']
                 ];
-               $FetchAttr[] = $fetch[$key]['attributes_materials'];
+               $FetchAttr = $fetch[$key]['attributes_materials'];
                 // $FetchAttr = $fetch[$key]['attributes_materials'];
             }
 
