@@ -286,6 +286,7 @@ class ProjectController extends Controller
         $fetch = json_decode($submit->new_mat_desc, TRUE);
 
         if($fetch){
+            $i = -1;
             foreach ($fetch as $key => $value) {
             
                 $countMaterials = count($fetch);
@@ -294,12 +295,14 @@ class ProjectController extends Controller
                     'id' => $fetch[$key]['id'],
                     'title' => $fetch[$key]['title']
                 ];
-               $FetchAttr = $fetch[$key]['attributes_materials'];
-                // $FetchAttr = $fetch[$key]['attributes_materials'];
+                foreach($value['attributes_materials'] as $yawa){
+                    $FetchAttr[] = $yawa;
+                }
             }
 
+
             foreach($FetchAttr as $key => $val){
-                array_push($ArrMaterialsAttr, ["id" => $val[$key]['id'], "material_id" => $val[$key]['material_id'],"material_kind" => $val[$key]['material_kind'], "price" => $val[$key]['price'],"quantity" => $val[$key]['quantity']]);
+                array_push($ArrMaterialsAttr, ["id" => $val['id'], "material_id" => $val['material_id'],"material_kind" => $val['material_kind'], "price" => $val['price'],"quantity" => $val['quantity']]);
             }
         }
 

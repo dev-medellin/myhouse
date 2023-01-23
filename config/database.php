@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Str;
-$db_user = 'root';
-$db_pass = '01232105123';
+$db_user = 'homestead';
+$db_pass = 'secret';
 $db_name = 'myhouse';
 $db_host = 'localhost';
 $db_port = 3306;
