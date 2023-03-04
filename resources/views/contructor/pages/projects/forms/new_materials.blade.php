@@ -30,13 +30,15 @@
                                     <div class="mb-3 form-group <?php echo 'removeData'.$value['attributes_materials'][$key_attr]['id']?> ">
                                         <br />
                                         <div class="form-group row ">
+                                            @isset($value['attributes_materials'][$key_attr]['material_kind'])
                                             <div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['material_kind']}}" required /></div>
-                                            <div class="col-4"><label>Price</label><input class="form-control materials_by featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['material_by']}}" type="text" required  /></div>
+                                            <div class="col-4"><label>Materials Pack By</label><input class="form-control materials_by featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['material_by']}}" type="text" required  /></div>
                                             <div class="col-4"><label>Price</label><input class="form-control materials_price featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['price']}}" type="number" required  /></div>
                                             <div class="col-4">
                                                 <label>Quantity</label><input class="form-control materials_quantity featurematerials" data-id="{{$value['attributes_materials'][$key_attr]['id']}}" data-mat="{{$value['attributes_materials'][$key_attr]['material_id']}}" value="{{$value['attributes_materials'][$key_attr]['quantity']}}" type="number" required  />
                                                 <span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="$.fn.remove_data_fields(<?php echo $value['attributes_materials'][$key_attr]['id']?>);">[Remove Attribute]</a></span>
                                             </div>
+                                            @endisset
                                         </div>
                                     </div>
                                     @endforeach

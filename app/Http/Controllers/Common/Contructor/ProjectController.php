@@ -273,7 +273,7 @@ class ProjectController extends Controller
 
     public function send_materials(Request $request){
         $submit = MM::updateOrCreate(['proj_id' => $request->projID],['new_mat_desc' => $request->data]);
-        return $submit;
+        return responseSuccess('Submit Successfully!');
     }
 
     public function new_materials(Request $request){
@@ -302,7 +302,7 @@ class ProjectController extends Controller
 
 
             foreach($FetchAttr as $key => $val){
-                array_push($ArrMaterialsAttr, ["id" => $val['id'], "material_id" => $val['material_id'],"material_kind" => $val['material_kind'], "price" => $val['price'],"quantity" => $val['quantity']]);
+                array_push($ArrMaterialsAttr, ["id" => $val['id'], "material_id" => $val['material_id'],"material_kind" => $val['material_kind'],"material_by" => $val['material_by'], "price" => $val['price'],"quantity" => $val['quantity']]);
             }
         }
 

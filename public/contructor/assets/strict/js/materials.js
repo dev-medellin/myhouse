@@ -151,7 +151,7 @@ $.fn.insert_attr  = function insert_attr(ruid){
     var ojdivtest = document.createElement("div");
     var slugifys = slugify(objval);
     ojdivtest.setAttribute("class", " mb-3 form-group removeData"+attrs);
-    ojdivtest.innerHTML = '<br> <div class="form-group row"><div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Material By</label><input type="text" class="form-control materials_by featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Price</label><input type="number" class="form-control materials_price featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Quantity</label><input type="number" class="form-control materials_quantity featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /><span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="$.fn.remove_data_fields('+ attrs +');">[Remove Attribute]</a></span></div></div> ';
+    ojdivtest.innerHTML = '<br> <div class="form-group row"><div class="col-4"><label>Material</label><input class="form-control materials_title featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Materials Pack By</label><input type="text" class="form-control materials_by featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Price</label><input type="number" class="form-control materials_price featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /></div><div class="col-4"><label>Quantity</label><input type="number" class="form-control materials_quantity featurematerials" data-id="'+attrs+'" data-mat="'+ruid+'" required /><span class="float-right"><a href="javascript:void(0);" class="text-danger font-weight-bold" onclick="$.fn.remove_data_fields('+ attrs +');">[Remove Attribute]</a></span></div></div> ';
     // <label for="exampleInputEmail1" class="form-label">Attribute No'+attrs+'</label><div class="col-4"><input type="text" class="form-control" name="'+slugifys+'_price" aria-describedby="emailHelp"></div><div class="col-4"><input type="text" class="form-control" name="'+slugifys+'_quant" aria-describedby="emailHelp"></div><button class="btn btn-danger" type="button" onclick="remove_data_fields('+ attrs +');">-</button>
     ojtest.appendChild(ojdivtest);
 
@@ -171,12 +171,17 @@ $.fn.remove_education_fields  = function remove_education_fields(rid) {
 
 $.fn.remove_data_fields = function remove_data_fields(rid) {
     console.log(rid)
+    console.log(mattr)
     $('.removeData'+rid).remove();
+    const objWithIdIndex = mattr.findIndex((obj) => obj.id === rid);
+    console.log(objWithIdIndex)
+    mattr.splice(rid, 1);
     --attrs;
     $('.error_message').html('Data removed, click submit to save changes!');
     setTimeout(() => {
         $('.error_message').html('');  
     },3000)
+    console.log(mattr)
 }
 
 
@@ -257,10 +262,9 @@ $('#materials_form').on('submit', function(e){
                     'Project Added Successfully!.',
                     'success'
                 )
-                // setTimeout(() => {
-                //     $('#insertProdMod').modal('hide'); 
-                //     location.reload();
-                // }, 1000)
+                setTimeout(() => {
+                    location.reload();
+                }, 1000)
                 // alert(response.message);
                 // $('#passwordModal').modal('hide');
                 // $('#passwordchangeModal').modal('show');

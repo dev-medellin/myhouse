@@ -197,14 +197,12 @@
                 style="width: 100%; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; border: none;"
             >
                 <thead>
-                @foreach($value['attributes_materials'] as $key_attr)
                     <tr style="text-align: center;">
                         <th style="text-align: center;">Kind</th>
                         <th style="text-align: center;">Quantity</th>
                         <th style="text-align: center;">Price</th>
                         <th style="text-align: center;">Total</th>
                     </tr>
-                @endforeach
                 </thead>
                 <tbody>
                 @foreach($value['attributes_materials'] as $key_attr)
