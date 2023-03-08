@@ -40,7 +40,7 @@
                 <div class="tab-pane fade show" id="pills-new_materials" role="tabpanel" aria-labelledby="pills-new_materials-tab">
                     <div class="media">
                         <div class="media-body">
-                            @include('contructor.pages.projects.forms.new_materials')
+                            @include('contructor.pages.projects.forms.new_form_materials')
                         </div>
                     </div>
                 </div>

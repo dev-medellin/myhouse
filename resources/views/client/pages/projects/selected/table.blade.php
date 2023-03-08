@@ -99,7 +99,7 @@
                 style="border: solid #dddddd 1pt; border-left: none; mso-border-left-alt: solid #dddddd 0.75pt; mso-border-alt: solid #dddddd 0.75pt; padding: 0.75pt 0.75pt 0.75pt 0.75pt; height: 23.35pt;"
             >
                 <p class="MsoNormal" align="center" style="margin-bottom: 15pt; text-align: center; line-height: normal;">
-                    <span style="font-size: 12pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: #333333;"> <?php echo $key_attr['quantity'] * $key_attr['price'];?> pesos<o:p></o:p></span>
+                    <span style="font-size: 12pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: #333333;"> <?php echo ($key_attr['quantity'] * $key_attr['price']) / 0.5;?> pesos<o:p></o:p></span>
                 </p>
             </td>
         </tr>

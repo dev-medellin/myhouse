@@ -1,13 +1,12 @@
-<div class="content-wrapper">
-  <div class="card">
+<div class="card">
     <div class="card-body">
       <h4 class="card-title">Data table</h4>
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
               <div class="float-right" style="margin: -0px 10px 0px 10px;padding: 0px 10px 0px 10px;">
-                <button type="button" class="btn btn-success btn-rounded btn-icon insertProject" data-modal="projects">
-                  <i class="ti-plus"></i>
+                <button type="button" class="btn btn-success btn-sm insertProject" data-toggle="modal" data-target="#importMaterials">
+                    Import Material 
                 </button>
               </div>
               <table id="order-listing" class="table">
@@ -48,4 +47,4 @@
       </div>
     </div>
   </div>
-</div>
+  @include('contructor.modal.insert_import')

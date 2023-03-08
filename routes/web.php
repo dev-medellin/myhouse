@@ -16,6 +16,7 @@ use App\Http\Controllers\Common\Client\AboutController;
 use App\Http\Controllers\Common\Client\ContactController;
 use App\Http\Controllers\Common\Client\ContructorController;
 use App\Http\Controllers\Common\Contructor\DashboardController as CCD;
+use App\Http\Controllers\Common\Contructor\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\Client\HomeController;
 use App\Http\Controllers\Common\Client\UserController;
@@ -133,6 +134,11 @@ Route::prefix('contructor')->middleware('contructor')->group(function() {
         Route::post('update/info',                  [CPC::class,'updateInfo']);
         Route::post('send_materials',               [CPC::class,'send_materials']);
         Route::post('new_materials',               [CPC::class,'new_materials']);
+
+        Route::get('file-import-export', [EmployeeController::class, 'fileImportExport'])->name('file-import-export');
+        Route::post('file-import', [EmployeeController::class, 'fileImport'])->name('file-import');
+        Route::get('file-export', [EmployeeController::class, 'fileExport'])->name('file-export');
+
         
         
 
