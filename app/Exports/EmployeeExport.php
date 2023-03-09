@@ -13,12 +13,19 @@ use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
 class EmployeeExport implements FromCollection, WithHeadings,ShouldAutoSize,WithColumnFormatting,WithEvents
 {
+
+     private $requestId;
     /**
     * @return \Illuminate\Support\Collection
     */
+
+    public function __construct($requestId)
+    {
+        $this->requestId = $requestId;
+    }
     public function collection()
     {
-        return EmployeeModel::get(['id','material_category','material_name','material_pack','material_price','material_quantity','total_price']);
+        return EmployeeModel::where('project_id',$this->requestId)->get(['id','material_category','material_name','material_pack','material_price','material_quantity','total_price']);
     }
 
     public function headings() :array
@@ -36,7 +43,7 @@ class EmployeeExport implements FromCollection, WithHeadings,ShouldAutoSize,With
                  $cellRanges = 'E:E*F:F'; // Replace E with the column you want to sum
                  $rows = $event->sheet->getHighestRow(); 
                  for ($row = count($this->collection()); $row <= $rows; $row++) {
-                    $event->sheet->setCellValue('G'.$row
+                    $event->sheet->setCellValue('G2'.$row
                         , '=SUM('.$cellRanges.')');
                 }
             },

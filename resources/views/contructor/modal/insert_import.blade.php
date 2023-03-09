@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Import data</button>
-                        <a class="btn btn-success" href="{{ route('file-export') }}">Export data</a>
+                       <a class="btn btn-success" href="{{ route('file-export', ['proj' => $data['info']['id']]) }}">Export</a>
                     </form>
                     </div>
                 </div>
