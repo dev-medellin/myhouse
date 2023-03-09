@@ -32,11 +32,11 @@ class EmployeeImport implements ToModel, WithStartRow
                     "material_pack"         => $row[3],
                     "material_price"        => $row[4],
                     "material_quantity"     => $row[5],
-                    "total_price"           => $row[6],
+                    "total_price"           => ($row[4] * $row[5]),
                     "project_id"            => $this->requestId
                 ];
     
-              return EmployeeModel::updateOrCreate(["project_id"=> $this->requestId,"material_name" => $row[1],"material_pack" => $row[2]],$data);
+              return EmployeeModel::updateOrCreate(["project_id"=> $this->requestId,"material_category" => $row[1],"material_name" => $row[2],"material_pack" => $row[3]],$data);
             }catch (\Exception $e){
                 return $e->getMessage();
             }
