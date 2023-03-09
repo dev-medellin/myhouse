@@ -11,10 +11,12 @@ class EmployeeModel extends Model
     protected $table        = 'material_import';
     protected $primaryKey   = 'id';
     protected $fillable = [
+        "material_category",
         "material_name",
         "material_pack",
         "material_price",
         "material_quantity",
-        "project_id"
+        "project_id",
+        "total_price"
     ];
 }

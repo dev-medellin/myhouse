@@ -13,11 +13,11 @@ class EmployeeExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return EmployeeModel::get(['id','material_name','material_pack','material_price','material_quantity']);
+        return EmployeeModel::get(['id','material_category','material_name','material_pack','material_price','material_quantity','total_price']);
     }
 
     public function headings() :array
     {
-        return ["ID","Material Name","Material By Pack","Material Price","Material Quantity"];
+        return ["ID","Material Category","Material Name","Type","Price","Quantity","TOTAL PRICE"];
     }
 }

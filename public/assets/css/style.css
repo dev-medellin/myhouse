@@ -2780,6 +2780,7 @@ max-height: 500px;
     background-size: 100%;
     background-position: left center;
     z-index: 0;
+    top: 813px;
 }
 .stylist-bottom-left:after {
     content: '';
@@ -2791,6 +2792,7 @@ max-height: 500px;
     right: 0;
     background-color: #a5a9ab;
     z-index: 1;
+    top: 820px;
 }
 .stylist-bottom-right {
     position: relative;

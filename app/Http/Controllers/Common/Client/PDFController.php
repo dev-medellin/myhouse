@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MaterialModel as MM;
 use App\Models\ProjectModel;
+use App\Models\EmployeeModel;
 use PDF;
 
 class PDFController extends Controller
@@ -16,9 +17,11 @@ class PDFController extends Controller
     {
         $select_proj = ProjectModel::select('proj_name')->where('id', $id)->first();
         $fetch_mat = MM::selectRaw('new_mat_desc')->where('proj_id','=', $id)->first();
+        $exp = EmployeeModel::where('project_id',$id)->get();
 
         $data = [
             'materials' => json_decode($fetch_mat->new_mat_desc, TRUE),
+            'materials_exp' => $exp,
             'dates' => date('m/d/Y')
         ];
 

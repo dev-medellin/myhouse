@@ -13,6 +13,7 @@ use App\Models\{
     MaterialModel                   as MM,
     ProjectImageModel               as PIM,
     ProjectModel                    as Project,
+    EmployeeModel
 };
 use Illuminate\Support\Facades\Redirect;
 
@@ -119,6 +120,7 @@ class ProjectController extends Controller
         if($queryProj){
             $fetch_mat = MM::selectRaw('new_mat_desc')->where('proj_id',$queryProj->project_id)->first();
             $data['materials']  = json_decode($fetch_mat->new_mat_desc, TRUE);
+            $data['materials_exp'] = EmployeeModel::where('project_id',$queryProj->project_id)->get();
             $data['project']    = $queryProj;
             $data['wish']       = $wish != null ? true : false;
             $data['image']      = PIM::where('proj_id',$queryProj->project_id)->get();
@@ -126,6 +128,8 @@ class ProjectController extends Controller
             $data['slugs']      =  $queryProj->project_slug;
             $data['js']         =  $this->js_file();
             $data['css']        =  $this->css_file();
+
+            // return $this->material_set($queryProj->project_id);
     
             return view('client.pages.projects.selected.index')->with('data', $data);
         }else{

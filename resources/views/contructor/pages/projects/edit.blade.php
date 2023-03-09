@@ -12,9 +12,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" id="pills-information-tab" data-toggle="pill" href="#pills-information" role="tab" aria-controls="pills-information" aria-selected="true">Informations</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" id="pills-materials-tab" data-toggle="pill" href="#pills-materials" role="tab" aria-controls="pills-materials" aria-selected="true">Materials</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" id="pills-new_materials-tab" data-toggle="pill" href="#pills-new_materials" role="tab" aria-controls="pills-new_materials" aria-selected="true">Materials</a>
                 </li>
@@ -30,13 +30,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade show" id="pills-materials" role="tabpanel" aria-labelledby="pills-materials-tab">
+                <!-- <div class="tab-pane fade show" id="pills-materials" role="tabpanel" aria-labelledby="pills-materials-tab">
                     <div class="media">
                         <div class="media-body">
                             @include('contructor.pages.projects.forms.form_materials')
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="tab-pane fade show" id="pills-new_materials" role="tabpanel" aria-labelledby="pills-new_materials-tab">
                     <div class="media">
                         <div class="media-body">

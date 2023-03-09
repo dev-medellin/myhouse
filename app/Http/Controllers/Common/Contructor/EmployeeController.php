@@ -33,7 +33,7 @@ class EmployeeController extends Controller
         */
         public function fileExport(Request $request) 
         {        
-            return Excel::download(new EmployeeExport, 'employee-collection.xlsx');
+            return Excel::download(new EmployeeExport, 'materials-collection-'.date('Y-m-d').'.xlsx');
         }
 
 }

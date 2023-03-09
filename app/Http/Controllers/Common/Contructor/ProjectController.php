@@ -13,7 +13,8 @@ use App\Models\{
     MaterialModel                   as MM,
     ProjectImageModel               as PIM,
     ProjectDetailsModel             as PDM,
-    ContructorModel
+    ContructorModel,
+    EmployeeModel
 };
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File;
@@ -81,6 +82,7 @@ class ProjectController extends Controller
             $images = PIM::where('proj_id', $queryProj->id)->get();
             $data['page'] = 'edit';
             $data['info'] =$queryProj;
+            $data['mateials_exp'] = EmployeeModel::where('project_id',$queryProj->id)->get();
             $data['images'] = $images;
             $data['js']         =  $this->js_file();
             $data['css']        =  $this->css_file();

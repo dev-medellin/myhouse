@@ -13,30 +13,25 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Project Name</th>
-                    <th>Project Area</th>
-                    <th>Project Type</th>
+                    <th>Material Category</th>
+                    <th>Material Name</th>
+                    <th>Type</th>
                     <th>Est. Price</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @isset($data['projects'])
-                    @foreach($data['projects'] as $proj)
+                  @isset($data['mateials_exp'])
+                    @foreach($data['mateials_exp'] as $mat)
                       <tr>
-                        <td>{{$proj->id}}</td>
-                        <td>{{$proj->proj_name}}</td>
-                        <td>{{$proj->proj_area}} sqm.</td>
-                        <td>{{isset($proj->proj_type) && $proj->proj_type == 1 ? 'Single Stories' : 'Two Stories'}}</td>
-                        <td>₱{{number_format($proj->proj_est_price, 2, '.',',')}}</td>
-                        <td>
-                          <label class="badge <?php echo ($proj->status == 'active' ? 'badge-success' : 'badge-danger');?>">{{ucfirst($proj->status)}}</label>
-                        </td>
-                        <td>
-                          <a href="javascript:void()" class="btn btn-primary modify-proj" data-id="{{$proj->id}}">Edit</a>
-                          <a href="{{url('/projects/'.$proj->proj_slug)}}" class="btn btn-success" data-id="{{$proj->id}}">View</a>
-                        </td>
+                        <td>{{$mat->id}}</td>
+                        <td>{{$mat->material_category}}</td>
+                        <td>{{$mat->material_name}} sqm.</td>
+                        <td>{{$mat->material_pack}}</td>
+                        <td>₱{{number_format($mat->material_price, 2, '.',',')}}</td>
+                        <td>{{$mat->material_quantity}}</td>
+                        <td>{{$mat->total_price}}</td>
                       </tr>
                     @endforeach
                   @endisset
