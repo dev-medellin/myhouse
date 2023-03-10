@@ -26,8 +26,8 @@ class EmployeeImport implements ToModel, WithStartRow
     {
             try{
 
-                $number_one = ($row[4] != '' ? (int)$row[4] : 0);
-                $number_two = ($row[5] != '' ? (int)$row[5] : 0);
+                $number_one = ($row[4] != '' ? (float)$row[4] : 0);
+                $number_two = ($row[5] != '' ? (float)$row[5] : 0);
                 $data = [
                     //
                     "material_category"     => $row[1],
