@@ -39,7 +39,7 @@ class EmployeeImport implements ToModel, WithStartRow
                     "project_id"            => $this->requestId
                 ];
     
-              return EmployeeModel::updateOrCreate(["project_id"=> $this->requestId,"material_category" => $row[1],"material_name" => $row[2],"material_pack" => $row[3]],$data);
+              return EmployeeModel::updateOrCreate(["project_id"=> $this->requestId,"material_category" => $row[1],"material_name" => $row[2]],$data);
             }catch (\Exception $e){
                 return $e->getMessage();
             }
