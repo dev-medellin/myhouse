@@ -63,7 +63,7 @@ foreach($data['materials_exp'] as $mat):
         background-clip: initial;
     "
 >
-    <span style="font-size: 22pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: #333333;">{{$category}}<o:p></o:p></span>
+    <span style="font-size: 22pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: #333333;">{{ucwords($category)}}<o:p></o:p></span>
 </p>
 <table
     class="MsoNormalTable"

@@ -27,7 +27,7 @@
                       <tr>
                         <td>{{$mat->id}}</td>
                         <td>{{$mat->material_category}}</td>
-                        <td>{{$mat->material_name}} sqm.</td>
+                        <td>{{$mat->material_name}}</td>
                         <td>{{$mat->material_pack}}</td>
                         <td>₱{{number_format($mat->material_price, 2, '.',',')}}</td>
                         <td>{{$mat->material_quantity}}</td>

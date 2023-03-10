@@ -7,7 +7,7 @@
 					<div class="main-title">
 						<h2><span>Project</span> Details</h2>
 						<strong></strong> <!-- Use for heading after effect -->
-					</div>
+					</div>.
 				</div> <!-- /.section-heading -->
 				<div id="showcase-main-thumb-slider-section">
 					<!-- Showcase Slider Main -->
@@ -152,7 +152,7 @@
 						</div> <!-- /.col -->
 					</div> <!-- /.row -->  
                     <div class="mt-5" id="display_materials">
-                        @isset($data['materials'])
+                        @isset($data['materials_exp'])
 							<div class="awesome-btn" style="float: right !important;">
 								<a href="{{url('users/generate-pdf/'.$data['project']->project_id)}}" style="background-color:#0089e9 !important" class="dream-btn">PDF Download</a>
 							</div>

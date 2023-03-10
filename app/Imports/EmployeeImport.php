@@ -25,6 +25,9 @@ class EmployeeImport implements ToModel, WithStartRow
     public function model(array $row)
     {
             try{
+
+                $number_one = ($row[4] != '' ? (int)$row[4] : 0);
+                $number_two = ($row[5] != '' ? (int)$row[5] : 0);
                 $data = [
                     //
                     "material_category"     => $row[1],
@@ -32,7 +35,7 @@ class EmployeeImport implements ToModel, WithStartRow
                     "material_pack"         => $row[3],
                     "material_price"        => $row[4],
                     "material_quantity"     => $row[5],
-                    "total_price"           => ($row[4] * $row[5]),
+                    "total_price"           => ($number_one * $number_two),
                     "project_id"            => $this->requestId
                 ];
     

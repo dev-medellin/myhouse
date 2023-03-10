@@ -25,7 +25,7 @@ class EmployeeController extends Controller
         {
             $requestId = $request->proj_id;
 
-            EmployeeModel::where('project_id', $requestId)->delete();
+            // EmployeeModel::where('project_id', $requestId)->delete();
             
             Excel::import(new EmployeeImport($requestId), $request->file('file')->store('temp'));
             return back();
